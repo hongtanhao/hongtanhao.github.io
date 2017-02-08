@@ -16,8 +16,8 @@
   
   
   
-    <meta name="description" content="最近个人网站有了雏形，成功做到pc端和移动端兼容，
-体验到手机touch事件再一次实践了响应式设计的微妙，完美地使用了前端自动化工具，">
+    <meta name="description" content="js实现touch移动触屏滑动事件在开始描述touch事件之前，需要先描述一下多触式系统中特有的touch对象（android和iOS乃至nokia最新的meego系统都模拟了类 似的对象）。这个对象封装一次屏幕触摸，一般来自于手指。它在touch事件触发的时候产生，可以 通过touch event handler的event对象取到
+移动端触屏滑动的效果其实就是图片轮播，在PC的页面上很好...">
   
   <title>a delicious name! [ sofia ]</title>
   
@@ -38,9 +38,18 @@
 <body>
 <div class="side-navigate hide-area">
   
+    <div class="item prev">
+      <a href="/2017/02/08/imagesUpload/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        
+      </div>
+    </div>
+  
   
     <div class="item next">
-      <a href="/2017/01/23/bore/">
+      <a href="/2017/01/17/gulp-browsersync/">
         <div class="item-icon"></div>
       </a>
       <div class="item-title">
@@ -129,27 +138,37 @@
       
     </p>
     
-    <p>最近个人网站有了雏形，成功做到pc端和移动端兼容，</p>
-<p>体验到手机touch事件再一次实践了响应式设计的微妙，完美地使用了前端自动化工具，</p>
-
+    <h1 id="js实现touch移动触屏滑动事件"><a href="#js实现touch移动触屏滑动事件" class="headerlink" title="js实现touch移动触屏滑动事件"></a>js实现touch移动触屏滑动事件<img src="C:\Users\Administrator\Desktop\UtahLake_Sunrise_FF_768_HD_ZH-CN240948621.jpg" alt=""></h1><p>在开始描述touch事件之前，需要先描述一下多触式系统中特有的touch对象（android和iOS乃至nokia最新的meego系统都模拟了类 似的对象）。这个对象封装一次屏幕触摸，一般来自于手指。它在touch事件触发的时候产生，可以 通过touch event handler的event对象取到</p>
+<p>移动端触屏滑动的效果其实就是图片轮播，在PC的页面上很好实现，绑定click和mouseover等事件来完成。但是在移动设备上，要实现这种轮播的效果，就需要用到核心的touch事件。处理touch事件能跟踪到屏幕滑动的每根手指。</p>
+<p>以下是四种touch事件<br>touchstart: //手指放到屏幕上时触发<br>touchmove: //手指在屏幕上滑动式触发<br>touchend: //手指离开屏幕时触发<br>touchcancel: //系统取消touch事件的时候触发，这个好像比较少用</p>
+<p>每个触摸事件被触发后，会生成一个event对象，event对象里额外包括以下三个触摸列表</p>
+<p>touches: //当前屏幕上所有手指的列表<br>targetTouches: //当前dom元素上手指的列表，尽量使用这个代替touches<br>changedTouches: //涉及当前事件的手指的列表，尽量使用这个代替touches<br>这些列表里的每次触摸由touch对象组成，touch对象里包含着触摸信息，主要属性如下：<br>clientX / clientY: //触摸点相对浏览器窗口的位置<br>pageX / pageY: //触摸点相对于页面的位置<br>screenX / screenY: //触摸点相对于屏幕的位置<br>identifier: //touch对象的ID<br>target: //当前的DOM元素</p>
+<p>注意：</p>
+<p>手指在滑动整个屏幕时，会影响浏览器的行为，比如滚动和缩放。所以在调用touch事件时，要注意禁止缩放和滚动。</p>
+<p>1.禁止缩放<br>通过meta元标签来设置。</p>
+<p>2.禁止滚动<br>preventDefault是阻止默认行为，touch事件的默认行为就是滚动。<br>event.preventDefault();</p>
+<p>使用案例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta http-equiv=&quot;Content-Type&quot; Content=&quot;text/html; charset=utf-8;&quot;&gt;</div><div class="line">&lt;title&gt;移动端触摸滑动&lt;/title&gt;</div><div class="line">&lt;meta name=&quot;author&quot; content=&quot;rainna&quot; /&gt;</div><div class="line">&lt;meta name=&quot;keywords&quot; content=&quot;rainna&apos;s js lib&quot; /&gt;</div><div class="line">&lt;meta name=&quot;description&quot; content=&quot;移动端触摸滑动&quot; /&gt;</div><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;target-densitydpi=320,width=640,user-scalable=no&quot;&gt;</div><div class="line">&lt;style&gt;</div><div class="line">*&#123;margin:0;padding:0;&#125;</div><div class="line">li&#123;list-style:none;&#125;.m-slider&#123;width:600px;margin:50px 20px;overflow:hidden;&#125;</div><div class="line">.m-slider .cnt&#123;position:relative;left:0;width:3000px;&#125;</div><div class="line">.m-slider .cnt li&#123;float:left;width:600px;&#125;</div><div class="line">.m-slider .cnt img&#123;display:block;width:100%;height:450px;&#125;</div><div class="line">.m-slider .cnt p&#123;margin:20px 0;&#125;</div><div class="line">.m-slider .icons&#123;text-align:center;color:#000;&#125;</div><div class="line">.m-slider .icons span&#123;margin:0 5px;&#125;</div><div class="line">.m-slider .icons .curr&#123;color:red;&#125;</div><div class="line">.f-anim&#123;-webkit-transition:left .2s linear;&#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div class=&quot;m-slider&quot;&gt;</div><div class="line">&lt;ul class=&quot;cnt&quot; id=&quot;slider&quot;&gt;</div><div class="line">&lt;li&gt;</div><div class="line">&lt;img src=&quot;http://imglf1.ph.126.net/qKodH3sZoVbPalKFtHS9mw==/6608946691259322175.jpg&quot;&gt;</div><div class="line">&lt;p&gt;20140813镜面的世界，终究只是倒影。看得到你的身影，却触摸不到你的未来&lt;/p&gt;</div><div class="line">&lt;/li&gt;</div><div class="line">&lt;li&gt;</div><div class="line">&lt;img src=&quot;http://imglf1.ph.126.net/40-jqH_j6EoCWnZOixY2pA==/4798022453110310215.jpg&quot;&gt;</div><div class="line">&lt;p&gt;20140812锡林浩特前往东乌旗S101必经之处，一条极美的铁路。铁路下面是个小型的盐沼，淡淡的有了一丝天空之境的感觉。可惜在此玩了一个小时也没有看见一列火车经过，只好继续赶往东乌旗。&lt;/p&gt;</div><div class="line">&lt;/li&gt;</div><div class="line">&lt;li&gt;</div><div class="line">&lt;img src=&quot;http://imglf0.ph.126.net/Jnmi2y51zVdjKAYlibtpFw==/3068640196117481166.jpg&quot;&gt;</div><div class="line">&lt;p&gt;20140811水的颜色为什么那么蓝，我也纳闷，反正自然饱和度和对比度拉完就是这个颜色的&lt;/p&gt;</div><div class="line">&lt;/li&gt;</div><div class="line">&lt;li&gt;</div><div class="line">&lt;img src=&quot;http://imglf1.ph.126.net/79GPsjhwiIj8e-0nP5MsEQ==/6619295294699949331.jpg&quot;&gt;</div><div class="line">&lt;p&gt;海洋星球3重庆天气热得我想卧轨自杀&lt;/p&gt;</div><div class="line">&lt;/li&gt;</div><div class="line">&lt;li&gt;</div><div class="line">&lt;img src=&quot;http://imglf1.ph.126.net/40-jqH_j6EoCWnZOixY2pA==/4798022453110310215.jpg&quot;&gt;</div><div class="line">&lt;p&gt;以上这些作品分别来自两位设计师作为观者，您能否通过设计风格进行区分&lt;/p&gt;</div><div class="line">&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div><div class="line">&lt;div class=&quot;icons&quot; id=&quot;icons&quot;&gt;</div><div class="line">&lt;span class=&quot;curr&quot;&gt;1&lt;/span&gt;</div><div class="line">&lt;span&gt;2&lt;/span&gt;</div><div class="line">&lt;span&gt;3&lt;/span&gt;</div><div class="line">&lt;span&gt;4&lt;/span&gt;</div><div class="line">&lt;span&gt;5&lt;/span&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;script&gt;</div><div class="line">var slider = &#123;</div><div class="line">//判断设备是否支持touch事件</div><div class="line">touch:(&apos;ontouchstart&apos; in window) || window.DocumentTouch &amp;&amp; document instanceof DocumentTouch,</div><div class="line">slider:document.getElementById(&apos;slider&apos;),</div><div class="line">//事件</div><div class="line">events:&#123;</div><div class="line">index:0, //显示元素的索引</div><div class="line">slider:this.slider, //this为slider对象</div><div class="line">icons:document.getElementById(&apos;icons&apos;),</div><div class="line">icon:this.icons.getElementsByTagName(&apos;span&apos;),</div><div class="line">handleEvent:function(event)&#123;</div><div class="line">var self = this; //this指events对象</div><div class="line">if(event.type == &apos;touchstart&apos;)&#123;</div><div class="line">self.start(event);</div><div class="line">&#125;else if(event.type == &apos;touchmove&apos;)&#123;</div><div class="line">self.move(event);</div><div class="line">&#125;else if(event.type == &apos;touchend&apos;)&#123;</div><div class="line">self.end(event);</div><div class="line">&#125;</div><div class="line">&#125;,</div><div class="line">//滑动开始</div><div class="line">start:function(event)&#123;</div><div class="line">var touch = event.targetTouches[0]; //touches数组对象获得屏幕上所有的touch，取第一个touch</div><div class="line">startPos = &#123;x:touch.pageX,y:touch.pageY,time:+new Date&#125;; //取第一个touch的坐标值</div><div class="line">isScrolling = 0; //这个参数判断是垂直滚动还是水平滚动</div><div class="line">this.slider.addEventListener(&apos;touchmove&apos;,this,false);</div><div class="line">this.slider.addEventListener(&apos;touchend&apos;,this,false);</div><div class="line">&#125;,</div><div class="line">//移动</div><div class="line">move:function(event)&#123;</div><div class="line">//当屏幕有多个touch或者页面被缩放过，就不执行move操作</div><div class="line">if(event.targetTouches.length &gt; 1 || event.scale &amp;&amp; event.scale !== 1) return;</div><div class="line">var touch = event.targetTouches[0];</div><div class="line">endPos = &#123;x:touch.pageX - startPos.x,y:touch.pageY - startPos.y&#125;;</div><div class="line">isScrolling = Math.abs(endPos.x) &lt; Math.abs(endPos.y) ? 1:0; //isScrolling为1时，表示纵向滑动，0为横向滑动</div><div class="line">if(isScrolling === 0)&#123;</div><div class="line">event.preventDefault(); //阻止触摸事件的默认行为，即阻止滚屏</div><div class="line">this.slider.className = &apos;cnt&apos;;</div><div class="line">this.slider.style.left = -this.index*600 + endPos.x + &apos;px&apos;;</div><div class="line">&#125;</div><div class="line">&#125;,</div><div class="line">//滑动释放</div><div class="line">end:function(event)&#123;</div><div class="line">var duration = +new Date - startPos.time; //滑动的持续时间</div><div class="line">if(isScrolling === 0)&#123; //当为水平滚动时</div><div class="line">this.icon[this.index].className = &apos;&apos;;</div><div class="line">if(Number(duration) &gt; 10)&#123;</div><div class="line">//判断是左移还是右移，当偏移量大于10时执行</div><div class="line">if(endPos.x &gt; 10)&#123;</div><div class="line">if(this.index !== 0) this.index -= 1;</div><div class="line">&#125;else if(endPos.x &lt; -10)&#123;</div><div class="line">if(this.index !== this.icon.length-1) this.index += 1;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">this.icon[this.index].className = &apos;curr&apos;;</div><div class="line">this.slider.className = &apos;cnt f-anim&apos;;</div><div class="line">this.slider.style.left = -this.index*600 + &apos;px&apos;;</div><div class="line">&#125;</div><div class="line">//解绑事件</div><div class="line">this.slider.removeEventListener(&apos;touchmove&apos;,this,false);</div><div class="line">this.slider.removeEventListener(&apos;touchend&apos;,this,false);</div><div class="line">&#125;</div><div class="line">&#125;,</div><div class="line">//初始化</div><div class="line">init:function()&#123;</div><div class="line">var self = this; //this指slider对象</div><div class="line">if(!!self.touch) self.slider.addEventListener(&apos;touchstart&apos;,self.events,false); //addEventListener第二个参数可以传一个对象，会调用该对象的handleEvent属性</div><div class="line">&#125;</div><div class="line">&#125;;</div><div class="line">slider.init();</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
   </article>
   <div class="random-toc-area">
   <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
   <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
   <div class="random-toc">
     <h2>Table of Content</h2>
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#js实现touch移动触屏滑动事件"><span class="toc-text">js实现touch移动触屏滑动事件</span></a></li></ol>
   </div>
 </div>
 
   
 <nav id="pagination">
   
-
+    <a href="/2017/02/08/imagesUpload/" class="prev">&larr; Prev post </a>
   
 
   
-    <a href="/2017/01/23/bore/" class="next">Next post  &rarr;</a>
+
+  
+    <a href="/2017/01/17/gulp-browsersync/" class="next">Next post  &rarr;</a>
   
 </nav>
 
