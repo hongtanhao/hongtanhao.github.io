@@ -49,22 +49,25 @@
 
 
 <meta name="description" content="jQuery给元素注册事件的方法
-1234&amp;lt;div&amp;gt;    &amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;    &amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;
-1234。bind()   --绑定事件$(&amp;apos;div a&amp;apos;).bind(&amp;apos;click&amp;apos;,function()&amp;#123;&amp;#125;);简写形式：$(&amp;apos;div a&amp;ap">
+&amp;lt;div&amp;gt;    &amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;    &amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;
+。bind()   --绑定事件$(&apos;div a&apos;).bind(&apos;click&apos;,function()&amp;#123;&amp;#125;);简写形式：$(&apos;div a&apos;).click();
+。dalegate()--代理事件 $(&apos;div">
 <meta property="og:type" content="article">
 <meta property="og:title" content="风">
 <meta property="og:url" content="http://yoursite.com/post/jquery.html">
 <meta property="og:site_name" content="风">
 <meta property="og:description" content="jQuery给元素注册事件的方法
-1234&amp;lt;div&amp;gt;    &amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;    &amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;
-1234。bind()   --绑定事件$(&amp;apos;div a&amp;apos;).bind(&amp;apos;click&amp;apos;,function()&amp;#123;&amp;#125;);简写形式：$(&amp;apos;div a&amp;ap">
+&amp;lt;div&amp;gt;    &amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;    &amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;
+。bind()   --绑定事件$(&apos;div a&apos;).bind(&apos;click&apos;,function()&amp;#123;&amp;#125;);简写形式：$(&apos;div a&apos;).click();
+。dalegate()--代理事件 $(&apos;div">
 <meta property="og:image" content="http://yoursite.com/C:\Users\Administrator\Desktop\UtahLake_Sunrise_FF_768_HD_ZH-CN240948621.jpg">
 <meta property="og:updated_time" content="2017-02-11T15:02:58.391Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="风">
 <meta name="twitter:description" content="jQuery给元素注册事件的方法
-1234&amp;lt;div&amp;gt;    &amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;    &amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;
-1234。bind()   --绑定事件$(&amp;apos;div a&amp;apos;).bind(&amp;apos;click&amp;apos;,function()&amp;#123;&amp;#125;);简写形式：$(&amp;apos;div a&amp;ap">
+&amp;lt;div&amp;gt;    &amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;    &amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;
+。bind()   --绑定事件$(&apos;div a&apos;).bind(&apos;click&apos;,function()&amp;#123;&amp;#125;);简写形式：$(&apos;div a&apos;).click();
+。dalegate()--代理事件 $(&apos;div">
 <meta name="twitter:image" content="http://yoursite.com/C:\Users\Administrator\Desktop\UtahLake_Sunrise_FF_768_HD_ZH-CN240948621.jpg">
 
 
@@ -183,13 +186,13 @@
   <div class="post-body">
 
     <div class="content markdown-body"><h1 id="jQuery给元素注册事件的方法"><a href="#jQuery给元素注册事件的方法" class="headerlink" title="jQuery给元素注册事件的方法"></a>jQuery给元素注册事件的方法</h1><p><img src="C:\Users\Administrator\Desktop\UtahLake_Sunrise_FF_768_HD_ZH-CN240948621.jpg" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;</div><div class="line">    &lt;a&gt;&lt;/a&gt;</div><div class="line">    &lt;a&gt;&lt;/a&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">。bind()   --绑定事件</div><div class="line">$(&apos;div a&apos;).bind(&apos;click&apos;,function()&#123;&#125;);</div><div class="line">简写形式：</div><div class="line">$(&apos;div a&apos;).click();</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">。dalegate()--代理事件</div><div class="line"> $(&apos;div&apos;).delegate(&apos;a&apos;,&apos;click&apos;,function()&#123;&#125;);</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">。on() ---绑定和代理事件(上述两者的综合)</div><div class="line"> $(&apos;div a&apos;).on(&apos;click&apos;,function()&#123;&#125;);</div><div class="line"> $(&apos;div&apos;).on(&apos;click&apos;,&apos;a&apos;,function()&#123;&#125;);</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">。off()--移除on进行的绑定</div><div class="line">。one()--只绑定一次</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">同时绑定多个相同事件类型：</div><div class="line">$(&apos;div a&apos;).bind(&apos;mouseenter mouseleave&apos;,function()&#123;&#125;)</div><div class="line">同时绑定多个不同事件类型：</div><div class="line">$(&apos;div a&apos;).bind(&#123;</div><div class="line">        click:function()&#123;&#125;,</div><div class="line">        mouseover:function()&#123;&#125;);</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">切换class:  toggleClass();</div><div class="line">增加class:  addClass();</div><div class="line">删除class:  removeClass();</div></pre></td></tr></table></figure></div>
+<figure class="highlight apache"><table><tr><td class="code"><pre><div class="line"><span class="section">&lt;div&gt;</span></div><div class="line">    <span class="section">&lt;a&gt;</span><span class="section">&lt;/a&gt;</span></div><div class="line">    <span class="section">&lt;a&gt;</span><span class="section">&lt;/a&gt;</span></div><div class="line"><span class="section">&lt;/div&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">。bind()   --绑定事件</div><div class="line">$(<span class="string">'div a'</span>).bind(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;);</div><div class="line">简写形式：</div><div class="line">$(<span class="string">'div a'</span>).click();</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">。dalegate()--代理事件</div><div class="line"> $(<span class="string">'div'</span>).delegate(<span class="string">'a'</span>,<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight delphi"><table><tr><td class="code"><pre><div class="line">。<span class="keyword">on</span>() ---绑定和代理事件(上述两者的综合)</div><div class="line"> $(<span class="string">'div a'</span>).<span class="keyword">on</span>(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span><span class="comment">&#123;&#125;</span>);</span></div><div class="line"> $(<span class="string">'div'</span>).<span class="keyword">on</span>(<span class="string">'click'</span>,<span class="string">'a'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span><span class="comment">&#123;&#125;</span>);</span></div></pre></td></tr></table></figure>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><div class="line">。off()<span class="comment">--移除on进行的绑定</span></div><div class="line">。<span class="literal">one</span>()<span class="comment">--只绑定一次</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">同时绑定多个相同事件类型：</div><div class="line">$(<span class="string">'div a'</span>).bind(<span class="string">'mouseenter mouseleave'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)</div><div class="line">同时绑定多个不同事件类型：</div><div class="line">$(<span class="string">'div a'</span>).bind(&#123;</div><div class="line">        <span class="attr">click</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;,</div><div class="line">        <span class="attr">mouseover</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><div class="line">切换<span class="class"><span class="keyword">class</span>:  <span class="type">toggleClass</span></span>();</div><div class="line">增加<span class="class"><span class="keyword">class</span>:  <span class="type">addClass</span></span>();</div><div class="line">删除<span class="class"><span class="keyword">class</span>:  <span class="type">removeClass</span></span>();</div></pre></td></tr></table></figure></div>
 
     <div class="post-sidebar">
   <div class="toggle-btn" id="toggle-btn">
