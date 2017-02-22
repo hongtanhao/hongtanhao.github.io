@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- content-Type -->
+<meta charset="utf-8">
+
+
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="language" content="en">
+<meta name="robots" content="all">
+
+
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+<meta name="author" content="TongchengQiu, TongchengQiu@gmail.com">
+<meta name="reply-to" content="TongchengQiu@gmail.com">
+<meta name="owner" content="TongchengQiu">
+
+
+
+
+<meta name="google-site-verification" content="xxxxxxxxxx" />
+
+
+
+
+<meta name="baidu-site-verification" content="xxxxxxxxxx" />
+
+
+
+
+<meta name="description" content="description" />
+
+
+
+
+<meta name="keywords" content="^_^" />
+
+
+<meta name="description" content="JavaScript实现本地图片上传预览功能（兼容IE、chrome、FF）时间 2012-06-29 22:22:17 ** JavaScript开发 JavaScript
+需要解决的问题有：本地图片如何在上传前预览、编辑；最近发现这个功能很多是基于flash实现的，很多JavaScript实现的代码兼容性都很差，特别是在IE和firefox和chrome三个浏览器上不兼容。代码实现主要利用到j">
+<meta property="og:type" content="article">
+<meta property="og:title" content="风">
+<meta property="og:url" content="http://yoursite.com/post/imagesUpload.html">
+<meta property="og:site_name" content="风">
+<meta property="og:description" content="JavaScript实现本地图片上传预览功能（兼容IE、chrome、FF）时间 2012-06-29 22:22:17 ** JavaScript开发 JavaScript
+需要解决的问题有：本地图片如何在上传前预览、编辑；最近发现这个功能很多是基于flash实现的，很多JavaScript实现的代码兼容性都很差，特别是在IE和firefox和chrome三个浏览器上不兼容。代码实现主要利用到j">
+<meta property="og:image" content="http://yoursite.com/C:\Users\Administrator\Desktop\css3.png">
+<meta property="og:updated_time" content="2017-02-08T13:00:21.087Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="风">
+<meta name="twitter:description" content="JavaScript实现本地图片上传预览功能（兼容IE、chrome、FF）时间 2012-06-29 22:22:17 ** JavaScript开发 JavaScript
+需要解决的问题有：本地图片如何在上传前预览、编辑；最近发现这个功能很多是基于flash实现的，很多JavaScript实现的代码兼容性都很差，特别是在IE和firefox和chrome三个浏览器上不兼容。代码实现主要利用到j">
+<meta name="twitter:image" content="http://yoursite.com/C:\Users\Administrator\Desktop\css3.png">
+
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.0.2" />
+
+
+
+
+
+
+<link href="http://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.0.2"/>
+
+
+<script>
+(function(){
+  var bp = document.createElement('script');
+  bp.src = '//push.zhanzhang.baidu.com/push.js';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  <title>  </title>
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'xxxxxxxxxx', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?xxxxxxxxxx";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+</head>
+<body lang="zh-Hans">
+
+  <!--[if lte IE 9]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+
+  <div class="another-theme layout">
+
+    
+<header class="header" id="header">
+
+  <div class="header-cont">
+    <div class="text-area">
+      
+        <h1 class="title" data-text="风">风</h1>
+        <h3 class="description" data-text="description">description</h3>
+      
+    </div>
+    <!-- Navigation -->
+    
+    <nav class="navigation clearfix" id="navigation">
+      
+        
+        <a class="nav-link" href="/" rel="section">
+          首页
+        </a>
+      
+        
+        <a class="nav-link" href="/categories" rel="section">
+          分类
+        </a>
+      
+        
+        <a class="nav-link" href="/tags" rel="section">
+          标签
+        </a>
+      
+        
+        <a class="nav-link" href="/about" rel="section">
+          关于
+        </a>
+      
+    </nav>
+    
+  </div>
+  <div class="mask"></div>
+</header>
+
+
+    <main class="container">
+
+      
+
+  <article class="post-article post-type-normal post" itemscope>
+
+  <div class="post-body">
+
+    <div class="content markdown-body"><h1 id="JavaScript实现本地图片上传预览功能（兼容IE、chrome、FF）"><a href="#JavaScript实现本地图片上传预览功能（兼容IE、chrome、FF）" class="headerlink" title="JavaScript实现本地图片上传预览功能（兼容IE、chrome、FF）"></a>JavaScript实现本地图片上传预览功能（兼容IE、chrome、FF）</h1><p>时间 2012-06-29 22:22:17 ** <a href="http://m.open-open.com/m/lib/category/145" target="_blank" rel="external">JavaScript开发</a> <a href="http://m.open-open.com/m/lib/tags/JavaScript" target="_blank" rel="external">JavaScript</a></p>
+<p><img src="C:\Users\Administrator\Desktop\css3.png" alt="">需要解决的问题有：本地图片如何在上传前预览、编辑；<br>最近发现这个功能很多是基于flash实现的，很多JavaScript实现的代码兼容性都很差，特别是在IE和firefox和chrome三个浏览器上不兼容。<br>代码实现主要利用到jquery插件imgAreaSelect，FileReader对象（chrome和ff获取本地图片数据的接口），IE滤镜效果。<br>关键词：<strong>imgAreaSelect FileReaderdocument.selection.createRange() IE滤镜效果**</strong>一、实现上传前预览1.1、页面显示**<br>代码1-1显示的是html需要展示的web页面信息<br><code>&lt;!—预览图片显示区域--&gt;</code><br><code>&lt;div id=”image_area”&gt;</code><br><code>&lt;img id=&quot;biuuu&quot;src=&quot;#&quot; title=&quot;biuuu&quot;&gt;</code><br><code>&lt;/div&gt;</code><br><code>&lt;!—图片上传区域--&gt;</code><br><code>&lt;div id =”upload_area”&gt;</code><br><code>&lt;form name = &quot;form1&quot;action =&#39; /person?c=changeAtvatar&#39; enctype = &#39;multipart/form-data&#39; method = &#39;POST&#39;&gt;</code><br><code>&lt;input type=&quot;file&quot;id=&quot;picpath&quot; name=&quot;atvatar_image&quot;&gt;</code><br><code>&lt;a href=&quot;javascript:void(0);&quot;class=&quot;button&quot;&gt; 上传照片&lt;/a&gt;</code><br><code>&lt;input type=&#39;text&#39;name=&quot;path&quot; readonly&gt;</code><br><code>&lt;div id = “submit_button”&gt;</code><br><code>&lt;a href=&quot;javascript:void(0);&quot;class=&#39;button&#39;&gt;确认&lt;/a&gt;</code><br><code>&lt;/div&gt;</code><br>​                                                          代码1-1</p>
+<p>为了修改input file的按钮名称，我们添加了一段代码，这个在第二节将会详细说明<br>​           <code>&lt;a href=&quot;javascript:void(0);&quot; class=&quot;button&quot;&gt;上传照      片&lt;/a&gt;&lt;input type=&#39;text&#39;name=&quot;path&quot; readonly&gt;</code><br><strong>1.2、实现预览在线编辑</strong><br>这里我们主要使用了一个插件进行图片编辑，如果需要具体查看学习可查看网址<br><a href="http://odyniec.net/projects/imgareaselect/" target="_blank" rel="external">http://odyniec.net/projects/imgareaselect/</a>，使用方法还是很简单方便的。<br><code>$(&#39;#biuuu&#39;).imgAreaSelect({`
+`aspectRatio:&#39;1:1&#39;, //截取比例`
+`show:true,`
+`resizable:true, //是否可调整大小`
+`autoHide: false,//选择框选择完毕是否自己取消`
+`handles:true,`
+`key:true, //是否启用键盘，默认为false`
+`//x1: 75, y1: 30, x2:225, y2: 180, //需要处理的区域，原始的`
+`//x1:左上角x轴坐标 y1:左上角y轴坐标 x2:右下角x轴坐标 y2:右下角y轴坐标`
+`keys: { arrows: 1,ctrl: 5, shift: &#39;resize&#39; }, //调整像素大小`
+`//onInit:function(img, selection) { ias.setSelection(100, 50, 250, 150, true);ias.update(); }, //设置初始函数 画出选择框`
+`onSelectChange:preview //选框移动时触发的事件`
+`//onSelectEnd:function(img, select){alert(select.width)} //选框结束时触发的事件`
+`});</code></p>
+<p>​                                    代码1-2</p>
+<p>代码1-2主要是设置需要编辑图片的一些插件属性，具体查看插件的参量说明。<br>首先我们需要创建一个预览小图片在img之后<br><code>$(&#39;&lt;div&gt;&lt;imgid=&quot;view&quot; src=&#39;+atvatarUrl+&#39; style=&quot;position: relative;&quot;/&gt;&lt;/div&gt;&#39;)</code><br><code>.css({</code><br><code>float: &#39;left&#39;,</code><br><code>position:&#39;relative&#39;,</code><br><code>overflow:&#39;hidden&#39;,</code><br><code>width: &#39;100px&#39;,</code><br><code>height: &#39;100px&#39;</code><br><code>}).insertAfter(&#39;#biuuu&#39;);//把新建元素放到 #biuuu 之后</code></p>
+<p>  <code>代码1-3代码1-3是创建一个小预览图片在img之后</code></p>
+<p>`<strong>1.3、实现在线预览功能</strong></p>
+<p><code>function previewImage(file)</code><br><code>{</code><br><code>var porImg = $(&#39;#biuuu&#39;),//首先获取大图片jquery对象</code><br><code>viewImg = $(&#39;#view&#39;);//小图片jquery对象</code><br>//判断该浏览器是否为w3c标准，既非IE浏览器<br><code>if (file[&quot;files&quot;] &amp;&amp; file[&quot;files&quot;][0])</code><br><code>{</code><br><code>//使用JavaScript的FileReader对象来读取本地数据，并且将数据结果赋值给image的src，具体该对象如何实现的还未深入研究</code><br><code>var reader = newFileReader();</code><br><code>reader.onload =function(evt){</code><br><code>porImg.attr({src :evt.target.result});</code><br><code>viewImg.attr({src: evt.target.result});</code><br><code>}</code><br><code>reader.readAsDataURL(file.files[0]);</code><br><code>}</code><br>//如果是IE浏览器，采用滤镜效果，进行显示，但特别注意的是该滤镜效果使用的对象是div对象，并非img对象，因此我们需要将原有的img对象remove同时生成新的div对象，并且赋值相应的class和id<br><code>else</code><br><code>{</code><br><code>//创建需要滤镜显示的div的dom对象</code><br><code>var ieImageDom =document.createElement(&quot;div&quot;);</code><br><code>var proIeImageDom =document.createElement(&quot;div&quot;);</code><br><code>//设置对象的css属性和原有的img对象属性相同，添加相应的id属性值</code><br><code>$(ieImageDom).css({</code><br><code>float: &#39;left&#39;,</code><br><code>position:&#39;relative&#39;,</code><br><code>overflow:&#39;hidden&#39;,</code><br><code>width: &#39;100px&#39;,</code><br><code>height: &#39;100px&#39;</code><br><code>}).attr({&quot;id&quot;:&quot;view&quot;});</code><br><code>$(proIeImageDom).attr({&quot;id&quot;:&quot;biuuu&quot;});</code><br><code>//删除原有img对象，append创建div的dom对象</code><br><code>porImg.parent().prepend(proIeImageDom);</code><br><code>porImg.remove();</code><br><code>viewImg.parent().append(ieImageDom);</code><br><code>viewImg.remove();</code><br><code>//采用滤镜效果生成图片预览</code><br><code>file.select();</code><br><code>path =document.selection.createRange().text;</code><br><code>$(ieImageDom).css({&quot;filter&quot;:&quot;progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=&#39;true&#39;,sizingMethod=&#39;scale&#39;,src=\&quot;&quot;+ path + &quot;\&quot;)&quot;});</code><br><code>$(proIeImageDom).css({&quot;filter&quot;:&quot;progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=&#39;true&#39;,sizingMethod=&#39;scale&#39;,src=\&quot;&quot;+ path + &quot;\&quot;)&quot;});</code><br><code>// .style.filter =&quot;progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=&#39;true&#39;,sizingMethod=&#39;scale&#39;,src=\&quot;&quot;+ path + &quot;\&quot;)&quot;;//使用滤镜效果</code><br>`}``</p>
+</div>
+
+    <div class="post-sidebar">
+  <div class="toggle-btn" id="toggle-btn">
+    <i class="fa fa-reorder"></i>
+  </div>
+  <section class="post-toc-wrap" id="post-sidebar">
+    <h2 class="toc-title">内容目录</h2>
+    <div class="post-toc">
+      
+      
+        <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript实现本地图片上传预览功能（兼容IE、chrome、FF）"><span class="nav-text">JavaScript实现本地图片上传预览功能（兼容IE、chrome、FF）</span></a></li></ol></div>
+      
+    </div>
+  </section>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    
+    
+  <style>
+    .donation {
+      width: 100%;
+      margin-top: 2rem;
+    }
+    .donation .text {
+      color: #333;
+      font-size: .8rem;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .donation .text:hover {
+      color: rgb(63,134,181);
+    }
+    .donation .img-box {
+      transition: all .3s;
+      width: 0;
+      height: 0;
+      margin: 1rem auto;
+      overflow: hidden;
+    }
+    .donation .img-box img {
+      width: 100%;
+      height: 100%;
+    }
+    .donation #donation {
+      display: none;
+    }
+    .donation #donation:checked + .img-box {
+      width: 16rem;
+      height: 16rem;
+    }
+  </style>
+  <div class="donation">
+    <label class="text" for="donation">
+      如果你觉得文章对你有帮助，并且想为我买一杯咖啡，点这里～
+    </label>
+    <input type="checkbox" name="donation" id="donation">
+    <div class="img-box">
+      <img src="/images/feng.jpg" alt="donation" />
+    </div>
+  </div>
+
+
+  </footer>
+
+</article>
+
+
+
+
+      
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="post/imagesUpload.html"
+           data-title="" data-url="http://yoursite.com/post/imagesUpload.html">
+      </div>
+    
+  </div>
+
+
+
+
+    </main>
+
+    <footer class="footer clearfix">
+  <div class="copyright" >
+    <span>Copyright</span>
+    
+    &copy;  2016-
+    <span itemprop="copyrightYear">2017</span>
+    <span class="author" itemprop="copyrightHolder">feng</span>
+  </div>
+
+  <div class="info">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+      <span id="showDays" class="show-days"></span>
+      <script>
+      var birthDay = new Date('10/01/2016');
+      var now = new Date();
+      var duration = now.getTime() - birthDay.getTime();
+      var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+      document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
+      </script>
+      ---
+    
+    <span id="busuanzi_container_site_pv">
+        总访问量<span id="busuanzi_value_site_pv"></span>次
+    </span>
+  </div>
+
+  <div class="my-theme">
+    Theme by <a href="//qiutc.me">qiutc</a> | <iframe style="margin-left: 5px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=TongchengQiu&amp;repo=hexo-theme-another&amp;type=star&amp;count=true"></iframe>
+  </div>
+
+</footer>
+
+
+  </div>
+
+  <div class="back-top-btn" id="back-top-btn"><i class="fa fa-chevron-up"></i></div>
+
+
+
+
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"xxxxxxxxxx"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+
+
+
+
+<script type="text/javascript" src="/js/motto.min.js?v=0.0.2"></script>
+<script type="text/javascript" src="/js/main.js?v=0.0.2"></script>
+
+
+</body>
+</html>

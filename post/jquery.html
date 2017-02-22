@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- content-Type -->
+<meta charset="utf-8">
+
+
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="language" content="en">
+<meta name="robots" content="all">
+
+
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+<meta name="author" content="TongchengQiu, TongchengQiu@gmail.com">
+<meta name="reply-to" content="TongchengQiu@gmail.com">
+<meta name="owner" content="TongchengQiu">
+
+
+
+
+<meta name="google-site-verification" content="xxxxxxxxxx" />
+
+
+
+
+<meta name="baidu-site-verification" content="xxxxxxxxxx" />
+
+
+
+
+<meta name="description" content="description" />
+
+
+
+
+<meta name="keywords" content="^_^" />
+
+
+<meta name="description" content="jQuery给元素注册事件的方法
+1234&amp;lt;div&amp;gt;    &amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;    &amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;
+1234。bind()   --绑定事件$(&amp;apos;div a&amp;apos;).bind(&amp;apos;click&amp;apos;,function()&amp;#123;&amp;#125;);简写形式：$(&amp;apos;div a&amp;ap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="风">
+<meta property="og:url" content="http://yoursite.com/post/jquery.html">
+<meta property="og:site_name" content="风">
+<meta property="og:description" content="jQuery给元素注册事件的方法
+1234&amp;lt;div&amp;gt;    &amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;    &amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;
+1234。bind()   --绑定事件$(&amp;apos;div a&amp;apos;).bind(&amp;apos;click&amp;apos;,function()&amp;#123;&amp;#125;);简写形式：$(&amp;apos;div a&amp;ap">
+<meta property="og:image" content="http://yoursite.com/C:\Users\Administrator\Desktop\UtahLake_Sunrise_FF_768_HD_ZH-CN240948621.jpg">
+<meta property="og:updated_time" content="2017-02-11T15:02:58.391Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="风">
+<meta name="twitter:description" content="jQuery给元素注册事件的方法
+1234&amp;lt;div&amp;gt;    &amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;    &amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;
+1234。bind()   --绑定事件$(&amp;apos;div a&amp;apos;).bind(&amp;apos;click&amp;apos;,function()&amp;#123;&amp;#125;);简写形式：$(&amp;apos;div a&amp;ap">
+<meta name="twitter:image" content="http://yoursite.com/C:\Users\Administrator\Desktop\UtahLake_Sunrise_FF_768_HD_ZH-CN240948621.jpg">
+
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.0.2" />
+
+
+
+
+
+
+<link href="http://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.0.2"/>
+
+
+<script>
+(function(){
+  var bp = document.createElement('script');
+  bp.src = '//push.zhanzhang.baidu.com/push.js';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  <title>  </title>
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'xxxxxxxxxx', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?xxxxxxxxxx";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+</head>
+<body lang="zh-Hans">
+
+  <!--[if lte IE 9]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+
+  <div class="another-theme layout">
+
+    
+<header class="header" id="header">
+
+  <div class="header-cont">
+    <div class="text-area">
+      
+        <h1 class="title" data-text="风">风</h1>
+        <h3 class="description" data-text="description">description</h3>
+      
+    </div>
+    <!-- Navigation -->
+    
+    <nav class="navigation clearfix" id="navigation">
+      
+        
+        <a class="nav-link" href="/" rel="section">
+          首页
+        </a>
+      
+        
+        <a class="nav-link" href="/categories" rel="section">
+          分类
+        </a>
+      
+        
+        <a class="nav-link" href="/tags" rel="section">
+          标签
+        </a>
+      
+        
+        <a class="nav-link" href="/about" rel="section">
+          关于
+        </a>
+      
+    </nav>
+    
+  </div>
+  <div class="mask"></div>
+</header>
+
+
+    <main class="container">
+
+      
+
+  <article class="post-article post-type-normal post" itemscope>
+
+  <div class="post-body">
+
+    <div class="content markdown-body"><h1 id="jQuery给元素注册事件的方法"><a href="#jQuery给元素注册事件的方法" class="headerlink" title="jQuery给元素注册事件的方法"></a>jQuery给元素注册事件的方法</h1><p><img src="C:\Users\Administrator\Desktop\UtahLake_Sunrise_FF_768_HD_ZH-CN240948621.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;</div><div class="line">    &lt;a&gt;&lt;/a&gt;</div><div class="line">    &lt;a&gt;&lt;/a&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">。bind()   --绑定事件</div><div class="line">$(&apos;div a&apos;).bind(&apos;click&apos;,function()&#123;&#125;);</div><div class="line">简写形式：</div><div class="line">$(&apos;div a&apos;).click();</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">。dalegate()--代理事件</div><div class="line"> $(&apos;div&apos;).delegate(&apos;a&apos;,&apos;click&apos;,function()&#123;&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">。on() ---绑定和代理事件(上述两者的综合)</div><div class="line"> $(&apos;div a&apos;).on(&apos;click&apos;,function()&#123;&#125;);</div><div class="line"> $(&apos;div&apos;).on(&apos;click&apos;,&apos;a&apos;,function()&#123;&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">。off()--移除on进行的绑定</div><div class="line">。one()--只绑定一次</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">同时绑定多个相同事件类型：</div><div class="line">$(&apos;div a&apos;).bind(&apos;mouseenter mouseleave&apos;,function()&#123;&#125;)</div><div class="line">同时绑定多个不同事件类型：</div><div class="line">$(&apos;div a&apos;).bind(&#123;</div><div class="line">        click:function()&#123;&#125;,</div><div class="line">        mouseover:function()&#123;&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">切换class:  toggleClass();</div><div class="line">增加class:  addClass();</div><div class="line">删除class:  removeClass();</div></pre></td></tr></table></figure></div>
+
+    <div class="post-sidebar">
+  <div class="toggle-btn" id="toggle-btn">
+    <i class="fa fa-reorder"></i>
+  </div>
+  <section class="post-toc-wrap" id="post-sidebar">
+    <h2 class="toc-title">内容目录</h2>
+    <div class="post-toc">
+      
+      
+        <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#jQuery给元素注册事件的方法"><span class="nav-text">jQuery给元素注册事件的方法</span></a></li></ol></div>
+      
+    </div>
+  </section>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    
+    
+  <style>
+    .donation {
+      width: 100%;
+      margin-top: 2rem;
+    }
+    .donation .text {
+      color: #333;
+      font-size: .8rem;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .donation .text:hover {
+      color: rgb(63,134,181);
+    }
+    .donation .img-box {
+      transition: all .3s;
+      width: 0;
+      height: 0;
+      margin: 1rem auto;
+      overflow: hidden;
+    }
+    .donation .img-box img {
+      width: 100%;
+      height: 100%;
+    }
+    .donation #donation {
+      display: none;
+    }
+    .donation #donation:checked + .img-box {
+      width: 16rem;
+      height: 16rem;
+    }
+  </style>
+  <div class="donation">
+    <label class="text" for="donation">
+      如果你觉得文章对你有帮助，并且想为我买一杯咖啡，点这里～
+    </label>
+    <input type="checkbox" name="donation" id="donation">
+    <div class="img-box">
+      <img src="/images/feng.jpg" alt="donation" />
+    </div>
+  </div>
+
+
+  </footer>
+
+</article>
+
+
+
+
+      
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="post/jquery.html"
+           data-title="" data-url="http://yoursite.com/post/jquery.html">
+      </div>
+    
+  </div>
+
+
+
+
+    </main>
+
+    <footer class="footer clearfix">
+  <div class="copyright" >
+    <span>Copyright</span>
+    
+    &copy;  2016-
+    <span itemprop="copyrightYear">2017</span>
+    <span class="author" itemprop="copyrightHolder">feng</span>
+  </div>
+
+  <div class="info">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+      <span id="showDays" class="show-days"></span>
+      <script>
+      var birthDay = new Date('10/01/2016');
+      var now = new Date();
+      var duration = now.getTime() - birthDay.getTime();
+      var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+      document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
+      </script>
+      ---
+    
+    <span id="busuanzi_container_site_pv">
+        总访问量<span id="busuanzi_value_site_pv"></span>次
+    </span>
+  </div>
+
+  <div class="my-theme">
+    Theme by <a href="//qiutc.me">qiutc</a> | <iframe style="margin-left: 5px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=TongchengQiu&amp;repo=hexo-theme-another&amp;type=star&amp;count=true"></iframe>
+  </div>
+
+</footer>
+
+
+  </div>
+
+  <div class="back-top-btn" id="back-top-btn"><i class="fa fa-chevron-up"></i></div>
+
+
+
+
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"xxxxxxxxxx"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+
+
+
+
+<script type="text/javascript" src="/js/motto.min.js?v=0.0.2"></script>
+<script type="text/javascript" src="/js/main.js?v=0.0.2"></script>
+
+
+</body>
+</html>
