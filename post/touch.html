@@ -1,185 +1,384 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <!-- content-Type -->
-<meta charset="utf-8">
+<html lang="zh">
+    <head>
+    <!-- 
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.0 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+        风
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="feng">
+    <meta name="description" content="description">
+    <meta name="keywords" content="null">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="风">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="风">
+    <meta property="og:description" content="description">
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
 
 
-<meta http-equiv="x-ua-compatible" content="ie=edge">
-<meta name="renderer" content="webkit|ie-comp|ie-stand">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="language" content="en">
-<meta name="robots" content="all">
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+</style>
 
 
-<meta content="yes" name="apple-mobile-web-app-capable">
-<meta content="black" name="apple-mobile-web-app-status-bar-style">
-<meta content="telephone=no" name="format-detection">
-<meta content="email=no" name="format-detection">
+<!-- Theme Background Related-->
 
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-<meta name="author" content="TongchengQiu, TongchengQiu@gmail.com">
-<meta name="reply-to" content="TongchengQiu@gmail.com">
-<meta name="owner" content="TongchengQiu">
-
-
-
-
-<meta name="google-site-verification" content="xxxxxxxxxx" />
-
-
-
-
-<meta name="baidu-site-verification" content="xxxxxxxxxx" />
-
-
-
-
-<meta name="description" content="description" />
-
-
-
-
-<meta name="keywords" content="^_^" />
-
-
-<meta name="description" content="js实现touch移动触屏滑动事件在开始描述touch事件之前，需要先描述一下多触式系统中特有的touch对象（android和iOS乃至nokia最新的meego系统都模拟了类 似的对象）。这个对象封装一次屏幕触摸，一般来自于手指。它在touch事件触发的时候产生，可以 通过touch event handler的event对象取到
-移动端触屏滑动的效果其实就是图片轮播，在PC的页面上很好实现，">
-<meta property="og:type" content="article">
-<meta property="og:title" content="风">
-<meta property="og:url" content="http://yoursite.com/post/touch.html">
-<meta property="og:site_name" content="风">
-<meta property="og:description" content="js实现touch移动触屏滑动事件在开始描述touch事件之前，需要先描述一下多触式系统中特有的touch对象（android和iOS乃至nokia最新的meego系统都模拟了类 似的对象）。这个对象封装一次屏幕触摸，一般来自于手指。它在touch事件触发的时候产生，可以 通过touch event handler的event对象取到
-移动端触屏滑动的效果其实就是图片轮播，在PC的页面上很好实现，">
-<meta property="og:image" content="http://yoursite.com/C:\Users\Administrator\Desktop\UtahLake_Sunrise_FF_768_HD_ZH-CN240948621.jpg">
-<meta property="og:updated_time" content="2017-02-08T12:46:36.853Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="风">
-<meta name="twitter:description" content="js实现touch移动触屏滑动事件在开始描述touch事件之前，需要先描述一下多触式系统中特有的touch对象（android和iOS乃至nokia最新的meego系统都模拟了类 似的对象）。这个对象封装一次屏幕触摸，一般来自于手指。它在touch事件触发的时候产生，可以 通过touch event handler的event对象取到
-移动端触屏滑动的效果其实就是图片轮播，在PC的页面上很好实现，">
-<meta name="twitter:image" content="http://yoursite.com/C:\Users\Administrator\Desktop\UtahLake_Sunrise_FF_768_HD_ZH-CN240948621.jpg">
-
-
-
-
-
-
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.0.2" />
-
-
-
-
-
-
-<link href="http://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.0.2"/>
-
-
-<script>
-(function(){
-  var bp = document.createElement('script');
-  bp.src = '//push.zhanzhang.baidu.com/push.js';
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(bp, s);
-})();
-</script>
-
-  <title>  </title>
-  
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'xxxxxxxxxx', 'auto');
-  ga('send', 'pageview');
-</script>
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
 
 
 
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?xxxxxxxxxx";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
 
 
 
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/queue.js"></script>
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
 </head>
-<body lang="zh-Hans">
 
-  <!--[if lte IE 9]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
-
-
-  <div class="another-theme layout">
 
     
-<header class="header" id="header">
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
 
-  <div class="header-cont">
-    <div class="text-area">
-      
-        <h1 class="title" data-text="风">风</h1>
-        <h3 class="description" data-text="description">description</h3>
-      
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
     </div>
-    <!-- Navigation -->
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#js实现touch移动触屏滑动事件"><span class="post-toc-number">1.</span> <span class="post-toc-text">js实现touch移动触屏滑动事件</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
-    <nav class="navigation clearfix" id="navigation">
-      
         
-        <a class="nav-link" href="/" rel="section">
-          首页
-        </a>
-      
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
+</script>
+
         
-        <a class="nav-link" href="/categories" rel="section">
-          分类
-        </a>
-      
-        
-        <a class="nav-link" href="/tags" rel="section">
-          标签
-        </a>
-      
-        
-        <a class="nav-link" href="/about" rel="section">
-          关于
-        </a>
-      
-    </nav>
     
-  </div>
-  <div class="mask"></div>
-</header>
+            <p class="article-headline-p">
+                
+            </p>
+        </div>
 
 
-    <main class="container">
 
-      
 
-  <article class="post-article post-type-normal post" itemscope>
 
-  <div class="post-body">
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
 
-    <div class="content markdown-body"><h1 id="js实现touch移动触屏滑动事件"><a href="#js实现touch移动触屏滑动事件" class="headerlink" title="js实现touch移动触屏滑动事件"></a>js实现touch移动触屏滑动事件<img src="C:\Users\Administrator\Desktop\UtahLake_Sunrise_FF_768_HD_ZH-CN240948621.jpg" alt=""></h1><p>在开始描述touch事件之前，需要先描述一下多触式系统中特有的touch对象（android和iOS乃至nokia最新的meego系统都模拟了类 似的对象）。这个对象封装一次屏幕触摸，一般来自于手指。它在touch事件触发的时候产生，可以 通过touch event handler的event对象取到</p>
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>feng</strong>
+        <span>2月 08, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=&url=http://yoursite.com//post/touch.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=&url=http://yoursite.com//post/touch.html&via=feng" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//post/touch.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//post/touch.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="js实现touch移动触屏滑动事件"><a href="#js实现touch移动触屏滑动事件" class="headerlink" title="js实现touch移动触屏滑动事件"></a>js实现touch移动触屏滑动事件<img src="C:\Users\Administrator\Desktop\UtahLake_Sunrise_FF_768_HD_ZH-CN240948621.jpg" alt=""></h1><p>在开始描述touch事件之前，需要先描述一下多触式系统中特有的touch对象（android和iOS乃至nokia最新的meego系统都模拟了类 似的对象）。这个对象封装一次屏幕触摸，一般来自于手指。它在touch事件触发的时候产生，可以 通过touch event handler的event对象取到</p>
 <p>移动端触屏滑动的效果其实就是图片轮播，在PC的页面上很好实现，绑定click和mouseover等事件来完成。但是在移动设备上，要实现这种轮播的效果，就需要用到核心的touch事件。处理touch事件能跟踪到屏幕滑动的每根手指。</p>
 <p>以下是四种touch事件<br>touchstart: //手指放到屏幕上时触发<br>touchmove: //手指在屏幕上滑动式触发<br>touchend: //手指离开屏幕时触发<br>touchcancel: //系统取消touch事件的时候触发，这个好像比较少用</p>
 <p>每个触摸事件被触发后，会生成一个event对象，event对象里额外包括以下三个触摸列表</p>
@@ -189,162 +388,357 @@
 <p>1.禁止缩放<br>通过meta元标签来设置。</p>
 <p>2.禁止滚动<br>preventDefault是阻止默认行为，touch事件的默认行为就是滚动。<br>event.preventDefault();</p>
 <p>使用案例：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">Content</span>=<span class="string">"text/html; charset=utf-8;"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>移动端触摸滑动<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"author"</span> <span class="attr">content</span>=<span class="string">"rainna"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"keywords"</span> <span class="attr">content</span>=<span class="string">"rainna's js lib"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"description"</span> <span class="attr">content</span>=<span class="string">"移动端触摸滑动"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"target-densitydpi=320,width=640,user-scalable=no"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">*&#123;<span class="attribute">margin</span>:<span class="number">0</span>;<span class="attribute">padding</span>:<span class="number">0</span>;&#125;</div><div class="line"><span class="selector-tag">li</span>&#123;<span class="attribute">list-style</span>:none;&#125;<span class="selector-class">.m-slider</span>&#123;<span class="attribute">width</span>:<span class="number">600px</span>;<span class="attribute">margin</span>:<span class="number">50px</span> <span class="number">20px</span>;<span class="attribute">overflow</span>:hidden;&#125;</div><div class="line"><span class="selector-class">.m-slider</span> <span class="selector-class">.cnt</span>&#123;<span class="attribute">position</span>:relative;<span class="attribute">left</span>:<span class="number">0</span>;<span class="attribute">width</span>:<span class="number">3000px</span>;&#125;</div><div class="line"><span class="selector-class">.m-slider</span> <span class="selector-class">.cnt</span> <span class="selector-tag">li</span>&#123;<span class="attribute">float</span>:left;<span class="attribute">width</span>:<span class="number">600px</span>;&#125;</div><div class="line"><span class="selector-class">.m-slider</span> <span class="selector-class">.cnt</span> <span class="selector-tag">img</span>&#123;<span class="attribute">display</span>:block;<span class="attribute">width</span>:<span class="number">100%</span>;<span class="attribute">height</span>:<span class="number">450px</span>;&#125;</div><div class="line"><span class="selector-class">.m-slider</span> <span class="selector-class">.cnt</span> <span class="selector-tag">p</span>&#123;<span class="attribute">margin</span>:<span class="number">20px</span> <span class="number">0</span>;&#125;</div><div class="line"><span class="selector-class">.m-slider</span> <span class="selector-class">.icons</span>&#123;<span class="attribute">text-align</span>:center;<span class="attribute">color</span>:<span class="number">#000</span>;&#125;</div><div class="line"><span class="selector-class">.m-slider</span> <span class="selector-class">.icons</span> <span class="selector-tag">span</span>&#123;<span class="attribute">margin</span>:<span class="number">0</span> <span class="number">5px</span>;&#125;</div><div class="line"><span class="selector-class">.m-slider</span> <span class="selector-class">.icons</span> <span class="selector-class">.curr</span>&#123;<span class="attribute">color</span>:red;&#125;</div><div class="line"><span class="selector-class">.f-anim</span>&#123;<span class="attribute">-webkit-transition</span>:left .<span class="number">2s</span> linear;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"m-slider"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"cnt"</span> <span class="attr">id</span>=<span class="string">"slider"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://imglf1.ph.126.net/qKodH3sZoVbPalKFtHS9mw==/6608946691259322175.jpg"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>20140813镜面的世界，终究只是倒影。看得到你的身影，却触摸不到你的未来<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://imglf1.ph.126.net/40-jqH_j6EoCWnZOixY2pA==/4798022453110310215.jpg"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>20140812锡林浩特前往东乌旗S101必经之处，一条极美的铁路。铁路下面是个小型的盐沼，淡淡的有了一丝天空之境的感觉。可惜在此玩了一个小时也没有看见一列火车经过，只好继续赶往东乌旗。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://imglf0.ph.126.net/Jnmi2y51zVdjKAYlibtpFw==/3068640196117481166.jpg"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>20140811水的颜色为什么那么蓝，我也纳闷，反正自然饱和度和对比度拉完就是这个颜色的<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://imglf1.ph.126.net/79GPsjhwiIj8e-0nP5MsEQ==/6619295294699949331.jpg"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>海洋星球3重庆天气热得我想卧轨自杀<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://imglf1.ph.126.net/40-jqH_j6EoCWnZOixY2pA==/4798022453110310215.jpg"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>以上这些作品分别来自两位设计师作为观者，您能否通过设计风格进行区分<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"icons"</span> <span class="attr">id</span>=<span class="string">"icons"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"curr"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>2<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>3<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>4<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>5<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> slider = &#123;</div><div class="line"><span class="comment">//判断设备是否支持touch事件</span></div><div class="line">touch:(<span class="string">'ontouchstart'</span> <span class="keyword">in</span> <span class="built_in">window</span>) || <span class="built_in">window</span>.DocumentTouch &amp;&amp; <span class="built_in">document</span> <span class="keyword">instanceof</span> DocumentTouch,</div><div class="line"><span class="attr">slider</span>:<span class="built_in">document</span>.getElementById(<span class="string">'slider'</span>),</div><div class="line"><span class="comment">//事件</span></div><div class="line">events:&#123;</div><div class="line"><span class="attr">index</span>:<span class="number">0</span>, <span class="comment">//显示元素的索引</span></div><div class="line">slider:<span class="keyword">this</span>.slider, <span class="comment">//this为slider对象</span></div><div class="line">icons:<span class="built_in">document</span>.getElementById(<span class="string">'icons'</span>),</div><div class="line"><span class="attr">icon</span>:<span class="keyword">this</span>.icons.getElementsByTagName(<span class="string">'span'</span>),</div><div class="line"><span class="attr">handleEvent</span>:<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> self = <span class="keyword">this</span>; <span class="comment">//this指events对象</span></div><div class="line"><span class="keyword">if</span>(event.type == <span class="string">'touchstart'</span>)&#123;</div><div class="line">self.start(event);</div><div class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(event.type == <span class="string">'touchmove'</span>)&#123;</div><div class="line">self.move(event);</div><div class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(event.type == <span class="string">'touchend'</span>)&#123;</div><div class="line">self.end(event);</div><div class="line">&#125;</div><div class="line">&#125;,</div><div class="line"><span class="comment">//滑动开始</span></div><div class="line">start:<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> touch = event.targetTouches[<span class="number">0</span>]; <span class="comment">//touches数组对象获得屏幕上所有的touch，取第一个touch</span></div><div class="line">startPos = &#123;<span class="attr">x</span>:touch.pageX,<span class="attr">y</span>:touch.pageY,<span class="attr">time</span>:+<span class="keyword">new</span> <span class="built_in">Date</span>&#125;; <span class="comment">//取第一个touch的坐标值</span></div><div class="line">isScrolling = <span class="number">0</span>; <span class="comment">//这个参数判断是垂直滚动还是水平滚动</span></div><div class="line"><span class="keyword">this</span>.slider.addEventListener(<span class="string">'touchmove'</span>,<span class="keyword">this</span>,<span class="literal">false</span>);</div><div class="line"><span class="keyword">this</span>.slider.addEventListener(<span class="string">'touchend'</span>,<span class="keyword">this</span>,<span class="literal">false</span>);</div><div class="line">&#125;,</div><div class="line"><span class="comment">//移动</span></div><div class="line">move:<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line"><span class="comment">//当屏幕有多个touch或者页面被缩放过，就不执行move操作</span></div><div class="line"><span class="keyword">if</span>(event.targetTouches.length &gt; <span class="number">1</span> || event.scale &amp;&amp; event.scale !== <span class="number">1</span>) <span class="keyword">return</span>;</div><div class="line"><span class="keyword">var</span> touch = event.targetTouches[<span class="number">0</span>];</div><div class="line">endPos = &#123;<span class="attr">x</span>:touch.pageX - startPos.x,<span class="attr">y</span>:touch.pageY - startPos.y&#125;;</div><div class="line">isScrolling = <span class="built_in">Math</span>.abs(endPos.x) &lt; <span class="built_in">Math</span>.abs(endPos.y) ? <span class="number">1</span>:<span class="number">0</span>; <span class="comment">//isScrolling为1时，表示纵向滑动，0为横向滑动</span></div><div class="line"><span class="keyword">if</span>(isScrolling === <span class="number">0</span>)&#123;</div><div class="line">event.preventDefault(); <span class="comment">//阻止触摸事件的默认行为，即阻止滚屏</span></div><div class="line"><span class="keyword">this</span>.slider.className = <span class="string">'cnt'</span>;</div><div class="line"><span class="keyword">this</span>.slider.style.left = -<span class="keyword">this</span>.index*<span class="number">600</span> + endPos.x + <span class="string">'px'</span>;</div><div class="line">&#125;</div><div class="line">&#125;,</div><div class="line"><span class="comment">//滑动释放</span></div><div class="line">end:<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> duration = +<span class="keyword">new</span> <span class="built_in">Date</span> - startPos.time; <span class="comment">//滑动的持续时间</span></div><div class="line"><span class="keyword">if</span>(isScrolling === <span class="number">0</span>)&#123; <span class="comment">//当为水平滚动时</span></div><div class="line"><span class="keyword">this</span>.icon[<span class="keyword">this</span>.index].className = <span class="string">''</span>;</div><div class="line"><span class="keyword">if</span>(<span class="built_in">Number</span>(duration) &gt; <span class="number">10</span>)&#123;</div><div class="line"><span class="comment">//判断是左移还是右移，当偏移量大于10时执行</span></div><div class="line"><span class="keyword">if</span>(endPos.x &gt; <span class="number">10</span>)&#123;</div><div class="line"><span class="keyword">if</span>(<span class="keyword">this</span>.index !== <span class="number">0</span>) <span class="keyword">this</span>.index -= <span class="number">1</span>;</div><div class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(endPos.x &lt; <span class="number">-10</span>)&#123;</div><div class="line"><span class="keyword">if</span>(<span class="keyword">this</span>.index !== <span class="keyword">this</span>.icon.length<span class="number">-1</span>) <span class="keyword">this</span>.index += <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">this</span>.icon[<span class="keyword">this</span>.index].className = <span class="string">'curr'</span>;</div><div class="line"><span class="keyword">this</span>.slider.className = <span class="string">'cnt f-anim'</span>;</div><div class="line"><span class="keyword">this</span>.slider.style.left = -<span class="keyword">this</span>.index*<span class="number">600</span> + <span class="string">'px'</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//解绑事件</span></div><div class="line"><span class="keyword">this</span>.slider.removeEventListener(<span class="string">'touchmove'</span>,<span class="keyword">this</span>,<span class="literal">false</span>);</div><div class="line"><span class="keyword">this</span>.slider.removeEventListener(<span class="string">'touchend'</span>,<span class="keyword">this</span>,<span class="literal">false</span>);</div><div class="line">&#125;</div><div class="line">&#125;,</div><div class="line"><span class="comment">//初始化</span></div><div class="line">init:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> self = <span class="keyword">this</span>; <span class="comment">//this指slider对象</span></div><div class="line"><span class="keyword">if</span>(!!self.touch) self.slider.addEventListener(<span class="string">'touchstart'</span>,self.events,<span class="literal">false</span>); <span class="comment">//addEventListener第二个参数可以传一个对象，会调用该对象的handleEvent属性</span></div><div class="line">&#125;</div><div class="line">&#125;;</div><div class="line">slider.init();</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></div>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">Content</span>=<span class="string">"text/html; charset=utf-8;"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>移动端触摸滑动<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"author"</span> <span class="attr">content</span>=<span class="string">"rainna"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"keywords"</span> <span class="attr">content</span>=<span class="string">"rainna's js lib"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"description"</span> <span class="attr">content</span>=<span class="string">"移动端触摸滑动"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"target-densitydpi=320,width=640,user-scalable=no"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">*&#123;<span class="attribute">margin</span>:<span class="number">0</span>;<span class="attribute">padding</span>:<span class="number">0</span>;&#125;</div><div class="line"><span class="selector-tag">li</span>&#123;<span class="attribute">list-style</span>:none;&#125;<span class="selector-class">.m-slider</span>&#123;<span class="attribute">width</span>:<span class="number">600px</span>;<span class="attribute">margin</span>:<span class="number">50px</span> <span class="number">20px</span>;<span class="attribute">overflow</span>:hidden;&#125;</div><div class="line"><span class="selector-class">.m-slider</span> <span class="selector-class">.cnt</span>&#123;<span class="attribute">position</span>:relative;<span class="attribute">left</span>:<span class="number">0</span>;<span class="attribute">width</span>:<span class="number">3000px</span>;&#125;</div><div class="line"><span class="selector-class">.m-slider</span> <span class="selector-class">.cnt</span> <span class="selector-tag">li</span>&#123;<span class="attribute">float</span>:left;<span class="attribute">width</span>:<span class="number">600px</span>;&#125;</div><div class="line"><span class="selector-class">.m-slider</span> <span class="selector-class">.cnt</span> <span class="selector-tag">img</span>&#123;<span class="attribute">display</span>:block;<span class="attribute">width</span>:<span class="number">100%</span>;<span class="attribute">height</span>:<span class="number">450px</span>;&#125;</div><div class="line"><span class="selector-class">.m-slider</span> <span class="selector-class">.cnt</span> <span class="selector-tag">p</span>&#123;<span class="attribute">margin</span>:<span class="number">20px</span> <span class="number">0</span>;&#125;</div><div class="line"><span class="selector-class">.m-slider</span> <span class="selector-class">.icons</span>&#123;<span class="attribute">text-align</span>:center;<span class="attribute">color</span>:<span class="number">#000</span>;&#125;</div><div class="line"><span class="selector-class">.m-slider</span> <span class="selector-class">.icons</span> <span class="selector-tag">span</span>&#123;<span class="attribute">margin</span>:<span class="number">0</span> <span class="number">5px</span>;&#125;</div><div class="line"><span class="selector-class">.m-slider</span> <span class="selector-class">.icons</span> <span class="selector-class">.curr</span>&#123;<span class="attribute">color</span>:red;&#125;</div><div class="line"><span class="selector-class">.f-anim</span>&#123;<span class="attribute">-webkit-transition</span>:left .<span class="number">2s</span> linear;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"m-slider"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"cnt"</span> <span class="attr">id</span>=<span class="string">"slider"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://imglf1.ph.126.net/qKodH3sZoVbPalKFtHS9mw==/6608946691259322175.jpg"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>20140813镜面的世界，终究只是倒影。看得到你的身影，却触摸不到你的未来<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://imglf1.ph.126.net/40-jqH_j6EoCWnZOixY2pA==/4798022453110310215.jpg"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>20140812锡林浩特前往东乌旗S101必经之处，一条极美的铁路。铁路下面是个小型的盐沼，淡淡的有了一丝天空之境的感觉。可惜在此玩了一个小时也没有看见一列火车经过，只好继续赶往东乌旗。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://imglf0.ph.126.net/Jnmi2y51zVdjKAYlibtpFw==/3068640196117481166.jpg"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>20140811水的颜色为什么那么蓝，我也纳闷，反正自然饱和度和对比度拉完就是这个颜色的<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://imglf1.ph.126.net/79GPsjhwiIj8e-0nP5MsEQ==/6619295294699949331.jpg"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>海洋星球3重庆天气热得我想卧轨自杀<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://imglf1.ph.126.net/40-jqH_j6EoCWnZOixY2pA==/4798022453110310215.jpg"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>以上这些作品分别来自两位设计师作为观者，您能否通过设计风格进行区分<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"icons"</span> <span class="attr">id</span>=<span class="string">"icons"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"curr"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>2<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>3<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>4<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>5<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> slider = &#123;</div><div class="line"><span class="comment">//判断设备是否支持touch事件</span></div><div class="line">touch:(<span class="string">'ontouchstart'</span> <span class="keyword">in</span> <span class="built_in">window</span>) || <span class="built_in">window</span>.DocumentTouch &amp;&amp; <span class="built_in">document</span> <span class="keyword">instanceof</span> DocumentTouch,</div><div class="line"><span class="attr">slider</span>:<span class="built_in">document</span>.getElementById(<span class="string">'slider'</span>),</div><div class="line"><span class="comment">//事件</span></div><div class="line">events:&#123;</div><div class="line"><span class="attr">index</span>:<span class="number">0</span>, <span class="comment">//显示元素的索引</span></div><div class="line">slider:<span class="keyword">this</span>.slider, <span class="comment">//this为slider对象</span></div><div class="line">icons:<span class="built_in">document</span>.getElementById(<span class="string">'icons'</span>),</div><div class="line"><span class="attr">icon</span>:<span class="keyword">this</span>.icons.getElementsByTagName(<span class="string">'span'</span>),</div><div class="line"><span class="attr">handleEvent</span>:<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> self = <span class="keyword">this</span>; <span class="comment">//this指events对象</span></div><div class="line"><span class="keyword">if</span>(event.type == <span class="string">'touchstart'</span>)&#123;</div><div class="line">self.start(event);</div><div class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(event.type == <span class="string">'touchmove'</span>)&#123;</div><div class="line">self.move(event);</div><div class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(event.type == <span class="string">'touchend'</span>)&#123;</div><div class="line">self.end(event);</div><div class="line">&#125;</div><div class="line">&#125;,</div><div class="line"><span class="comment">//滑动开始</span></div><div class="line">start:<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> touch = event.targetTouches[<span class="number">0</span>]; <span class="comment">//touches数组对象获得屏幕上所有的touch，取第一个touch</span></div><div class="line">startPos = &#123;<span class="attr">x</span>:touch.pageX,<span class="attr">y</span>:touch.pageY,<span class="attr">time</span>:+<span class="keyword">new</span> <span class="built_in">Date</span>&#125;; <span class="comment">//取第一个touch的坐标值</span></div><div class="line">isScrolling = <span class="number">0</span>; <span class="comment">//这个参数判断是垂直滚动还是水平滚动</span></div><div class="line"><span class="keyword">this</span>.slider.addEventListener(<span class="string">'touchmove'</span>,<span class="keyword">this</span>,<span class="literal">false</span>);</div><div class="line"><span class="keyword">this</span>.slider.addEventListener(<span class="string">'touchend'</span>,<span class="keyword">this</span>,<span class="literal">false</span>);</div><div class="line">&#125;,</div><div class="line"><span class="comment">//移动</span></div><div class="line">move:<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line"><span class="comment">//当屏幕有多个touch或者页面被缩放过，就不执行move操作</span></div><div class="line"><span class="keyword">if</span>(event.targetTouches.length &gt; <span class="number">1</span> || event.scale &amp;&amp; event.scale !== <span class="number">1</span>) <span class="keyword">return</span>;</div><div class="line"><span class="keyword">var</span> touch = event.targetTouches[<span class="number">0</span>];</div><div class="line">endPos = &#123;<span class="attr">x</span>:touch.pageX - startPos.x,<span class="attr">y</span>:touch.pageY - startPos.y&#125;;</div><div class="line">isScrolling = <span class="built_in">Math</span>.abs(endPos.x) &lt; <span class="built_in">Math</span>.abs(endPos.y) ? <span class="number">1</span>:<span class="number">0</span>; <span class="comment">//isScrolling为1时，表示纵向滑动，0为横向滑动</span></div><div class="line"><span class="keyword">if</span>(isScrolling === <span class="number">0</span>)&#123;</div><div class="line">event.preventDefault(); <span class="comment">//阻止触摸事件的默认行为，即阻止滚屏</span></div><div class="line"><span class="keyword">this</span>.slider.className = <span class="string">'cnt'</span>;</div><div class="line"><span class="keyword">this</span>.slider.style.left = -<span class="keyword">this</span>.index*<span class="number">600</span> + endPos.x + <span class="string">'px'</span>;</div><div class="line">&#125;</div><div class="line">&#125;,</div><div class="line"><span class="comment">//滑动释放</span></div><div class="line">end:<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> duration = +<span class="keyword">new</span> <span class="built_in">Date</span> - startPos.time; <span class="comment">//滑动的持续时间</span></div><div class="line"><span class="keyword">if</span>(isScrolling === <span class="number">0</span>)&#123; <span class="comment">//当为水平滚动时</span></div><div class="line"><span class="keyword">this</span>.icon[<span class="keyword">this</span>.index].className = <span class="string">''</span>;</div><div class="line"><span class="keyword">if</span>(<span class="built_in">Number</span>(duration) &gt; <span class="number">10</span>)&#123;</div><div class="line"><span class="comment">//判断是左移还是右移，当偏移量大于10时执行</span></div><div class="line"><span class="keyword">if</span>(endPos.x &gt; <span class="number">10</span>)&#123;</div><div class="line"><span class="keyword">if</span>(<span class="keyword">this</span>.index !== <span class="number">0</span>) <span class="keyword">this</span>.index -= <span class="number">1</span>;</div><div class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(endPos.x &lt; <span class="number">-10</span>)&#123;</div><div class="line"><span class="keyword">if</span>(<span class="keyword">this</span>.index !== <span class="keyword">this</span>.icon.length<span class="number">-1</span>) <span class="keyword">this</span>.index += <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">this</span>.icon[<span class="keyword">this</span>.index].className = <span class="string">'curr'</span>;</div><div class="line"><span class="keyword">this</span>.slider.className = <span class="string">'cnt f-anim'</span>;</div><div class="line"><span class="keyword">this</span>.slider.style.left = -<span class="keyword">this</span>.index*<span class="number">600</span> + <span class="string">'px'</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//解绑事件</span></div><div class="line"><span class="keyword">this</span>.slider.removeEventListener(<span class="string">'touchmove'</span>,<span class="keyword">this</span>,<span class="literal">false</span>);</div><div class="line"><span class="keyword">this</span>.slider.removeEventListener(<span class="string">'touchend'</span>,<span class="keyword">this</span>,<span class="literal">false</span>);</div><div class="line">&#125;</div><div class="line">&#125;,</div><div class="line"><span class="comment">//初始化</span></div><div class="line">init:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> self = <span class="keyword">this</span>; <span class="comment">//this指slider对象</span></div><div class="line"><span class="keyword">if</span>(!!self.touch) self.slider.addEventListener(<span class="string">'touchstart'</span>,self.events,<span class="literal">false</span>); <span class="comment">//addEventListener第二个参数可以传一个对象，会调用该对象的handleEvent属性</span></div><div class="line">&#125;</div><div class="line">&#125;;</div><div class="line">slider.init();</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+    
 
-    <div class="post-sidebar">
-  <div class="toggle-btn" id="toggle-btn">
-    <i class="fa fa-reorder"></i>
-  </div>
-  <section class="post-toc-wrap" id="post-sidebar">
-    <h2 class="toc-title">内容目录</h2>
-    <div class="post-toc">
-      
-      
-        <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#js实现touch移动触屏滑动事件"><span class="nav-text">js实现touch移动触屏滑动事件</span></a></li></ol></div>
-      
-    </div>
-  </section>
+    
 </div>
 
 
-  </div>
+                
 
-  <footer class="post-footer">
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
     
+        <a href="/post/imagesUpload.html" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
     
-  <style>
-    .donation {
-      width: 100%;
-      margin-top: 2rem;
-    }
-    .donation .text {
-      color: #333;
-      font-size: .8rem;
-      cursor: pointer;
-      text-decoration: underline;
-    }
-    .donation .text:hover {
-      color: rgb(63,134,181);
-    }
-    .donation .img-box {
-      transition: all .3s;
-      width: 0;
-      height: 0;
-      margin: 1rem auto;
-      overflow: hidden;
-    }
-    .donation .img-box img {
-      width: 100%;
-      height: 100%;
-    }
-    .donation #donation {
-      display: none;
-    }
-    .donation #donation:checked + .img-box {
-      width: 16rem;
-      height: 16rem;
-    }
-  </style>
-  <div class="donation">
-    <label class="text" for="donation">
-      如果你觉得文章对你有帮助，并且想为我买一杯咖啡，点这里～
-    </label>
-    <input type="checkbox" name="donation" id="donation">
-    <div class="img-box">
-      <img src="/images/feng.jpg" alt="donation" />
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/post/gulp-browsersync.html" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
     </div>
-  </div>
-
-
-  </footer>
-
-</article>
 
 
 
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
 
-      
-  <div class="comments" id="comments">
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="feng's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        978189365@qq.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
     
-      <div class="ds-thread" data-thread-key="post/touch.html"
-           data-title="" data-url="http://yoursite.com/post/touch.html">
-      </div>
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
     
-  </div>
 
-
-
-
-    </main>
-
-    <footer class="footer clearfix">
-  <div class="copyright" >
-    <span>Copyright</span>
+    <!-- Archives  -->
     
-    &copy;  2016-
-    <span itemprop="copyrightYear">2017</span>
-    <span class="author" itemprop="copyrightHolder">feng</span>
-  </div>
-
-  <div class="info">
-    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
     
-      <span id="showDays" class="show-days"></span>
-      <script>
-      var birthDay = new Date('10/01/2016');
-      var now = new Date();
-      var duration = now.getTime() - birthDay.getTime();
-      var total= Math.floor(duration / (1000 * 60 * 60 * 24));
-      document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
-      </script>
-      ---
+
+    <!-- Categories  -->
     
-    <span id="busuanzi_container_site_pv">
-        总访问量<span id="busuanzi_value_site_pv"></span>次
-    </span>
-  </div>
 
-  <div class="my-theme">
-    Theme by <a href="//qiutc.me">qiutc</a> | <iframe style="margin-left: 5px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=TongchengQiu&amp;repo=hexo-theme-another&amp;type=star&amp;count=true"></iframe>
-  </div>
+    <!-- Pages  -->
+    
 
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;风
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
 </footer>
 
 
-  </div>
+                    <!-- Import File -->
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
 
-  <div class="back-top-btn" id="back-top-btn"><i class="fa fa-chevron-up"></i></div>
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
 
 
 
 
 
-  
+
+
+
+
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+
+                </main>
+            </div>
+        </body>
     
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"xxxxxxxxxx"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-    
-     
-
-
-
-
-
-
-<script type="text/javascript" src="/js/motto.min.js?v=0.0.2"></script>
-<script type="text/javascript" src="/js/main.js?v=0.0.2"></script>
-
-
-</body>
 </html>
