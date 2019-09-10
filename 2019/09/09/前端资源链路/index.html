@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>学习前端可以从这里出发 | wang xiaofeng&#39;s blog</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+  
+  <meta name="theme-color" content="#FFFFFF">
+  <meta name="msapplication-TileColor" content="#1BC3FB">
+  <meta name="msapplication-config" content="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/browserconfig.xml">
+  
+
+  <!-- link -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico">
+  <link rel="icon" type="image/x-icon" sizes="32x32" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/favicon-32x32.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/apple-touch-icon.png">
+  <link rel="mask-icon" color="#1BC3FB" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/safari-pinned-tab.svg">
+  <link rel="manifest" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/site.webmanifest">
+  
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico">
+  
+
+  
+  <link rel="stylesheet" href="/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar" class="pure"></div>
+</div>
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header pure">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          wang xiaofeng's blog
+        
+      </a>
+			<div class='menu'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a id="https:hongtanhao.github.io"
+								 class="nav flat-box" href="https://hongtanhao.github.io/">
+									<i class='fas fa-home fa-fw'></i>&nbsp;主页
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="home"
+								 class="nav flat-box" href="/">
+									<i class='fas fa-rss fa-fw'></i>&nbsp;博客
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="archives"
+								 class="nav flat-box" href="/archives/">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="friends"
+								 class="nav flat-box" href="/friends/">
+									<i class='fas fa-users fa-fw'></i>&nbsp;朋友
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<span class="icon"><i class="fas fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+				<li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu">
+      <ul>
+          
+              
+                  <li>
+										<a id="https:hongtanhao.github.io" class="nav flat-box" href="https://hongtanhao.github.io/">
+											<i class='fas fa-home fa-fw'></i>&nbsp;主页
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="home" class="nav flat-box" href="/">
+											<i class='fas fa-rss fa-fw'></i>&nbsp;博客
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="archives" class="nav flat-box" href="/archives/">
+											<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="friends" class="nav flat-box" href="/friends/">
+											<i class='fas fa-users fa-fw'></i>&nbsp;朋友
+										</a>
+                  </li>
+              
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+  
+<section class='meta'>
+  
+  
+  <div class="meta" id="header-meta">
+    
+      
+          <h1 class="title">学习前端可以从这里出发</h1>
+      
+    
+
+    <div class='new-meta-box'>
+      
+        <div class='new-meta-item author'>
+          <a href="http://yoursite.com">
+            <i class="fas fa-user" aria-hidden="true"></i>
+            John Doe
+          </a>
+        </div>
+      
+      
+        <div class="new-meta-item date">
+          <a class='notlink'>
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            2019-09-09
+          </a>
+        </div>
+      
+      
+        
+      
+      
+        
+          <div class="new-meta-item browse busuanzi">
+            <a class='notlink'>
+              <i class="fas fa-eye" aria-hidden="true"></i>
+              <span id="busuanzi_value_page_pv">
+                <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+              </span>
+            </a>
+          </div>
+        
+      
+      
+    </div>
+    <hr>
+  </div>
+</section>
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <p>互联网时代，资源共享，各社区生态繁荣，媛（猿）们更是殚精竭虑、乐此不疲的分享着自己的智慧与创新。那么，问题来了：如山如海的网络资源，想入前端坑，路在何方？</p>
+<a id="more"></a>
+<h2 id="声明：完全是自己的学习经验哈"><a href="#声明：完全是自己的学习经验哈" class="headerlink" title="声明：完全是自己的学习经验哈"></a>声明：完全是自己的学习经验哈</h2><p>如果有需要,欢迎email砸（<a href="mailto:978189365@qq.com" target="_blank" rel="noopener">978189365@qq.com</a>）</p>
+<h2 id="如果你是前端小白，前端三剑客（html、css、JavaScript）是必须要懂滴。"><a href="#如果你是前端小白，前端三剑客（html、css、JavaScript）是必须要懂滴。" class="headerlink" title="如果你是前端小白，前端三剑客（html、css、JavaScript）是必须要懂滴。"></a>如果你是前端小白，前端三剑客（html、css、JavaScript）是必须要懂滴。</h2><p><strong>菜鸟教程</strong>是完全免费的资源网站，里面各种编程语言基本都能找到，<em><code>从前端到后端再到数据库</code></em>，若君真心并且下定决心想加入程序员的大阵营，我相信总能找到符合你胃口的萝卜青菜~~</p>
+<blockquote>
+<p><a href="http://www.runoob.com/" target="_blank" rel="noopener">菜鸟教程</a></p>
+</blockquote>
+<p><strong>w3school</strong>领先的 Web 技术教程 - 全部免费，从基础的 HTML 到 CSS，乃至进阶的 XML、SQL、JS、PHP 和 ASP.NET。</p>
+<blockquote>
+<p><a href="http://www.w3school.com.cn/index.html" target="_blank" rel="noopener">w3school 在线教程</a></p>
+</blockquote>
+<p><strong>w3cschool</strong></p>
+<blockquote>
+<p><a href="https://www.w3cschool.cn/" target="_blank" rel="noopener">w3cschool</a></p>
+</blockquote>
+<p>打开以上链接，按照官网教程，一个demo,一个demo 去体验吧</p>
+<p><strong>手册网</strong> 最近发现的一个很牛逼的网站 时间：<code>20190313160430</code></p>
+<blockquote>
+<p><a href="http://www.shouce.ren" target="_blank" rel="noopener">手册网</a></p>
+</blockquote>
+<p>视频资源网站</p>
+<p><strong>慕课网</strong>，此网站基础部分一般都是免费的，而且大多数老师都是在一线互联网公司任职的具有一定项目开发经验的大神在讲课，可以跟着老师一步一步去实现教程中的效果，如果遇到自己迈不过的坑可以在视频下方区域提问，有的老师是公开源码的，可以下载，然后一步步去分析，总之，万事开头难是实话，遇到问题不要惊慌（先去百度或者google），不能解决可以去联系源码贡献者。</p>
+<blockquote>
+<p><a href="https://www.imooc.com/" target="_blank" rel="noopener">慕课网-程序员的梦工厂</a></p>
+</blockquote>
+<p><strong>极客学院</strong>是IT在线教育平台-中国专业的IT职业在线教育平台（IT线上培训网站，所以多数视频是收费的）</p>
+<blockquote>
+<p><a href="http://www.jikexueyuan.com/" target="_blank" rel="noopener">极客学院</a></p>
+</blockquote>
+<p><em>nodejs</em>，如果你学会了<code>javascript</code>, nodejs 一定不要错过，如果学会了nodejs，那么恭喜你，你离全栈工程师不远啦</p>
+<blockquote>
+<p><a href="https://nodejs.org/en/" target="_blank" rel="noopener">nodejs</a>，这是官网，学习教程，在菜鸟和慕课上都有，请自行去找</p>
+</blockquote>
+<p>JavaScript框架，是必须要会用的，目前比较火的是react、vue和angular<br>学习教程当属官网是首选、菜鸟、慕课、极客等</p>
+<blockquote>
+<p><a href="https://reactjs.org/" target="_blank" rel="noopener">react</a><br><a href="https://cn.vuejs.org/" target="_blank" rel="noopener">vue</a><br><a href="https://angular.io/" target="_blank" rel="noopener">angular</a></p>
+</blockquote>
+<p><strong>开源中国</strong>-找到您想要的开源项目，分享和交流(可以拿到一个完整项目的源码，适用于综合练习，这个跟生产中的实际项目源码很接近，建议多分析，增加项目经验，通过阅读别人的代码来自我提升)</p>
+<blockquote>
+<p><a href="https://www.oschina.net/" target="_blank" rel="noopener">开源中国</a></p>
+</blockquote>
+<p><em>github</em>是一个面向开源及私有软件项目的托管平台，因为只支持git 作为唯一的版本库格式进行托管，故名gitHub。所以先得学会git(分发式版本控制工具)。git的学习教程可以看<a href="https://www.liaoxuefeng.com/" target="_blank" rel="noopener">廖雪峰</a>的个人官网</p>
+<blockquote>
+<p><a href="https://github.com/" target="_blank" rel="noopener">github</a></p>
+</blockquote>
+<p>国外网站，由于天朝原因，访问这样的网站，一般得有翻墙，不然网速真的比蜗牛还慢（虽然不知蜗牛到底有多慢），这里能搜到来自全世界的和你一样的编程爱好者的开源代码，如果你英语还可以，经常逛国外的技术网站是个不错的选择。</p>
+<h2 id="接下来列举几个比较好的个人网站（博客）和-研发团队"><a href="#接下来列举几个比较好的个人网站（博客）和-研发团队" class="headerlink" title="接下来列举几个比较好的个人网站（博客）和 研发团队"></a>接下来列举几个比较好的个人网站（博客）和 研发团队</h2><ul>
+<li><a href="http://www.ruanyifeng.com/home.html" target="_blank" rel="noopener">阮一峰的个人网站</a></li>
+<li><a href="https://www.zhangxinxu.com/" target="_blank" rel="noopener">张鑫旭的个人主页</a></li>
+<li><a href="https://www.h5jun.com/" target="_blank" rel="noopener">十年踪迹的博客</a></li>
+<li><a href="http://www.alloyteam.com/" target="_blank" rel="noopener">腾讯全端AlloyTeam团队</a></li>
+<li><a href="https://aotu.io/" target="_blank" rel="noopener">aotu 实验室</a></li>
+<li><a href="http://www.aliued.cn/" target="_blank" rel="noopener">阿里巴巴</a></li>
+</ul>
+
+      </div>
+        
+          <section class='meta' id="footer-meta">
+            <hr>
+            <div class='new-meta-box'>
+              
+                <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-05-03T01:01:59-08:00">
+                  <a class='notlink'>
+                    <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                    2019-05-03
+                  </a>
+                </div>
+              
+              
+                
+                <div class="new-meta-item meta-tags"><a class="tag" href="/tags/前端/"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;前端</a></div>
+              
+              
+            </div>
+          </section>
+        
+
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/09/09/使用export和import事项模块化/" rel="prev" title="使用 import 和 export 实现模块化">
+                                  
+                                      使用 import 和 export 实现模块化
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/es6/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>es6</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/09/09/数字证书安装/" rel="prev" title="数字证书安装">
+                                    
+                                        数字证书安装
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/ssl/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>ssl</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+
+
+
+<script>
+    window.subData = {
+        title: '学习前端可以从这里出发',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+  
+  
+    
+      
+      
+        <section class='author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/avatar/avatar.png'/>
+      </div>
+    
+    
+      <div class='text'>
+        
+        
+        
+          <p><span id="jinrishici-sentence">wang xiaofeng's blog</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="mailto:978189365@qq.com" class="social flat-btn" target="_blank" rel="external"><i class="social fas fa-envelope" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://github.com/hongtanhao/" class="social flat-btn" target="_blank" rel="external"><i class="social fab fa-github" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=63035382" class="social flat-btn" target="_blank" rel="external"><i class="social fas fa-music" aria-hidden="true"></i></a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        <section class='plain'>
+  
+<header class='pure'>
+  <div><i class="fas fa-bullhorn fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;注意啦～</div>
+  
+    <a class="rightBtn" target="_blank"
+    rel="external nofollow noopener noreferrer"
+    href="https://xaoxuu.com/wiki/material-x/"
+    title="https://xaoxuu.com/wiki/material-x/">
+    <i class="fas fa-question-circle fa-fw"></i></a>
+  
+</header>
+
+  <div class='content pure'>
+    <p>本站使用 <a href="https://xaoxuu.com/wiki/material-x/">Material X</a> 作为主题，喜欢这个主题的朋友可以阅读文档进行安装哦，超喜欢的话还可以安利给身边的朋友哦～</p>
+
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        <section class='list'>
+  
+<header class='pure'>
+  <div><i class="fas fa-medal fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;精选项目</div>
+  
+    <a class="rightBtn" target="_blank"
+    rel="external nofollow noopener noreferrer"
+    href="https://xaoxuu.com/projects/"
+    title="https://xaoxuu.com/projects/">
+    <i class="fas fa-arrow-right fa-fw"></i></a>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="entry">
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/axkit/" href="https://xaoxuu.com/wiki/axkit/">
+          <div class='name'>
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;AXKit
+          </div>
+          
+            <div class='badge'>(iOS开源库)</div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/noticeboard/" href="https://xaoxuu.com/wiki/noticeboard/">
+          <div class='name'>
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;NoticeBoard
+          </div>
+          
+            <div class='badge'>(iOS开源库)</div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/heartmate/" href="https://xaoxuu.com/heartmate/">
+          <div class='name'>
+            
+              <i class="fas fa-heartbeat fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;HeartMate
+          </div>
+          
+            <div class='badge'>(iOS应用程序)</div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/">
+          <div class='name'>
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;Material X
+          </div>
+          
+            <div class='badge'>(Hexo博客主题)</div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        
+
+      
+    
+  
+    
+      
+      
+        
+  <section class='tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/MongoDB-node/" style="font-size: 14px; color: #999">MongoDB node</a> <a href="/tags/api/" style="font-size: 14px; color: #999">api</a> <a href="/tags/build-webApp/" style="font-size: 14px; color: #999">build_webApp</a> <a href="/tags/css/" style="font-size: 14px; color: #999">css</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/es6/" style="font-size: 14px; color: #999">es6</a> <a href="/tags/git/" style="font-size: 17.33px; color: #828282">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/java/" style="font-size: 17.33px; color: #828282">java</a> <a href="/tags/javascript/" style="font-size: 24px; color: #555">javascript</a> <a href="/tags/javascript-jquery/" style="font-size: 14px; color: #999">javascript, jquery</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/markdown/" style="font-size: 14px; color: #999">markdown</a> <a href="/tags/maven-gradle/" style="font-size: 14px; color: #999">maven gradle</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/php/" style="font-size: 14px; color: #999">php</a> <a href="/tags/react/" style="font-size: 17.33px; color: #828282">react</a> <a href="/tags/redis-db/" style="font-size: 14px; color: #999">redis, db</a> <a href="/tags/spring/" style="font-size: 17.33px; color: #828282">spring</a> <a href="/tags/springMVC/" style="font-size: 14px; color: #999">springMVC</a> <a href="/tags/ssl/" style="font-size: 14px; color: #999">ssl</a> <a href="/tags/ubuntu/" style="font-size: 14px; color: #999">ubuntu</a> <a href="/tags/vue/" style="font-size: 14px; color: #999">vue</a> <a href="/tags/weex/" style="font-size: 20.67px; color: #6c6c6c">weex</a> <a href="/tags/前端/" style="font-size: 14px; color: #999">前端</a> <a href="/tags/时间寄语/" style="font-size: 14px; color: #999">时间寄语</a>
+    </div>
+  </section>
+
+
+      
+    
+  
+    
+      
+      
+        
+
+
+  <section class='music'>
+    
+<header class='pure'>
+  <div><i class="fas fa-compact-disc fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;最近在听</div>
+  
+    <a class="rightBtn" target="_blank"
+    rel="external nofollow noopener noreferrer"
+    href="https://music.163.com/#/user/home?id=63035382"
+    title="https://music.163.com/#/user/home?id=63035382">
+    <i class="far fa-heart fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <div class="aplayer"
+    data-theme="#1BCDFC"
+    
+    
+    data-mode="circulation"
+    data-server="netease"
+    data-type="playlist"
+    data-id="746319661"
+    data-volume="0.7">
+  </div>
+  <script async src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script async src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+    </div>
+  </section>
+
+
+      
+    
+  
+    
+      
+      
+        
+  <section class='toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章目录</div>
+  
+    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#声明：完全是自己的学习经验哈"><span class="toc-text">声明：完全是自己的学习经验哈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果你是前端小白，前端三剑客（html、css、JavaScript）是必须要懂滴。"><span class="toc-text">如果你是前端小白，前端三剑客（html、css、JavaScript）是必须要懂滴。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接下来列举几个比较好的个人网站（博客）和-研发团队"><span class="toc-text">接下来列举几个比较好的个人网站（博客）和 研发团队</span></a></li></ol>
+    </div>
+  </section>
+
+
+      
+    
+  
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
+    <footer id="footer" class="clearfix">
+  
+    <div class="footer">
+      <p>这是页脚文字，支持<strong>markdown</strong>语法。</p>
+
+    </div>
+    <br>
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="mailto:978189365@qq.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external"></a>
+        
+      
+        
+          <a href="https://github.com/hongtanhao/" class="social fab fa-github flat-btn" target="_blank" rel="external"></a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=63035382" class="social fas fa-music flat-btn" target="_blank" rel="external"></a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题，总访问量为 <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+  </div>
+</footer>
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+
+  
+    <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        const $reveal = $('.reveal');
+    		if ($reveal.length === 0) return;
+    		const sr = ScrollReveal({ distance: 0 });
+    		sr.reveal('.reveal');
+      });
+    </script>
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        Waves.attach('.flat-btn', ['waves-button']);
+        Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+        Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+        Waves.attach('.flat-box', ['waves-block']);
+        Waves.attach('.float-box', ['waves-block', 'waves-float']);
+        Waves.attach('.waves-image');
+        Waves.init();
+      });
+    </script>
+  
+  
+    <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+  
+  
+    <!-- fastclick -->
+    <script src="https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        FastClick.attach(document.body)
+      }, false)
+    </script>
+  
+  
+
+  
+  
+  
+  
+
+  
+    <script src="/js/app.js"></script>
+<script src="/js/search.js"></script>
+  
+
+
+
+
+
+
+    <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

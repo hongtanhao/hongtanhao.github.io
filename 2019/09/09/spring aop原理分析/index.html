@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>spring aop原理分析 | wang xiaofeng&#39;s blog</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+  
+  <meta name="theme-color" content="#FFFFFF">
+  <meta name="msapplication-TileColor" content="#1BC3FB">
+  <meta name="msapplication-config" content="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/browserconfig.xml">
+  
+
+  <!-- link -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico">
+  <link rel="icon" type="image/x-icon" sizes="32x32" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/favicon-32x32.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/apple-touch-icon.png">
+  <link rel="mask-icon" color="#1BC3FB" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/safari-pinned-tab.svg">
+  <link rel="manifest" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/site.webmanifest">
+  
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico">
+  
+
+  
+  <link rel="stylesheet" href="/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar" class="pure"></div>
+</div>
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header pure">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          wang xiaofeng's blog
+        
+      </a>
+			<div class='menu'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a id="https:hongtanhao.github.io"
+								 class="nav flat-box" href="https://hongtanhao.github.io/">
+									<i class='fas fa-home fa-fw'></i>&nbsp;主页
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="home"
+								 class="nav flat-box" href="/">
+									<i class='fas fa-rss fa-fw'></i>&nbsp;博客
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="archives"
+								 class="nav flat-box" href="/archives/">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="friends"
+								 class="nav flat-box" href="/friends/">
+									<i class='fas fa-users fa-fw'></i>&nbsp;朋友
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<span class="icon"><i class="fas fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+				<li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu">
+      <ul>
+          
+              
+                  <li>
+										<a id="https:hongtanhao.github.io" class="nav flat-box" href="https://hongtanhao.github.io/">
+											<i class='fas fa-home fa-fw'></i>&nbsp;主页
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="home" class="nav flat-box" href="/">
+											<i class='fas fa-rss fa-fw'></i>&nbsp;博客
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="archives" class="nav flat-box" href="/archives/">
+											<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="friends" class="nav flat-box" href="/friends/">
+											<i class='fas fa-users fa-fw'></i>&nbsp;朋友
+										</a>
+                  </li>
+              
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+  
+<section class='meta'>
+  
+  
+  <div class="meta" id="header-meta">
+    
+      
+          <h1 class="title">spring aop原理分析</h1>
+      
+    
+
+    <div class='new-meta-box'>
+      
+        <div class='new-meta-item author'>
+          <a href="http://yoursite.com">
+            <i class="fas fa-user" aria-hidden="true"></i>
+            John Doe
+          </a>
+        </div>
+      
+      
+        <div class="new-meta-item date">
+          <a class='notlink'>
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            2019-09-09
+          </a>
+        </div>
+      
+      
+        
+      
+      
+        
+          <div class="new-meta-item browse busuanzi">
+            <a class='notlink'>
+              <i class="fas fa-eye" aria-hidden="true"></i>
+              <span id="busuanzi_value_page_pv">
+                <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+              </span>
+            </a>
+          </div>
+        
+      
+      
+    </div>
+    <hr>
+  </div>
+</section>
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <p>AOP（Aspect-OrientedProgramming，面向方面编程），可以说是OOP（Object-Oriented Programing，面向对象编程）的补充和完善。</p>
+<a id="more"></a>
+<h2 id="什么是aop"><a href="#什么是aop" class="headerlink" title="什么是aop"></a>什么是aop</h2><ul>
+<li>AOP（Aspect-OrientedProgramming，面向方面编程），可以说是OOP（Object-Oriented Programing，面向对象编程）的补充和完善。OOP引入封装、继承和多态性等概念来建立一种对象层次结构，用以模拟公共行为的一个集合。当我们需要为分散的对象引入公共行为的时候，OOP则显得无能为力。也就是说，<code>OOP允许你定义从上到下的关系，但并不适合定义从左到右的关系</code>。例如日志功能。日志代码往往水平地散布在所有对象层次中，而与它所散布到的对象的核心功能毫无关系。对于其他类型的代码，如安全性、异常处理和透明的持续性也是如此。这种散布在各处的无关的代码被称为横切（cross-cutting）代码，在OOP设计中，它导致了大量代码的重复，而不利于各个模块的重用。</li>
+</ul>
+<ul>
+<li><p>而AOP技术则恰恰相反，它利用一种称为“横切”的技术，剖解开封装的对象内部，并将那些影响了多个类的公共行为封装到一个可重用模块，并将其名为“Aspect”，即方面。所谓“方面”，简单地说，就是将那些与业务无关，却为业务模块所共同调用的逻辑或责任封装起来，便于减少系统的重复代码，降低模块间的耦合度，并有利于未来的可操作性和可维护性。AOP代表的是一个横向的关系，如果说“对象”是一个空心的圆柱体，其中封装的是对象的属性和行为；那么面向方面编程的方法，就仿佛一把利刃，将这些空心圆柱体剖开，以获得其内部的消息。而剖开的切面，也就是所谓的“方面”了。然后它又以巧夺天功的妙手将这些剖开的切面复原，不留痕迹。</p>
+</li>
+<li><p>使用“横切”技术，AOP把软件系统分为两个部分：核心关注点和横切关注点。业务处理的主要流程是核心关注点，与之关系不大的部分是横切关注点。横切关注点的一个特点是，他们经常发生在核心关注点的多处，而各处都基本相似。比如权限认证、日志、事务处理。Aop 的作用在于分离系统中的各种关注点，将核心关注点和横切关注点分离开来。正如Avanade公司的高级方案构架师Adam Magee所说，AOP的核心思想就是“将应用程序中的商业逻辑同对其提供支持的通用服务进行分离。”</p>
+</li>
+</ul>
+<h2 id="AOP使用场景"><a href="#AOP使用场景" class="headerlink" title="AOP使用场景"></a>AOP使用场景</h2><p>AOP用来封装横切关注点，具体可以在下面的场景中使用:</p>
+<ul>
+<li>Authentication 权限</li>
+<li>Caching 缓存</li>
+<li>Context passing 内容传递</li>
+<li>Error handling 错误处理</li>
+<li>Lazy loading　懒加载  </li>
+<li>Debugging　　调试</li>
+<li>logging, tracing, profiling and monitoring　记录跟踪　优化　校准</li>
+<li>Performance optimization　性能优化</li>
+<li>Persistence　　持久化</li>
+<li>Resource pooling　资源池</li>
+<li>Synchronization　同步</li>
+<li>Transactions 事务</li>
+</ul>
+<h2 id="Transactions-事务"><a href="#Transactions-事务" class="headerlink" title="Transactions 事务"></a>Transactions 事务</h2><ol>
+<li><p>方面（Aspect）：一个关注点的模块化，这个关注点实现可能另外横切多个对象。事务管理是J2EE应用中一个很好的横切关注点例子。方面用Spring的 Advisor或拦截器实现。</p>
+</li>
+<li><p>连接点（Joinpoint）: 程序执行过程中明确的点，如方法的调用或特定的异常被抛出。</p>
+</li>
+<li><p>通知（Advice）: 在特定的连接点，AOP框架执行的动作。各种类型的通知包括“around”、“before”和“throws”通知。通知类型将在下面讨论。许多AOP框架包括Spring都是以拦截器做通知模型，维护一个“围绕”连接点的拦截器链。Spring中定义了四个advice: BeforeAdvice, AfterAdvice, ThrowAdvice和DynamicIntroductionAdvice</p>
+</li>
+<li><p>切入点（Pointcut）: 指定一个通知将被引发的一系列连接点的集合。AOP框架必须允许开发者指定切入点：例如，使用正则表达式。 Spring定义了Pointcut接口，用来组合MethodMatcher和ClassFilter，可以通过名字很清楚的理解， MethodMatcher是用来检查目标类的方法是否可以被应用此通知，而ClassFilter是用来检查Pointcut是否应该应用到目标类上</p>
+</li>
+<li><p>引入（Introduction）: 添加方法或字段到被通知的类。 Spring允许引入新的接口到任何被通知的对象。例如，你可以使用一个引入使任何对象实现 IsModified接口，来简化缓存。Spring中要使用Introduction, 可有通过DelegatingIntroductionInterceptor来实现通知，通过DefaultIntroductionAdvisor来配置Advice和代理类要实现的接口</p>
+</li>
+<li><p>目标对象（Target Object）: 包含连接点的对象。也被称作被通知或被代理对象。POJO</p>
+</li>
+<li><p>AOP代理（AOP Proxy）: AOP框架创建的对象，包含通知。 在Spring中，AOP代理可以是JDK动态代理或者CGLIB代理</p>
+</li>
+<li><p>织入（Weaving）: 组装方面来创建一个被通知对象。这可以在编译时完成（例如使用AspectJ编译器），也可以在运行时完成。Spring和其他纯Java AOP框架一样，在运行时完成织入。</p>
+</li>
+</ol>
+<h2 id="如何使用Spring-AOP"><a href="#如何使用Spring-AOP" class="headerlink" title="如何使用Spring AOP"></a>如何使用Spring AOP</h2><p>可以通过配置文件或者编程的方式来使用Spring AOP。</p>
+<p>配置可以通过xml文件来进行，大概有四种方式：</p>
+<ol>
+<li>配置ProxyFactoryBean，显式地设置advisors, advice, target等</li>
+<li>配置AutoProxyCreator，这种方式下，还是如以前一样使用定义的bean，但是从容器中获得的其实已经是代理对象</li>
+<li>通过<a href="aop:config" target="_blank" rel="noopener">aop:config</a>来配置</li>
+<li>通过&lt;aop: aspectj-autoproxy&gt;来配置，使用AspectJ的注解来标识通知及切入点</li>
+</ol>
+<p>也可以直接使用ProxyFactory来以编程的方式使用Spring AOP，通过ProxyFactory提供的方法可以设置target对象, advisor等相关配置，最终通过 getProxy()方法来获取代理对象<br>具体使用的示例可以google. 这里略去</p>
+<h2 id="Spring-AOP代理对象的生成"><a href="#Spring-AOP代理对象的生成" class="headerlink" title="Spring AOP代理对象的生成"></a>Spring AOP代理对象的生成</h2><p>Spring提供了两种方式来生成代理对象: JDKProxy和Cglib，具体使用哪种方式生成由AopProxyFactory根据AdvisedSupport对象的配置来决定。默认的策略是如果目标类是接口，则使用JDK动态代理技术，否则使用Cglib来生成代理。下面我们来研究一下Spring如何使用JDK来生成代理对象，具体的生成代码放在JdkDynamicAopProxy这个类中，直接上相关代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">**</span><br><span class="line">* &lt;ol&gt;</span><br><span class="line">* &lt;li&gt;获取代理类要实现的接口,除了Advised对象中配置的,还会加上SpringProxy, Advised(opaque=<span class="keyword">false</span>)</span><br><span class="line">* &lt;li&gt;检查上面得到的接口中有没有定义 equals或者hashcode的接口</span><br><span class="line">* &lt;li&gt;调用Proxy.newProxyInstance创建代理对象</span><br><span class="line">* &lt;/ol&gt;</span><br><span class="line">*/</span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">getProxy</span><span class="params">(ClassLoader classLoader)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">       logger.debug(<span class="string">"Creating JDK dynamic proxy: target source is "</span> +<span class="keyword">this</span>.advised.getTargetSource());</span><br><span class="line">   &#125;</span><br><span class="line">   Class[] proxiedInterfaces = AopProxyUtils.completeProxiedInterfaces(<span class="keyword">this</span>.advised);</span><br><span class="line">   findDefinedEqualsAndHashCodeMethods(proxiedInterfaces);</span><br><span class="line">   <span class="keyword">return</span> Proxy.newProxyInstance(classLoader, proxiedInterfaces, <span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>下面的问题是，代理对象生成了，那切面是如何织入的？</p>
+<p>我们知道InvocationHandler是JDK动态代理的核心，生成的代理对象的方法调用都会委托到InvocationHandler.invoke()方法。而通过JdkDynamicAopProxy的签名我们可以看到这个类其实也实现了InvocationHandler，下面我们就通过分析这个类中实现的invoke()方法来具体看下Spring AOP是如何织入切面的<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> throwsThrowable </span>&#123;</span><br><span class="line">  MethodInvocation invocation = <span class="keyword">null</span>;</span><br><span class="line">  Object oldProxy = <span class="keyword">null</span>;</span><br><span class="line">  <span class="keyword">boolean</span> setProxyContext = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">  TargetSource targetSource = <span class="keyword">this</span>.advised.targetSource;</span><br><span class="line">  Class targetClass = <span class="keyword">null</span>;</span><br><span class="line">  Object target = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">//eqauls()方法，具目标对象未实现此方法</span></span><br><span class="line">      <span class="keyword">if</span> (!<span class="keyword">this</span>.equalsDefined &amp;&amp; AopUtils.isEqualsMethod(method))&#123;</span><br><span class="line">            <span class="keyword">return</span> (equals(args[<span class="number">0</span>])? Boolean.TRUE : Boolean.FALSE);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">//hashCode()方法，具目标对象未实现此方法</span></span><br><span class="line">      <span class="keyword">if</span> (!<span class="keyword">this</span>.hashCodeDefined &amp;&amp; AopUtils.isHashCodeMethod(method))&#123;</span><br><span class="line">            <span class="keyword">return</span> newInteger(hashCode());</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">//Advised接口或者其父接口中定义的方法,直接反射调用,不应用通知</span></span><br><span class="line">      <span class="keyword">if</span> (!<span class="keyword">this</span>.advised.opaque &amp;&amp;method.getDeclaringClass().isInterface()</span><br><span class="line">                &amp;&amp;method.getDeclaringClass().isAssignableFrom(Advised.class)) &#123;</span><br><span class="line">            <span class="comment">// Service invocations onProxyConfig with the proxy config...</span></span><br><span class="line">            <span class="keyword">return</span> AopUtils.invokeJoinpointUsingReflection(<span class="keyword">this</span>.advised,method, args);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      Object retVal = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.advised.exposeProxy) &#123;</span><br><span class="line">            <span class="comment">// Make invocation available ifnecessary.</span></span><br><span class="line">            oldProxy = AopContext.setCurrentProxy(proxy);</span><br><span class="line">            setProxyContext = <span class="keyword">true</span>;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">//获得目标对象的类</span></span><br><span class="line">      target = targetSource.getTarget();</span><br><span class="line">      <span class="keyword">if</span> (target != <span class="keyword">null</span>) &#123;</span><br><span class="line">            targetClass = target.getClass();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">//获取可以应用到此方法上的Interceptor列表</span></span><br><span class="line">      List chain = <span class="keyword">this</span>.advised.getInterceptorsAndDynamicInterceptionAdvice(method,targetClass);</span><br><span class="line"></span><br><span class="line">      <span class="comment">//如果没有可以应用到此方法的通知(Interceptor)，此直接反射调用 method.invoke(target, args)</span></span><br><span class="line">      <span class="keyword">if</span> (chain.isEmpty()) &#123;</span><br><span class="line">            retVal = AopUtils.invokeJoinpointUsingReflection(target,method, args);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//创建MethodInvocation</span></span><br><span class="line">            invocation = newReflectiveMethodInvocation(proxy, target, method, args, targetClass, chain);</span><br><span class="line">            retVal = invocation.proceed();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Massage return value if necessary.</span></span><br><span class="line">      <span class="keyword">if</span> (retVal != <span class="keyword">null</span> &amp;&amp; retVal == target &amp;&amp;method.getReturnType().isInstance(proxy)</span><br><span class="line">                &amp;&amp;!RawTargetAccess.class.isAssignableFrom(method.getDeclaringClass())) &#123;</span><br><span class="line">            <span class="comment">// Special case: it returned"this" and the return type of the method</span></span><br><span class="line">            <span class="comment">// is type-compatible. Notethat we can't help if the target sets</span></span><br><span class="line">            <span class="comment">// a reference to itself inanother returned object.</span></span><br><span class="line">            retVal = proxy;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> retVal;</span><br><span class="line">  &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (target != <span class="keyword">null</span> &amp;&amp; !targetSource.isStatic()) &#123;</span><br><span class="line">            <span class="comment">// Must have come fromTargetSource.</span></span><br><span class="line">          targetSource.releaseTarget(target);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (setProxyContext) &#123;</span><br><span class="line">            <span class="comment">// Restore old proxy.</span></span><br><span class="line">            AopContext.setCurrentProxy(oldProxy);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>主流程可以简述为：获取可以应用到此方法上的通知链（Interceptor Chain）,如果有,则应用通知,并执行joinpoint; 如果没有,则直接反射执行joinpoint。而这里的关键是通知链是如何获取的以及它又是如何执行的，下面逐一分析下。</p>
+<p>首先，从上面的代码可以看到，通知链是通过Advised.getInterceptorsAndDynamicInterceptionAdvice()这个方法来获取的,我们来看下这个方法的实现:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;Object&gt;getInterceptorsAndDynamicInterceptionAdvice(Method method, Class targetClass) &#123;</span><br><span class="line">  MethodCacheKeycacheKey = <span class="keyword">new</span> MethodCacheKey(method);</span><br><span class="line">  List&lt;Object&gt;cached = <span class="keyword">this</span>.methodCache.get(cacheKey);</span><br><span class="line">  <span class="keyword">if</span>(cached == <span class="keyword">null</span>) &#123;</span><br><span class="line">    cached= <span class="keyword">this</span>.advisorChainFactory.getInterceptorsAndDynamicInterceptionAdvice(<span class="keyword">this</span>, method, targetClass);</span><br><span class="line">    <span class="keyword">this</span>.methodCache.put(cacheKey,cached);</span><br><span class="line">  &#125;</span><br><span class="line">  returncached;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到实际的获取工作其实是由AdvisorChainFactory. getInterceptorsAndDynamicInterceptionAdvice()这个方法来完成的，获取到的结果会被缓存。</p>
+<p>下面来分析下这个方法的实现：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 从提供的配置实例config中获取advisor列表,遍历处理这些advisor.如果是IntroductionAdvisor,</span></span><br><span class="line"><span class="comment">  * 则判断此Advisor能否应用到目标类targetClass上.如果是PointcutAdvisor,则判断</span></span><br><span class="line"><span class="comment">  * 此Advisor能否应用到目标方法method上.将满足条件的Advisor通过AdvisorAdaptor转化成Interceptor列表返回.</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function">publicList <span class="title">getInterceptorsAndDynamicInterceptionAdvice</span><span class="params">(Advised config, Methodmethod, Class targetClass)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// This is somewhat tricky... we have to process introductions first,</span></span><br><span class="line">  <span class="comment">// but we need to preserve order in the ultimate list.</span></span><br><span class="line">  List interceptorList = <span class="keyword">new</span> ArrayList(config.getAdvisors().length);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//查看是否包含IntroductionAdvisor</span></span><br><span class="line">  <span class="keyword">boolean</span> hasIntroductions = hasMatchingIntroductions(config,targetClass);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//这里实际上注册一系列AdvisorAdapter,用于将Advisor转化成MethodInterceptor</span></span><br><span class="line">  AdvisorAdapterRegistry registry = GlobalAdvisorAdapterRegistry.getInstance();</span><br><span class="line"></span><br><span class="line">  Advisor[] advisors = config.getAdvisors();</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;advisors.length; i++) &#123;</span><br><span class="line">      Advisor advisor = advisors[i];</span><br><span class="line">      <span class="keyword">if</span> (advisor <span class="keyword">instanceof</span> PointcutAdvisor) &#123;</span><br><span class="line">          <span class="comment">// Add it conditionally.</span></span><br><span class="line">          PointcutAdvisor pointcutAdvisor= (PointcutAdvisor) advisor;</span><br><span class="line">          <span class="keyword">if</span>(config.isPreFiltered() ||pointcutAdvisor.getPointcut().getClassFilter().matches(targetClass)) &#123;</span><br><span class="line">              <span class="comment">//<span class="doctag">TODO:</span> 这个地方这两个方法的位置可以互换下</span></span><br><span class="line">              <span class="comment">//将Advisor转化成Interceptor</span></span><br><span class="line">              MethodInterceptor[]interceptors = registry.getInterceptors(advisor);</span><br><span class="line"></span><br><span class="line">              <span class="comment">//检查当前advisor的pointcut是否可以匹配当前方法</span></span><br><span class="line">              MethodMatcher mm =pointcutAdvisor.getPointcut().getMethodMatcher();</span><br><span class="line"></span><br><span class="line">              <span class="keyword">if</span> (MethodMatchers.matches(mm,method, targetClass, hasIntroductions)) &#123;</span><br><span class="line">                  <span class="keyword">if</span>(mm.isRuntime()) &#123;</span><br><span class="line">                      <span class="comment">// Creating a newobject instance in the getInterceptors() method</span></span><br><span class="line">                      <span class="comment">// isn't a problemas we normally cache created chains.</span></span><br><span class="line">                      <span class="keyword">for</span> (intj = <span class="number">0</span>; j &lt; interceptors.length; j++) &#123;</span><br><span class="line">                          interceptorList.add(<span class="keyword">new</span> InterceptorAndDynamicMethodMatcher(interceptors[j],mm));</span><br><span class="line">                      &#125;</span><br><span class="line">                  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                      interceptorList.addAll(Arrays.asList(interceptors));</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (advisor <span class="keyword">instanceof</span> IntroductionAdvisor)&#123;</span><br><span class="line">          IntroductionAdvisor ia =(IntroductionAdvisor) advisor;</span><br><span class="line">          <span class="keyword">if</span>(config.isPreFiltered() || ia.getClassFilter().matches(targetClass)) &#123;</span><br><span class="line">              Interceptor[] interceptors= registry.getInterceptors(advisor);</span><br><span class="line">              interceptorList.addAll(Arrays.asList(interceptors));</span><br><span class="line">          &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          Interceptor[] interceptors =registry.getInterceptors(advisor);</span><br><span class="line">          interceptorList.addAll(Arrays.asList(interceptors));</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> interceptorList;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这个方法执行完成后，Advised中配置能够应用到连接点或者目标类的Advisor全部被转化成了MethodInterceptor.<br>接下来我们再看下得到的拦截器链是怎么起作用的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (chain.isEmpty()) &#123;</span><br><span class="line">    retVal = AopUtils.invokeJoinpointUsingReflection(target,method, args);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//创建MethodInvocation</span></span><br><span class="line">    invocation = newReflectiveMethodInvocation(proxy, target, method, args, targetClass, chain);</span><br><span class="line">    retVal = invocation.proceed();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从这段代码可以看出，如果得到的拦截器链为空，则直接反射调用目标方法，否则创建MethodInvocation，调用其proceed方法，触发拦截器链的执行，来看下具体代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">proceed</span><span class="params">()</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">  <span class="comment">//  We start with an index of -1and increment early.</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.currentInterceptorIndex == <span class="keyword">this</span>.interceptorsAndDynamicMethodMatchers.size()- <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="comment">//如果Interceptor执行完了，则执行joinPoint</span></span><br><span class="line">      <span class="keyword">return</span> invokeJoinpoint();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Object interceptorOrInterceptionAdvice =</span><br><span class="line">      <span class="keyword">this</span>.interceptorsAndDynamicMethodMatchers.get(++<span class="keyword">this</span>.currentInterceptorIndex);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//如果要动态匹配joinPoint</span></span><br><span class="line">  <span class="keyword">if</span> (interceptorOrInterceptionAdvice <span class="keyword">instanceof</span> InterceptorAndDynamicMethodMatcher)</span><br><span class="line">  &#123;</span><br><span class="line">      <span class="comment">// Evaluate dynamic method matcher here: static part will already have</span></span><br><span class="line">      <span class="comment">// been evaluated and found to match.</span></span><br><span class="line">      InterceptorAndDynamicMethodMatcher dm =</span><br><span class="line">          (InterceptorAndDynamicMethodMatcher)interceptorOrInterceptionAdvice;</span><br><span class="line">      <span class="comment">//动态匹配：运行时参数是否满足匹配条件</span></span><br><span class="line">      <span class="keyword">if</span> (dm.methodMatcher.matches(<span class="keyword">this</span>.method, <span class="keyword">this</span>.targetClass,<span class="keyword">this</span>.arguments)) &#123;</span><br><span class="line">          <span class="comment">//执行当前Intercetpor</span></span><br><span class="line">          returndm.interceptor.invoke(<span class="keyword">this</span>);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="comment">//动态匹配失败时,略过当前Intercetpor,调用下一个Interceptor</span></span><br><span class="line">          <span class="keyword">return</span> proceed();</span><br><span class="line">      &#125;</span><br><span class="line">  &#125; </span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="comment">// It's an interceptor, so we just invoke it: The pointcutwill have</span></span><br><span class="line">      <span class="comment">// been evaluated statically before this object was constructed.</span></span><br><span class="line">      <span class="comment">//执行当前Intercetpor</span></span><br><span class="line">      <span class="keyword">return</span> ((MethodInterceptor) interceptorOrInterceptionAdvice).invoke(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      </div>
+        
+          <section class='meta' id="footer-meta">
+            <hr>
+            <div class='new-meta-box'>
+              
+                <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-07-21T23:11:11-08:00">
+                  <a class='notlink'>
+                    <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                    2019-07-21
+                  </a>
+                </div>
+              
+              
+                
+                <div class="new-meta-item meta-tags"><a class="tag" href="/tags/spring/"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;spring</a></div>
+              
+              
+            </div>
+          </section>
+        
+
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/09/09/在linux操作系统中部署tomcat服务器/" rel="prev" title="在ubuntu系统中部署tomcat服务器">
+                                  
+                                      在ubuntu系统中部署tomcat服务器
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/linux/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>linux</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+
+
+
+<script>
+    window.subData = {
+        title: 'spring aop原理分析',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+  
+  
+    
+      
+      
+        <section class='author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/avatar/avatar.png'/>
+      </div>
+    
+    
+      <div class='text'>
+        
+        
+        
+          <p><span id="jinrishici-sentence">wang xiaofeng's blog</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="mailto:978189365@qq.com" class="social flat-btn" target="_blank" rel="external"><i class="social fas fa-envelope" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://github.com/hongtanhao/" class="social flat-btn" target="_blank" rel="external"><i class="social fab fa-github" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=63035382" class="social flat-btn" target="_blank" rel="external"><i class="social fas fa-music" aria-hidden="true"></i></a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        <section class='plain'>
+  
+<header class='pure'>
+  <div><i class="fas fa-bullhorn fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;注意啦～</div>
+  
+    <a class="rightBtn" target="_blank"
+    rel="external nofollow noopener noreferrer"
+    href="https://xaoxuu.com/wiki/material-x/"
+    title="https://xaoxuu.com/wiki/material-x/">
+    <i class="fas fa-question-circle fa-fw"></i></a>
+  
+</header>
+
+  <div class='content pure'>
+    <p>本站使用 <a href="https://xaoxuu.com/wiki/material-x/">Material X</a> 作为主题，喜欢这个主题的朋友可以阅读文档进行安装哦，超喜欢的话还可以安利给身边的朋友哦～</p>
+
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        <section class='list'>
+  
+<header class='pure'>
+  <div><i class="fas fa-medal fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;精选项目</div>
+  
+    <a class="rightBtn" target="_blank"
+    rel="external nofollow noopener noreferrer"
+    href="https://xaoxuu.com/projects/"
+    title="https://xaoxuu.com/projects/">
+    <i class="fas fa-arrow-right fa-fw"></i></a>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="entry">
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/axkit/" href="https://xaoxuu.com/wiki/axkit/">
+          <div class='name'>
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;AXKit
+          </div>
+          
+            <div class='badge'>(iOS开源库)</div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/noticeboard/" href="https://xaoxuu.com/wiki/noticeboard/">
+          <div class='name'>
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;NoticeBoard
+          </div>
+          
+            <div class='badge'>(iOS开源库)</div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/heartmate/" href="https://xaoxuu.com/heartmate/">
+          <div class='name'>
+            
+              <i class="fas fa-heartbeat fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;HeartMate
+          </div>
+          
+            <div class='badge'>(iOS应用程序)</div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/">
+          <div class='name'>
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;Material X
+          </div>
+          
+            <div class='badge'>(Hexo博客主题)</div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        
+
+      
+    
+  
+    
+      
+      
+        
+  <section class='tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/MongoDB-node/" style="font-size: 14px; color: #999">MongoDB node</a> <a href="/tags/api/" style="font-size: 14px; color: #999">api</a> <a href="/tags/build-webApp/" style="font-size: 14px; color: #999">build_webApp</a> <a href="/tags/css/" style="font-size: 14px; color: #999">css</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/es6/" style="font-size: 14px; color: #999">es6</a> <a href="/tags/git/" style="font-size: 17.33px; color: #828282">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/java/" style="font-size: 17.33px; color: #828282">java</a> <a href="/tags/javascript/" style="font-size: 24px; color: #555">javascript</a> <a href="/tags/javascript-jquery/" style="font-size: 14px; color: #999">javascript, jquery</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/markdown/" style="font-size: 14px; color: #999">markdown</a> <a href="/tags/maven-gradle/" style="font-size: 14px; color: #999">maven gradle</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/php/" style="font-size: 14px; color: #999">php</a> <a href="/tags/react/" style="font-size: 17.33px; color: #828282">react</a> <a href="/tags/redis-db/" style="font-size: 14px; color: #999">redis, db</a> <a href="/tags/spring/" style="font-size: 17.33px; color: #828282">spring</a> <a href="/tags/springMVC/" style="font-size: 14px; color: #999">springMVC</a> <a href="/tags/ssl/" style="font-size: 14px; color: #999">ssl</a> <a href="/tags/ubuntu/" style="font-size: 14px; color: #999">ubuntu</a> <a href="/tags/vue/" style="font-size: 14px; color: #999">vue</a> <a href="/tags/weex/" style="font-size: 20.67px; color: #6c6c6c">weex</a> <a href="/tags/前端/" style="font-size: 14px; color: #999">前端</a> <a href="/tags/时间寄语/" style="font-size: 14px; color: #999">时间寄语</a>
+    </div>
+  </section>
+
+
+      
+    
+  
+    
+      
+      
+        
+
+
+  <section class='music'>
+    
+<header class='pure'>
+  <div><i class="fas fa-compact-disc fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;最近在听</div>
+  
+    <a class="rightBtn" target="_blank"
+    rel="external nofollow noopener noreferrer"
+    href="https://music.163.com/#/user/home?id=63035382"
+    title="https://music.163.com/#/user/home?id=63035382">
+    <i class="far fa-heart fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <div class="aplayer"
+    data-theme="#1BCDFC"
+    
+    
+    data-mode="circulation"
+    data-server="netease"
+    data-type="playlist"
+    data-id="746319661"
+    data-volume="0.7">
+  </div>
+  <script async src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script async src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+    </div>
+  </section>
+
+
+      
+    
+  
+    
+      
+      
+        
+  <section class='toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章目录</div>
+  
+    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是aop"><span class="toc-text">什么是aop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AOP使用场景"><span class="toc-text">AOP使用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Transactions-事务"><span class="toc-text">Transactions 事务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何使用Spring-AOP"><span class="toc-text">如何使用Spring AOP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-AOP代理对象的生成"><span class="toc-text">Spring AOP代理对象的生成</span></a></li></ol>
+    </div>
+  </section>
+
+
+      
+    
+  
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
+    <footer id="footer" class="clearfix">
+  
+    <div class="footer">
+      <p>这是页脚文字，支持<strong>markdown</strong>语法。</p>
+
+    </div>
+    <br>
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="mailto:978189365@qq.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external"></a>
+        
+      
+        
+          <a href="https://github.com/hongtanhao/" class="social fab fa-github flat-btn" target="_blank" rel="external"></a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=63035382" class="social fas fa-music flat-btn" target="_blank" rel="external"></a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题，总访问量为 <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+  </div>
+</footer>
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+
+  
+    <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        const $reveal = $('.reveal');
+    		if ($reveal.length === 0) return;
+    		const sr = ScrollReveal({ distance: 0 });
+    		sr.reveal('.reveal');
+      });
+    </script>
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        Waves.attach('.flat-btn', ['waves-button']);
+        Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+        Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+        Waves.attach('.flat-box', ['waves-block']);
+        Waves.attach('.float-box', ['waves-block', 'waves-float']);
+        Waves.attach('.waves-image');
+        Waves.init();
+      });
+    </script>
+  
+  
+    <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+  
+  
+    <!-- fastclick -->
+    <script src="https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        FastClick.attach(document.body)
+      }, false)
+    </script>
+  
+  
+
+  
+  
+  
+  
+
+  
+    <script src="/js/app.js"></script>
+<script src="/js/search.js"></script>
+  
+
+
+
+
+
+
+    <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

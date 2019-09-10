@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>javascript的编程风格 | wang xiaofeng&#39;s blog</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+  
+  <meta name='theme-color' content='#FFFFFF'>
+  <meta name='msapplication-TileColor' content='#1BC3FB'>
+  <meta name='msapplication-config' content='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/browserconfig.xml'>
+  
+
+  <!-- link -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+  
+  <link rel='shortcut icon' type='image/x-icon' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico'>
+  <link rel='icon' type='image/x-icon' sizes='32x32' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/favicon-32x32.png'>
+  <link rel='apple-touch-icon' type='image/png' sizes='180x180' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/apple-touch-icon.png'>
+  <link rel='mask-icon' color='#1BC3FB' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/safari-pinned-tab.svg'>
+  <link rel='manifest' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/site.webmanifest'>
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico">
+  
+
+  
+  <link rel="stylesheet" href="/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar" class="pure"></div>
+</div>
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header pure">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          wang xiaofeng's blog
+        
+      </a>
+			<div class='menu'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a id="https:hongtanhao.github.io"
+								 class="nav flat-box" href="https://hongtanhao.github.io/">
+									<i class='fas fa-home fa-fw'></i>&nbsp;主页
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="home"
+								 class="nav flat-box" href="/">
+									<i class='fas fa-rss fa-fw'></i>&nbsp;博客
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="archives"
+								 class="nav flat-box" href="/archives/">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="friends"
+								 class="nav flat-box" href="/friends/">
+									<i class='fas fa-users fa-fw'></i>&nbsp;朋友
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<span class="icon"><i class="fas fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+				<li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu">
+      <ul>
+          
+              
+                  <li>
+										<a id="https:hongtanhao.github.io" class="nav flat-box" href="https://hongtanhao.github.io/">
+											<i class='fas fa-home fa-fw'></i>&nbsp;主页
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="home" class="nav flat-box" href="/">
+											<i class='fas fa-rss fa-fw'></i>&nbsp;博客
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="archives" class="nav flat-box" href="/archives/">
+											<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="friends" class="nav flat-box" href="/friends/">
+											<i class='fas fa-users fa-fw'></i>&nbsp;朋友
+										</a>
+                  </li>
+              
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+  
+<section class='meta'>
+  
+  
+  <div class="meta" id="header-meta">
+    
+      
+          <h1 class="title">javascript的编程风格</h1>
+      
+    
+
+    <div class='new-meta-box'>
+      
+        <div class='new-meta-item author'>
+          <a href="http://yoursite.com">
+            <i class="fas fa-user" aria-hidden="true"></i>
+            John Doe
+          </a>
+        </div>
+      
+      
+        <div class="new-meta-item date">
+          <a class='notlink'>
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            2019-02-22
+          </a>
+        </div>
+      
+      
+        
+      
+      
+        
+          <div class="new-meta-item browse busuanzi">
+            <a class='notlink'>
+              <i class="fas fa-eye" aria-hidden="true"></i>
+              <span id="busuanzi_value_page_pv">
+                <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+              </span>
+            </a>
+          </div>
+        
+      
+      
+    </div>
+    <hr>
+  </div>
+</section>
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <p>javascript的编程风格</p>
+<a id="more"></a>
+<h2 id="“计算机科学只存在两个难题：缓存失效和命名。”——Phil-Karlton"><a href="#“计算机科学只存在两个难题：缓存失效和命名。”——Phil-Karlton" class="headerlink" title="“计算机科学只存在两个难题：缓存失效和命名。”——Phil Karlton"></a>“计算机科学只存在两个难题：缓存失效和命名。”——Phil Karlton</h2><h3 id="一、基本的格式化"><a href="#一、基本的格式化" class="headerlink" title="一、基本的格式化"></a>一、基本的格式化</h3><p>   PascalCase 和 CamelCase 都表示驼峰命名<br>   二者的区别：<br>   PascalCase以大写字母开始，而CamelCase 以小写字母开始<br>   缩进层级：使用4个空格符作为一个缩进层级<br>   语句结尾：JS语句要以分号结尾<br>   行的长度：推荐将行的长度限制在80个字符<br>   换行<br>      通常会在运算符后换行，下一行会增加两个层级的缩进。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">callFunc(document, window, <span class="string">"some string value"</span>, true, <span class="number">123</span></span><br><span class="line">        navigator);</span><br></pre></td></tr></table></figure></p>
+<pre><code>当给变量赋值时，第二行的位置应当和赋值运算符的位置保持对齐
+</code></pre><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">var</span> result = something + anotherThing + somthingElse +</span><br><span class="line">             anotherSomethingElse</span><br></pre></td></tr></table></figure>
+<h3 id="空行"><a href="#空行" class="headerlink" title="空行"></a>空行</h3><pre><code>在方法之间
+在方法中的局部变量（local variable）和第一条语句之间
+在多行或单行注释之前
+在方法内的逻辑片段之间插入空行，提高可读性 
+</code></pre><h3 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h3><pre><code>变量和函数
+    变量：变量名应当总是遵守驼峰（Camel Case）命名法，并且命名前缀应当是名词
+    函数：函数名应当总是遵守驼峰（Camel Case）命名法，并且命名前缀应当是动词
+    常量: 使用大写字母和下划线来命名，下划线用以分割单词
+    var MAX_COUNT = 10;
+    构造函数：构造函数的命名遵照大驼峰命名法（Pascal Case）
+直接量
+   字符串：单引号和双引号均可，推荐使用双引号。（便于在Java和JavaScript之间切换，Java只允许使用双引号）
+多行字符使用字符串连接符（+）将字符串分成多份
+</code></pre><h3 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h3><pre><code>不要省略小数点之前或之后的数字
+禁止八进制直接量 
+</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不推荐的写法</span></span><br><span class="line">var price = .1;</span><br><span class="line">var price = 10.;</span><br><span class="line">var price = 010; // 八进制写法已经被弃用了</span><br><span class="line"></span><br><span class="line"><span class="comment">// 推荐写法</span></span><br><span class="line">var price = 10.00;</span><br><span class="line">var price = 10;</span><br><span class="line">var num = 0xA2; // 十六制写法</span><br><span class="line">var num = 1e23; // 科学计数法</span><br></pre></td></tr></table></figure>
+<h3 id="null"><a href="#null" class="headerlink" title="null"></a>null</h3><pre><code>应当使用null的场景
+   始化一个变量，这个变量可能被赋值成一个对象
+   一个已经初始化的变量比较，无论这个变量是否为一个对象
+   的参数期望是对象时，用作参数传入
+   的返回值期望是对象时，用作返回值传出                                                                       
+不当使用null的场景
+   不要使用null来检测是否传入了某个参数
+   不要用null来检测一个未初始化的变量
+</code></pre><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不要用null来检测一个未初始化的变量</span></span><br><span class="line">var person;</span><br><span class="line"><span class="keyword">if</span> (person != null) &#123;</span><br><span class="line">    doSomething();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 不要使用null来检测是否传入了某个参数</span></span><br><span class="line">function doSomething(arg1,arg2,arg3,arg4) &#123;</span><br><span class="line">    <span class="keyword">if</span> (arg4 != null )&#123;</span><br><span class="line">        doSomething();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h3><pre><code> 避免在代码中使用undefined，可以有效的确保只有在一种情况下typeof才会返回&quot;undefined&quot;：当变量未声明时。如何可以，则将其赋值为null。
+当变量初始值赋值为null，则表明这个变量最终很可能赋值为对象，typeof null 返回&quot;object&quot;，这样就可以和undefined区分开了
+</code></pre><p>  对接直接量<br>     避免使用构造函数创建对象</p>
+<h3 id="二、注释"><a href="#二、注释" class="headerlink" title="二、注释"></a>二、注释</h3><pre><code>单行注释
+    独占一行的注释，用来解释下一行的代码。这行注释之前总是有一个空行，且缩进层级与下一行代码一致。
+    在代码行的尾部注释。代码结束到注释之间至少有一个缩进。注释（包括之前的代码部分）不应当超过单行    最大字符数限制，如果超过了，就将这条注释放置于当前代码行的上方。
+   被注释掉的大段代码
+多行注释
+   推荐Java风格的多行注释
+使用注释
+    难于理解的代码
+    可能被误认为错误的代码
+    浏览器特性hack
+    推荐使用文档生成工具来为你的JavaScript生成文档。JavaScript代码注释必须符合你所用的工具支持的格式，很多文档生成工具都支持JavaDoc风格的文档注释。
+文档注释
+    需要添加注释的内容
+    所有的方法
+    应当对方法、期望的参数及可能的返回值添加注释描述
+    所有的构造函数
+    应当对自定义类型和期望的参数添加注释描述
+    所有包含文档化方法的对象
+    如果一个对象包含一个或多个附带文档注释的方法，那么对这个对象也应该适当地针对文档生成工具添加文档注释
+</code></pre><h2 id="三、语句和表达式"><a href="#三、语句和表达式" class="headerlink" title="三、语句和表达式"></a>三、语句和表达式</h2><h3 id="1-花括号的对齐方式"><a href="#1-花括号的对齐方式" class="headerlink" title="1.花括号的对齐方式"></a>1.花括号的对齐方式</h3><p>所有的块语句都应当使用花括号<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// java 风格，推荐这种风格</span></span><br><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    doSomething();</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  doSomethingElse();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// c#风格、不推荐这种风格，以避免错误的分号自动插入</span></span><br><span class="line"><span class="keyword">if</span> (condition)</span><br><span class="line">&#123;</span><br><span class="line">    doSomething();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">   doSomethingElse();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-块语句间隔"><a href="#2-块语句间隔" class="headerlink" title="2.块语句间隔"></a>2.块语句间隔</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在语句名、圆括号和左花括号之间没有空格</span></span><br><span class="line"><span class="function"><span class="title">if</span><span class="params">(condition)</span></span>&#123;</span><br><span class="line">    doSomething();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 在左圆括号和右边圆括号之后各自添加一个空格（推荐）</span></span><br><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    doSomething();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 在左圆括号后和右前各添加一个空格</span></span><br><span class="line"><span class="keyword">if</span> ( condition ) &#123;</span><br><span class="line">    doSomething();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-swith-语句"><a href="#3-swith-语句" class="headerlink" title="3.swith 语句"></a>3.swith 语句</h3><h4 id="1-gt-缩进"><a href="#1-gt-缩进" class="headerlink" title="1&gt;.缩进"></a>1&gt;.缩进</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// java风格（推荐）</span></span><br><span class="line">switch (condition) &#123;</span><br><span class="line">    case <span class="string">"first"</span>:</span><br><span class="line">         <span class="comment">// 代码</span></span><br><span class="line">         break;</span><br><span class="line">    case <span class="string">"second"</span>:</span><br><span class="line">         <span class="comment">// 代码</span></span><br><span class="line">         break;</span><br><span class="line">     default:</span><br><span class="line">         <span class="comment">// 代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-gt-case语句的‘连续执行’"><a href="#2-gt-case语句的‘连续执行’" class="headerlink" title="2&gt;. case语句的‘连续执行’"></a>2&gt;. case语句的‘连续执行’</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 只要事是有意为之并且添加了注释，就可以使用case语句的连续执行</span></span><br><span class="line">switch (condition) &#123;</span><br><span class="line">    case <span class="string">"first"</span>:</span><br><span class="line">         <span class="comment">// 代码</span></span><br><span class="line">         break;</span><br><span class="line">    case <span class="string">"second"</span>:</span><br><span class="line">         <span class="comment">// 代码</span></span><br><span class="line">         break;</span><br><span class="line">     default:</span><br><span class="line">         <span class="comment">// default 中没有逻辑</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-gt-default"><a href="#3-gt-default" class="headerlink" title="3&gt;. default"></a>3&gt;. default</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 从语法结构角度考虑，即使default中什么也不做，也不应当省略default</span></span><br><span class="line">switch (condition) &#123;</span><br><span class="line">    case <span class="string">"first"</span>:</span><br><span class="line">         <span class="comment">// 代码</span></span><br><span class="line">         break;</span><br><span class="line">    case <span class="string">"second"</span>:</span><br><span class="line">         <span class="comment">// 代码</span></span><br><span class="line">         break;</span><br><span class="line">     default:</span><br><span class="line">         <span class="comment">// 代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-with-语句"><a href="#4-with-语句" class="headerlink" title="4.with 语句"></a>4.with 语句</h3><p>避免使用with语句<br>在严格模式下(‘use strict’)，with语句是被明确禁止的，如果使用则报语法错误</p>
+<h3 id="5-for-循环"><a href="#5-for-循环" class="headerlink" title="5.for 循环"></a>5.for 循环</h3><p>Dojo编程风格指南明确指出可以使用continue和break<br>推荐尽可能避免使用continue，但也没有理由完全禁止使用，应该根据代码可读性来决定。</p>
+<h3 id="6-for-in-循环"><a href="#6-for-in-循环" class="headerlink" title="6.for-in 循环"></a>6.for-in 循环</h3><p>for-in 循环是用来遍历对象属性的，避免用它来遍历数组<br>所有的for-in 循环必须使用hasOwnProperty()方法过滤触实例属性<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="selector-tag">var</span> prop <span class="keyword">in</span> object) &#123;</span><br><span class="line">     <span class="keyword">if</span> (<span class="selector-tag">object</span>.hasOwnProperty(prop)) &#123;</span><br><span class="line">          console.log('Property name is' + prop);</span><br><span class="line">          console.log('Property value is' + object[prop]);</span><br><span class="line">     &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="三、变量和函数运算符"><a href="#三、变量和函数运算符" class="headerlink" title="三、变量和函数运算符"></a>三、变量和函数运算符</h2><h3 id="1-变量声明"><a href="#1-变量声明" class="headerlink" title="1.变量声明"></a>1.变量声明</h3><p>注意：变量声明的提升<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function doSomethingWithItems(items)&#123;</span><br><span class="line">    for (var i = 0, len = items.length; i &lt; len; i++) &#123;</span><br><span class="line">         doSomething(item[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 等价于以下代码</span></span><br><span class="line">function doSomethingWithItems(items)&#123;</span><br><span class="line">    var i, len;</span><br><span class="line">    for (i = 0, len = items.length; i &lt; len; i++) &#123;</span><br><span class="line">         doSomething(item[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-函数声明"><a href="#2-函数声明" class="headerlink" title="2.函数声明"></a>2.函数声明</h3><p>注意：函数声明的提升<br>    函数不应该出现在语句块之内<br>    函数声明应该在条件语句的外部使用<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这段代码在不同的浏览器中运行的结果不尽相同</span></span><br><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    function doSomething() &#123;</span><br><span class="line">        alert('hi');</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">   function doSomething() &#123;</span><br><span class="line">       alert('Yo');</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-函数调用间隔"><a href="#3-函数调用间隔" class="headerlink" title="3.函数调用间隔"></a>3.函数调用间隔</h3><p>推荐风格：在函数名和左括号之间没有空格<br>doSomething(item);</p>
+<h4 id="1-gt-立即调用函数-将函数用一对圆括号包裹起来"><a href="#1-gt-立即调用函数-将函数用一对圆括号包裹起来" class="headerlink" title="1&gt;. 立即调用函数 将函数用一对圆括号包裹起来"></a>1&gt;. 立即调用函数 将函数用一对圆括号包裹起来</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将函数用一对圆括号包裹起来 </span></span><br><span class="line"><span class="selector-tag">var</span> value = (function ()&#123;</span><br><span class="line">    <span class="comment">// 函数体</span></span><br><span class="line">    return &#123;</span><br><span class="line">        message: <span class="string">'Hi'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h4 id="2-gt-严格模式"><a href="#2-gt-严格模式" class="headerlink" title="2&gt;.严格模式"></a>2&gt;.严格模式</h4><p>‘use strict’;<br>推荐尽量使用严格模式<br>尽量不要在全局作用域中使用严格模式<br>如果希望在多个函数中应用严格模式可以使用立即执行函数</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(function() &#123;</span><br><span class="line">    'use strict';</span><br><span class="line">    function doSometing() &#123;</span><br><span class="line">        <span class="comment">// 代码</span></span><br><span class="line">    &#125;</span><br><span class="line">    function doSomethingElse() &#123;</span><br><span class="line">        <span class="comment">// 代码</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h4 id="3-gt-相等"><a href="#3-gt-相等" class="headerlink" title="3&gt;.相等"></a>3&gt;.相等</h4><p>==和!=比较会发生强制类型转换<br>推荐使用===和!==进行比较<br>尽量避免使用eval()函数<br>尽量避免使用原始包装类型创建对象</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不好的做法（应该尽量避免）</span></span><br><span class="line">eval("alert('hi')");</span><br><span class="line">var muFunc = new Function('alert('Hi')');</span><br><span class="line">setTimeout( 'document.body.style.background="red"',50);</span><br><span class="line">setInterval('document.title="it is now"' + (new Date()),1000);</span><br><span class="line">var name = new String('Nicholas');</span><br><span class="line">var auther = new Boolean(true);</span><br><span class="line">var count = new Number(10);</span><br></pre></td></tr></table></figure>
+
+      </div>
+        
+          <section class='meta' id="footer-meta">
+            <hr>
+            <div class='new-meta-box'>
+              
+                <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-03-08T09:20:45+08:00">
+                  <a class='notlink'>
+                    <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                    2019-03-08
+                  </a>
+                </div>
+              
+              
+                
+                <div class="new-meta-item meta-tags"><a class="tag" href="/tags/javascript/"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;javascript</a></div>
+              
+              
+            </div>
+          </section>
+        
+
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/02/22/vue/" rel="prev" title="VUE 学习路线，让你不迷路，继《jishupang》之作业笔记(项目积累经验)">
+                                  
+                                      VUE 学习路线，让你不迷路，继《jishupang》之作业笔记(项目积累经验)
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/vue/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>vue</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/02/22/javascript语法基础系列之操作符/" rel="prev" title="javascript语法基础系列之操作符">
+                                    
+                                        javascript语法基础系列之操作符
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/javascript/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>javascript</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+
+
+
+<script>
+    window.subData = {
+        title: 'javascript的编程风格',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+  
+  
+    
+      
+      
+        <section class='author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/avatar/avatar.png'/>
+      </div>
+    
+    
+      <div class='text'>
+        
+        
+        
+          <p><span id="jinrishici-sentence">wang xiaofeng's blog</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="mailto:978189365@qq.com" class="social flat-btn" target="_blank" rel="external"><i class="social fas fa-envelope" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://github.com/hongtanhao/" class="social flat-btn" target="_blank" rel="external"><i class="social fab fa-github" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=63035382" class="social flat-btn" target="_blank" rel="external"><i class="social fas fa-music" aria-hidden="true"></i></a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        <section class='plain'>
+  
+<header class='pure'>
+  <div><i class="fas fa-bullhorn fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;注意啦～</div>
+  
+    <a class="rightBtn" target="_blank"
+    rel="external nofollow noopener noreferrer"
+    href="https://xaoxuu.com/wiki/material-x/"
+    title="https://xaoxuu.com/wiki/material-x/">
+    <i class="fas fa-question-circle fa-fw"></i></a>
+  
+</header>
+
+  <div class='content pure'>
+    <p>本站使用 <a href="https://xaoxuu.com/wiki/material-x/">Material X</a> 作为主题，喜欢这个主题的朋友可以阅读文档进行安装哦，超喜欢的话还可以安利给身边的朋友哦～</p>
+
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        <section class='list'>
+  
+<header class='pure'>
+  <div><i class="fas fa-medal fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;精选项目</div>
+  
+    <a class="rightBtn" target="_blank"
+    rel="external nofollow noopener noreferrer"
+    href="https://xaoxuu.com/projects/"
+    title="https://xaoxuu.com/projects/">
+    <i class="fas fa-arrow-right fa-fw"></i></a>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="entry">
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/axkit/" href="https://xaoxuu.com/wiki/axkit/">
+          <div class='name'>
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;AXKit
+          </div>
+          
+            <div class='badge'>(iOS开源库)</div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/noticeboard/" href="https://xaoxuu.com/wiki/noticeboard/">
+          <div class='name'>
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;NoticeBoard
+          </div>
+          
+            <div class='badge'>(iOS开源库)</div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/heartmate/" href="https://xaoxuu.com/heartmate/">
+          <div class='name'>
+            
+              <i class="fas fa-heartbeat fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;HeartMate
+          </div>
+          
+            <div class='badge'>(iOS应用程序)</div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/">
+          <div class='name'>
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;Material X
+          </div>
+          
+            <div class='badge'>(Hexo博客主题)</div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        
+
+      
+    
+  
+    
+      
+      
+        
+  <section class='tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/MongoDB-node/" style="font-size: 14px; color: #999">MongoDB node</a> <a href="/tags/api/" style="font-size: 14px; color: #999">api</a> <a href="/tags/build-webApp/" style="font-size: 14px; color: #999">build_webApp</a> <a href="/tags/css/" style="font-size: 14px; color: #999">css</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/es6/" style="font-size: 14px; color: #999">es6</a> <a href="/tags/git/" style="font-size: 17.33px; color: #828282">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/java/" style="font-size: 17.33px; color: #828282">java</a> <a href="/tags/javascript/" style="font-size: 24px; color: #555">javascript</a> <a href="/tags/javascript-jquery/" style="font-size: 14px; color: #999">javascript, jquery</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/markdown/" style="font-size: 14px; color: #999">markdown</a> <a href="/tags/maven-gradle/" style="font-size: 14px; color: #999">maven gradle</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/php/" style="font-size: 14px; color: #999">php</a> <a href="/tags/react/" style="font-size: 17.33px; color: #828282">react</a> <a href="/tags/redis-db/" style="font-size: 14px; color: #999">redis, db</a> <a href="/tags/spring/" style="font-size: 17.33px; color: #828282">spring</a> <a href="/tags/springMVC/" style="font-size: 14px; color: #999">springMVC</a> <a href="/tags/ssl/" style="font-size: 14px; color: #999">ssl</a> <a href="/tags/ubuntu/" style="font-size: 14px; color: #999">ubuntu</a> <a href="/tags/vue/" style="font-size: 14px; color: #999">vue</a> <a href="/tags/weex/" style="font-size: 20.67px; color: #6c6c6c">weex</a> <a href="/tags/前端/" style="font-size: 14px; color: #999">前端</a> <a href="/tags/时间寄语/" style="font-size: 14px; color: #999">时间寄语</a>
+    </div>
+  </section>
+
+
+      
+    
+  
+    
+      
+      
+        
+
+
+  <section class='music'>
+    
+<header class='pure'>
+  <div><i class="fas fa-compact-disc fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;最近在听</div>
+  
+    <a class="rightBtn" target="_blank"
+    rel="external nofollow noopener noreferrer"
+    href="https://music.163.com/#/user/home?id=63035382"
+    title="https://music.163.com/#/user/home?id=63035382">
+    <i class="far fa-heart fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <div class="aplayer"
+    data-theme="#1BCDFC"
+    
+    
+    data-mode="circulation"
+    data-server="netease"
+    data-type="playlist"
+    data-id="746319661"
+    data-volume="0.7">
+  </div>
+  <script async src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script async src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+    </div>
+  </section>
+
+
+      
+    
+  
+    
+      
+      
+        
+  <section class='toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章目录</div>
+  
+    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#“计算机科学只存在两个难题：缓存失效和命名。”——Phil-Karlton"><span class="toc-text">“计算机科学只存在两个难题：缓存失效和命名。”——Phil Karlton</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、基本的格式化"><span class="toc-text">一、基本的格式化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#空行"><span class="toc-text">空行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命名"><span class="toc-text">命名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数字"><span class="toc-text">数字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">null</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">undefined</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、注释"><span class="toc-text">二、注释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、语句和表达式"><span class="toc-text">三、语句和表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-花括号的对齐方式"><span class="toc-text">1.花括号的对齐方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-块语句间隔"><span class="toc-text">2.块语句间隔</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-swith-语句"><span class="toc-text">3.swith 语句</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-gt-缩进"><span class="toc-text">1&gt;.缩进</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-gt-case语句的‘连续执行’"><span class="toc-text">2&gt;. case语句的‘连续执行’</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-gt-default"><span class="toc-text">3&gt;. default</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-with-语句"><span class="toc-text">4.with 语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-for-循环"><span class="toc-text">5.for 循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-for-in-循环"><span class="toc-text">6.for-in 循环</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、变量和函数运算符"><span class="toc-text">三、变量和函数运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-变量声明"><span class="toc-text">1.变量声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-函数声明"><span class="toc-text">2.函数声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-函数调用间隔"><span class="toc-text">3.函数调用间隔</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-gt-立即调用函数-将函数用一对圆括号包裹起来"><span class="toc-text">1&gt;. 立即调用函数 将函数用一对圆括号包裹起来</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-gt-严格模式"><span class="toc-text">2&gt;.严格模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-gt-相等"><span class="toc-text">3&gt;.相等</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </section>
+
+
+      
+    
+  
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
+    <footer id="footer" class="clearfix">
+  
+    <div class="footer">
+      <p>这是页脚文字，支持<strong>markdown</strong>语法。</p>
+
+    </div>
+    <br>
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="mailto:978189365@qq.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external"></a>
+        
+      
+        
+          <a href="https://github.com/hongtanhao/" class="social fab fa-github flat-btn" target="_blank" rel="external"></a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=63035382" class="social fas fa-music flat-btn" target="_blank" rel="external"></a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题，总访问量为 <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+  </div>
+</footer>
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+
+  
+    <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        const $reveal = $('.reveal');
+    		if ($reveal.length === 0) return;
+    		const sr = ScrollReveal({ distance: 0 });
+    		sr.reveal('.reveal');
+      });
+    </script>
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        Waves.attach('.flat-btn', ['waves-button']);
+        Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+        Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+        Waves.attach('.flat-box', ['waves-block']);
+        Waves.attach('.float-box', ['waves-block', 'waves-float']);
+        Waves.attach('.waves-image');
+        Waves.init();
+      });
+    </script>
+  
+  
+    <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+  
+  
+    <!-- fastclick -->
+    <script src="https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        FastClick.attach(document.body)
+      }, false)
+    </script>
+  
+  
+
+  
+  
+  
+  
+
+  
+    <script src="/js/app.js"></script>
+<script src="/js/search.js"></script>
+  
+
+
+
+
+
+
+    <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

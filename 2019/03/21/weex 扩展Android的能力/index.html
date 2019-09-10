@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>weex 扩展Android 和 iso 的能力 | wang xiaofeng&#39;s blog</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+  
+  <meta name='theme-color' content='#FFFFFF'>
+  <meta name='msapplication-TileColor' content='#1BC3FB'>
+  <meta name='msapplication-config' content='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/browserconfig.xml'>
+  
+
+  <!-- link -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+  
+  <link rel='shortcut icon' type='image/x-icon' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico'>
+  <link rel='icon' type='image/x-icon' sizes='32x32' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/favicon-32x32.png'>
+  <link rel='apple-touch-icon' type='image/png' sizes='180x180' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/apple-touch-icon.png'>
+  <link rel='mask-icon' color='#1BC3FB' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/safari-pinned-tab.svg'>
+  <link rel='manifest' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/site.webmanifest'>
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico">
+  
+
+  
+  <link rel="stylesheet" href="/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar" class="pure"></div>
+</div>
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header pure">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          wang xiaofeng's blog
+        
+      </a>
+			<div class='menu'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a id="https:hongtanhao.github.io"
+								 class="nav flat-box" href="https://hongtanhao.github.io/">
+									<i class='fas fa-home fa-fw'></i>&nbsp;主页
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="home"
+								 class="nav flat-box" href="/">
+									<i class='fas fa-rss fa-fw'></i>&nbsp;博客
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="archives"
+								 class="nav flat-box" href="/archives/">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="friends"
+								 class="nav flat-box" href="/friends/">
+									<i class='fas fa-users fa-fw'></i>&nbsp;朋友
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<span class="icon"><i class="fas fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+				<li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu">
+      <ul>
+          
+              
+                  <li>
+										<a id="https:hongtanhao.github.io" class="nav flat-box" href="https://hongtanhao.github.io/">
+											<i class='fas fa-home fa-fw'></i>&nbsp;主页
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="home" class="nav flat-box" href="/">
+											<i class='fas fa-rss fa-fw'></i>&nbsp;博客
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="archives" class="nav flat-box" href="/archives/">
+											<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="friends" class="nav flat-box" href="/friends/">
+											<i class='fas fa-users fa-fw'></i>&nbsp;朋友
+										</a>
+                  </li>
+              
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+  
+<section class='meta'>
+  
+  
+  <div class="meta" id="header-meta">
+    
+      
+          <h1 class="title">weex 扩展Android 和 iso 的能力</h1>
+      
+    
+
+    <div class='new-meta-box'>
+      
+        <div class='new-meta-item author'>
+          <a href="http://yoursite.com">
+            <i class="fas fa-user" aria-hidden="true"></i>
+            John Doe
+          </a>
+        </div>
+      
+      
+        <div class="new-meta-item date">
+          <a class='notlink'>
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            2019-03-21
+          </a>
+        </div>
+      
+      
+        
+      
+      
+        
+          <div class="new-meta-item browse busuanzi">
+            <a class='notlink'>
+              <i class="fas fa-eye" aria-hidden="true"></i>
+              <span id="busuanzi_value_page_pv">
+                <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+              </span>
+            </a>
+          </div>
+        
+      
+      
+    </div>
+    <hr>
+  </div>
+</section>
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <p>weex 扩展Android 和 iso 的能力, 来自<a href="https://weex.apache.org/zh/guide/extend/extend-android.html#module-%E6%89%A9%E5%B1%95" target="_blank" rel="noopener">weex官网</a></p>
+<a id="more"></a>
+<h1 id="Module-扩展"><a href="#Module-扩展" class="headerlink" title="Module 扩展"></a>Module 扩展</h1><ol>
+<li>Module 扩展必须继承WXModule类。</li>
+<li>扩展方法必须加上<code>@JSMethod(uiThread = false or true)</code>注解。Weex会根据注解来判断当前方法是否要运行在UI线程。</li>
+<li>Weex是根据反射来调用Module扩展方法，所以Module中的扩展方法必须是<code>pulic</code>类型。</li>
+<li>同样是因为反射调用，Module不能被混淆。请在混淆文件中添加代码:<code>-keep public class * extends com.taobao.weex.common.WXModule{*;}</code>。</li>
+<li>Module扩展方法可以使用int,double,float,String,Map,List类型的参数。</li>
+<li>完成Module后一定要在初始化注册<code>WXSDKEngine.registerModule(&quot;myModule&quot;, MyModule.class)</code>,否则会报类似错误：<code>ReportException :undefined:9: TypeError: Object #&lt;Object&gt; has no method &#39;printLog&#39;</code>;</li>
+</ol>
+<p>示例如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">pulic <span class="class"><span class="keyword">class</span> <span class="title">MyModule</span> <span class="keyword">extends</span> <span class="title">WXModule</span> </span>&#123;</span><br><span class="line">    <span class="comment">// run ui thread</span></span><br><span class="line">    <span class="meta">@JSMethod</span>(uithead = <span class="keyword">true</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printLog</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">      Toast.makeText(mWXSDKInstance.getContext(),msg,Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// run JS thread</span></span><br><span class="line">    <span class="meta">@JSMethod</span>(uiThread = <span class="keyword">false</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fireEventSyncCall</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="comment">// implement your module logic here</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Register the module<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WXSDKEngine.registerModule(<span class="string">'MyModule'</span>, MyModule.class);</span><br></pre></td></tr></table></figure></p>
+<p>JS调用如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">text</span> <span class="attr">onclick</span>=<span class="string">'click'</span>&gt;</span>testMyModule<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">      name: <span class="string">''</span>.</span></span><br><span class="line"><span class="undefined">      methods: &#123;</span></span><br><span class="line"><span class="undefined">        click() &#123;</span></span><br><span class="line"><span class="javascript">          weex.requireModule(<span class="string">'MyModule'</span>).printLog(<span class="string">"i am a weex Module"</span>);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="Module-注册"><a href="#Module-注册" class="headerlink" title="Module 注册"></a>Module 注册</h1><p>registerModule(moduleName,moduleClass)</p>
+<ul>
+<li>return {bool}: 是否注册成功</li>
+<li>moduleName {String}: 模块名称</li>
+<li>moduleClass {Class}: 模块对应的class,创建module 实例时调用</li>
+</ul>
+<p>使用方式：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WXSDKEngine.registerModule(<span class="string">'picker'</span>, WXPickersModule.class);</span><br></pre></td></tr></table></figure></p>
+<h1 id="Component-扩展（version-lt-0-19-0）"><a href="#Component-扩展（version-lt-0-19-0）" class="headerlink" title="Component 扩展（version&lt; 0.19.0）"></a>Component 扩展（version&lt; 0.19.0）</h1><ul>
+<li>Component 扩展类必须继承 WXComponent.</li>
+<li>Component 对应的设置属性的方法必须添加注解 <code>@WXComponentProp(name=value(value is attr or style of dsl))</code></li>
+<li>Weex sdk 通过反射调用对应的方法，所以 Component 对应的属性方法必须是 public，并且不能被混淆。请在混淆文件中添加代码<code>-keep public class * extends com.taobao.weex.ui.component.WXComponent{*;}</code></li>
+<li>Component 扩展的方法可以使用 int, double, float, String, Map, List 类型的参数</li>
+<li>完成 Component 后一定要在初始化时注册 <code>WXSDKEngine.registerComponent(&quot;richText&quot;, RichText.class)</code>;<br>示例如下：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RichText</span> <span class="keyword">extends</span> <span class="title">WXComponent</span>&lt;<span class="title">TextView</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">RichText</span><span class="params">(WXSDKInstance instance, WXDomObject dom, WXContainer parent)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(instance, dom, parent);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> TextView <span class="title">initComponentHostView</span><span class="params">(@NonNull Context context)</span> </span>&#123;</span><br><span class="line">    TextView textView  = <span class="keyword">new</span> TextView(context);</span><br><span class="line">    textView.setTextSize(<span class="number">20</span>);</span><br><span class="line">    textView.setTextColor(Color.banck);</span><br><span class="line">    <span class="keyword">return</span> textView;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@WXComponentProp</span>(name = <span class="string">"tel"</span>)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTel</span><span class="params">(String telNumber)</span> </span>&#123;</span><br><span class="line">    getHostView().setText(<span class="string">"tel:"</span> + telNumber);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>注册你的组件：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WXSDKEngine.registerComponent(<span class="string">'RichText'</span>, RichText.class);</span><br></pre></td></tr></table></figure></p>
+<p>JS调用如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">richText</span> <span class="attr">tel</span>=<span class="string">"12305"</span> <span class="attr">style</span>=<span class="string">"width:200;height:100"</span>&gt;</span>12305<span class="tag">&lt;/<span class="name">richText</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="Component-注册"><a href="#Component-注册" class="headerlink" title="Component 注册"></a>Component 注册</h1><h3 id="registerComponent-type-class-appendTree"><a href="#registerComponent-type-class-appendTree" class="headerlink" title="registerComponent(type,class,appendTree)"></a>registerComponent(type,class,appendTree)</h3><ul>
+<li>return(bool): 是否注册成功</li>
+<li>type(String): 前端使用的对应标签</li>
+<li>class(Class): 组件的class，在创建组件实例时调用</li>
+<li>appendTree(bool): 渲染时判定逻辑，默认false<ul>
+<li>如果为true，则这个组件的子组件，整颗树建立、layout完后，整体一起刷新。</li>
+<li>如果为false，则这个组件的子组件，每add一个，刷新一个。<br>使用方式：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WXSDKEngine.registerComponent(<span class="string">'video'</span>, WXVideo, <span class="keyword">false</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="registerComponent-holder-appendTree，…names"><a href="#registerComponent-holder-appendTree，…names" class="headerlink" title="registerComponent(holder,appendTree，…names)"></a>registerComponent(holder,appendTree，…names)</h3><ul>
+<li>return(bool): 是否注册成功</li>
+<li>holder(IFComponentHolder): 用于创建component的抽象工厂，默认使用<strong>SimpleComponentHolder</strong>。</li>
+<li>appendTree: 同上</li>
+<li>names(String …): 前端使用的对应标签<br>使用方式:<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">WXSDKEngine.registerComponent(</span><br><span class="line">              <span class="keyword">new</span> SimpleComponentHolder(</span><br><span class="line">                      WXText.class,</span><br><span class="line">                      <span class="keyword">new</span> WXText.Creator()</span><br><span class="line">              ),</span><br><span class="line">              <span class="keyword">false</span>,</span><br><span class="line">              <span class="string">"text"</span></span><br><span class="line">      );</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="Adapter-扩展"><a href="#Adapter-扩展" class="headerlink" title="Adapter 扩展"></a>Adapter 扩展</h1><h3 id="图片库Adapter"><a href="#图片库Adapter" class="headerlink" title="图片库Adapter"></a>图片库Adapter</h3><p>需要时集成接口 IWXImgLoaderAdapter，实现 setImage 方法。<br>示例代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ImageAdapter</span> <span class="keyword">implements</span> <span class="title">IWXImgLoaderAdapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">ImageAdapter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setImage</span><span class="params">(<span class="keyword">final</span> String url, <span class="keyword">final</span> ImageView view,</span></span></span><br><span class="line"><span class="function"><span class="params">                       WXImageQuality quality, WXImageStrategy strategy)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    WXSDKManager.getInstance().postOnUiThread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line"></span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(view==<span class="keyword">null</span>||view.getLayoutParams()==<span class="keyword">null</span>)&#123;</span><br><span class="line">          <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (TextUtils.isEmpty(url)) &#123;</span><br><span class="line">          view.setImageBitmap(<span class="keyword">null</span>);</span><br><span class="line">          <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        String temp = url;</span><br><span class="line">        <span class="keyword">if</span> (url.startsWith(<span class="string">"//"</span>)) &#123;</span><br><span class="line">          temp = <span class="string">"http:"</span> + url;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (view.getLayoutParams().width &lt;= <span class="number">0</span> || view.getLayoutParams().height &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Picasso.with(WXEnvironment.getApplication())</span><br><span class="line">            .load(temp)</span><br><span class="line">            .into(view);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,<span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Adapter-注册"><a href="#Adapter-注册" class="headerlink" title="Adapter 注册"></a>Adapter 注册</h1><p>WEEX和图片库完全解耦，WEEX的图片加载，都是通过调用公共接口，由实现类决定调用哪个图片库</p>
+<p>一个相对完整的源码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.alibaba.weex;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.app.Activity;</span><br><span class="line"><span class="keyword">import</span> android.app.Application;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.android.bindingx.plugin.weex.BindingX;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.weex.commons.adapter.DefaultWebSocketAdapterFactory;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.weex.commons.adapter.ImageAdapter;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.weex.commons.adapter.JSExceptionAdapter;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.weex.commons.adapter.PicassoBasedDrawableLoader;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.weex.extend.adapter.ApmGenerator;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.weex.extend.adapter.DefaultAccessibilityRoleAdapter;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.weex.extend.adapter.InterceptWXHttpAdapter;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.weex.extend.adapter.WXAnalyzerDemoListener;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.weex.extend.component.WXComponentSyncTest;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.weex.extend.component.WXMask;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.weex.extend.component.WXParallax;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.weex.extend.<span class="keyword">module</span>.GeolocationModule;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.weex.extend.<span class="keyword">module</span>.MyModule;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.weex.extend.<span class="keyword">module</span>.RenderModule;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.weex.extend.<span class="keyword">module</span>.SyncTestModule;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.weex.extend.<span class="keyword">module</span>.WXEventModule;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.weex.extend.<span class="keyword">module</span>.WXTitleBar;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.weex.extend.<span class="keyword">module</span>.WXWsonTestModule;</span><br><span class="line"><span class="keyword">import</span> com.facebook.drawee.backends.pipeline.Fresco;</span><br><span class="line"><span class="keyword">import</span> com.taobao.weex.InitConfig;</span><br><span class="line"><span class="keyword">import</span> com.taobao.weex.WXEnvironment;</span><br><span class="line"><span class="keyword">import</span> com.taobao.weex.WXSDKEngine;</span><br><span class="line"><span class="keyword">import</span> com.taobao.weex.WXSDKManager;</span><br><span class="line"><span class="keyword">import</span> com.taobao.weex.bridge.WXBridgeManager;</span><br><span class="line"><span class="keyword">import</span> com.taobao.weex.common.WXException;</span><br><span class="line"><span class="keyword">import</span> com.taobao.weex.performance.WXAnalyzerDataTransfer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WXApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate();</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Set up for fresco usage.</span></span><br><span class="line"><span class="comment">     * Set&lt;RequestListener&gt; requestListeners = new HashSet&lt;&gt;();</span></span><br><span class="line"><span class="comment">     * requestListeners.add(new RequestLoggingListener());</span></span><br><span class="line"><span class="comment">     * ImagePipelineConfig config = ImagePipelineConfig.newBuilder(this)</span></span><br><span class="line"><span class="comment">     *     .setRequestListeners(requestListeners)</span></span><br><span class="line"><span class="comment">     *     .build();</span></span><br><span class="line"><span class="comment">     * Fresco.initialize(this,config);</span></span><br><span class="line"><span class="comment">     **/</span></span><br><span class="line"><span class="comment">//    initDebugEnvironment(true, false, "DEBUG_SERVER_HOST");</span></span><br><span class="line">    WXBridgeManager.updateGlobalConfig(<span class="string">"wson_on"</span>);</span><br><span class="line">    WXEnvironment.setOpenDebugLog(<span class="keyword">true</span>);</span><br><span class="line">    WXEnvironment.setApkDebugable(<span class="keyword">true</span>);</span><br><span class="line">    WXSDKEngine.addCustomOptions(<span class="string">"appName"</span>, <span class="string">"WXSample"</span>);</span><br><span class="line">    WXSDKEngine.addCustomOptions(<span class="string">"appGroup"</span>, <span class="string">"WXApp"</span>);</span><br><span class="line">    WXSDKEngine.initialize(<span class="keyword">this</span>,</span><br><span class="line">                           <span class="keyword">new</span> InitConfig.Builder()</span><br><span class="line">                               <span class="comment">//.setImgAdapter(new FrescoImageAdapter())// use fresco adapter</span></span><br><span class="line">                               .setImgAdapter(<span class="keyword">new</span> ImageAdapter())</span><br><span class="line">                               .setDrawableLoader(<span class="keyword">new</span> PicassoBasedDrawableLoader(getApplicationContext()))</span><br><span class="line">                               .setWebSocketAdapterFactory(<span class="keyword">new</span> DefaultWebSocketAdapterFactory())</span><br><span class="line">                               .setJSExceptionAdapter(<span class="keyword">new</span> JSExceptionAdapter())</span><br><span class="line">                               .setHttpAdapter(<span class="keyword">new</span> InterceptWXHttpAdapter())</span><br><span class="line">                               .setApmGenerater(<span class="keyword">new</span> ApmGenerator())</span><br><span class="line">                               .build()</span><br><span class="line">                          );</span><br><span class="line">    WXSDKManager.getInstance().addWXAnalyzer(<span class="keyword">new</span> WXAnalyzerDemoListener());</span><br><span class="line">    WXAnalyzerDataTransfer.isOpenPerformance = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    WXSDKManager.getInstance().setAccessibilityRoleAdapter(<span class="keyword">new</span> DefaultAccessibilityRoleAdapter());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      Fresco.initialize(<span class="keyword">this</span>);</span><br><span class="line">      WXSDKEngine.registerComponent(<span class="string">"synccomponent"</span>, WXComponentSyncTest.class);</span><br><span class="line">      WXSDKEngine.registerComponent(WXParallax.PARALLAX, WXParallax.class);</span><br><span class="line"></span><br><span class="line">      WXSDKEngine.registerModule(<span class="string">"render"</span>, RenderModule.class);</span><br><span class="line">      WXSDKEngine.registerModule(<span class="string">"event"</span>, WXEventModule.class);</span><br><span class="line">      WXSDKEngine.registerModule(<span class="string">"syncTest"</span>, SyncTestModule.class);</span><br><span class="line"></span><br><span class="line">      WXSDKEngine.registerComponent(<span class="string">"mask"</span>, WXMask.class);</span><br><span class="line">      WXSDKEngine.registerModule(<span class="string">"myModule"</span>, MyModule.class);</span><br><span class="line">      WXSDKEngine.registerModule(<span class="string">"geolocation"</span>, GeolocationModule.class);</span><br><span class="line"></span><br><span class="line">      WXSDKEngine.registerModule(<span class="string">"titleBar"</span>, WXTitleBar.class);</span><br><span class="line"></span><br><span class="line">      WXSDKEngine.registerModule(<span class="string">"wsonTest"</span>, WXWsonTestModule.class);</span><br><span class="line"></span><br><span class="line">      BindingX.register();</span><br><span class="line"></span><br><span class="line">      <span class="comment">/**</span></span><br><span class="line"><span class="comment">       * override default image tag</span></span><br><span class="line"><span class="comment">       * WXSDKEngine.registerComponent("image", FrescoImageComponent.class);</span></span><br><span class="line"><span class="comment">       */</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">//Typeface nativeFont = Typeface.createFromAsset(getAssets(), "font/native_font.ttf");</span></span><br><span class="line">      <span class="comment">//WXEnvironment.setGlobalFontFamily("bolezhusun", nativeFont);</span></span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">catch</span> (WXException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    registerActivityLifecycleCallbacks(<span class="keyword">new</span> ActivityLifecycleCallbacks() &#123;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityCreated</span><span class="params">(Activity activity, Bundle bundle)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityStarted</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityResumed</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityPaused</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityStopped</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivitySaveInstanceState</span><span class="params">(Activity activity, Bundle bundle)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityDestroyed</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// The demo code of calling 'notifyTrimMemory()'</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">false</span>) &#123;</span><br><span class="line">          <span class="comment">// We assume that the application is on an idle time.</span></span><br><span class="line">          WXSDKManager.getInstance().notifyTrimMemory();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// The demo code of calling 'notifySerializeCodeCache()'</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">false</span>) &#123;</span><br><span class="line">          WXSDKManager.getInstance().notifySerializeCodeCache();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   *<span class="doctag">@param</span> connectable debug server is connectable or not.</span></span><br><span class="line"><span class="comment">   *               if true, sdk will try to connect remote debug server when init WXBridge.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> debuggable enable remote debugger. valid only if host not to be "DEBUG_SERVER_HOST".</span></span><br><span class="line"><span class="comment">   *               true, you can launch a remote debugger and inspector both.</span></span><br><span class="line"><span class="comment">   *               false, you can  just launch a inspector.</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> host the debug server host, must not be "DEBUG_SERVER_HOST", a ip address or domain will be OK.</span></span><br><span class="line"><span class="comment">   *             for example "127.0.0.1".</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initDebugEnvironment</span><span class="params">(<span class="keyword">boolean</span> connectable, <span class="keyword">boolean</span> debuggable, String host)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="string">"DEBUG_SERVER_HOST"</span>.equals(host)) &#123;</span><br><span class="line">      WXEnvironment.sDebugServerConnectable = connectable;</span><br><span class="line">      WXEnvironment.sRemoteDebugMode = debuggable;</span><br><span class="line">      WXEnvironment.sRemoteDebugProxyUrl = <span class="string">"ws://"</span> + host + <span class="string">":8088/debugProxy/native"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      </div>
+        
+          <section class='meta' id="footer-meta">
+            <hr>
+            <div class='new-meta-box'>
+              
+                <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-03-23T15:24:50+08:00">
+                  <a class='notlink'>
+                    <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                    2019-03-23
+                  </a>
+                </div>
+              
+              
+                
+                <div class="new-meta-item meta-tags"><a class="tag" href="/tags/weex/"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;weex</a></div>
+              
+              
+            </div>
+          </section>
+        
+
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/03/27/使用maven自动化管理工程/" rel="prev" title="java开发中，使用自动化管理工具来管理项目之maven 和 gradle">
+                                  
+                                      java开发中，使用自动化管理工具来管理项目之maven 和 gradle
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/maven-gradle/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>maven gradle</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/03/21/weex集成到android应用/" rel="prev" title="weex 集成到 Android 应用">
+                                    
+                                        weex 集成到 Android 应用
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/weex/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>weex</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+
+
+
+<script>
+    window.subData = {
+        title: 'weex 扩展Android 和 iso 的能力',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+  
+  
+    
+      
+      
+        <section class='author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/avatar/avatar.png'/>
+      </div>
+    
+    
+      <div class='text'>
+        
+        
+        
+          <p><span id="jinrishici-sentence">wang xiaofeng's blog</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="mailto:978189365@qq.com" class="social flat-btn" target="_blank" rel="external"><i class="social fas fa-envelope" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://github.com/hongtanhao/" class="social flat-btn" target="_blank" rel="external"><i class="social fab fa-github" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=63035382" class="social flat-btn" target="_blank" rel="external"><i class="social fas fa-music" aria-hidden="true"></i></a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        <section class='plain'>
+  
+<header class='pure'>
+  <div><i class="fas fa-bullhorn fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;注意啦～</div>
+  
+    <a class="rightBtn" target="_blank"
+    rel="external nofollow noopener noreferrer"
+    href="https://xaoxuu.com/wiki/material-x/"
+    title="https://xaoxuu.com/wiki/material-x/">
+    <i class="fas fa-question-circle fa-fw"></i></a>
+  
+</header>
+
+  <div class='content pure'>
+    <p>本站使用 <a href="https://xaoxuu.com/wiki/material-x/">Material X</a> 作为主题，喜欢这个主题的朋友可以阅读文档进行安装哦，超喜欢的话还可以安利给身边的朋友哦～</p>
+
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        <section class='list'>
+  
+<header class='pure'>
+  <div><i class="fas fa-medal fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;精选项目</div>
+  
+    <a class="rightBtn" target="_blank"
+    rel="external nofollow noopener noreferrer"
+    href="https://xaoxuu.com/projects/"
+    title="https://xaoxuu.com/projects/">
+    <i class="fas fa-arrow-right fa-fw"></i></a>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="entry">
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/axkit/" href="https://xaoxuu.com/wiki/axkit/">
+          <div class='name'>
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;AXKit
+          </div>
+          
+            <div class='badge'>(iOS开源库)</div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/noticeboard/" href="https://xaoxuu.com/wiki/noticeboard/">
+          <div class='name'>
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;NoticeBoard
+          </div>
+          
+            <div class='badge'>(iOS开源库)</div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/heartmate/" href="https://xaoxuu.com/heartmate/">
+          <div class='name'>
+            
+              <i class="fas fa-heartbeat fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;HeartMate
+          </div>
+          
+            <div class='badge'>(iOS应用程序)</div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/">
+          <div class='name'>
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;Material X
+          </div>
+          
+            <div class='badge'>(Hexo博客主题)</div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        
+
+      
+    
+  
+    
+      
+      
+        
+  <section class='tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/MongoDB-node/" style="font-size: 14px; color: #999">MongoDB node</a> <a href="/tags/api/" style="font-size: 14px; color: #999">api</a> <a href="/tags/build-webApp/" style="font-size: 14px; color: #999">build_webApp</a> <a href="/tags/css/" style="font-size: 14px; color: #999">css</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/es6/" style="font-size: 14px; color: #999">es6</a> <a href="/tags/git/" style="font-size: 17.33px; color: #828282">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/java/" style="font-size: 17.33px; color: #828282">java</a> <a href="/tags/javascript/" style="font-size: 24px; color: #555">javascript</a> <a href="/tags/javascript-jquery/" style="font-size: 14px; color: #999">javascript, jquery</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/markdown/" style="font-size: 14px; color: #999">markdown</a> <a href="/tags/maven-gradle/" style="font-size: 14px; color: #999">maven gradle</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/php/" style="font-size: 14px; color: #999">php</a> <a href="/tags/react/" style="font-size: 17.33px; color: #828282">react</a> <a href="/tags/redis-db/" style="font-size: 14px; color: #999">redis, db</a> <a href="/tags/spring/" style="font-size: 17.33px; color: #828282">spring</a> <a href="/tags/springMVC/" style="font-size: 14px; color: #999">springMVC</a> <a href="/tags/ssl/" style="font-size: 14px; color: #999">ssl</a> <a href="/tags/ubuntu/" style="font-size: 14px; color: #999">ubuntu</a> <a href="/tags/vue/" style="font-size: 14px; color: #999">vue</a> <a href="/tags/weex/" style="font-size: 20.67px; color: #6c6c6c">weex</a> <a href="/tags/前端/" style="font-size: 14px; color: #999">前端</a> <a href="/tags/时间寄语/" style="font-size: 14px; color: #999">时间寄语</a>
+    </div>
+  </section>
+
+
+      
+    
+  
+    
+      
+      
+        
+
+
+  <section class='music'>
+    
+<header class='pure'>
+  <div><i class="fas fa-compact-disc fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;最近在听</div>
+  
+    <a class="rightBtn" target="_blank"
+    rel="external nofollow noopener noreferrer"
+    href="https://music.163.com/#/user/home?id=63035382"
+    title="https://music.163.com/#/user/home?id=63035382">
+    <i class="far fa-heart fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <div class="aplayer"
+    data-theme="#1BCDFC"
+    
+    
+    data-mode="circulation"
+    data-server="netease"
+    data-type="playlist"
+    data-id="746319661"
+    data-volume="0.7">
+  </div>
+  <script async src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script async src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+    </div>
+  </section>
+
+
+      
+    
+  
+    
+      
+      
+        
+  <section class='toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章目录</div>
+  
+    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Module-扩展"><span class="toc-text">Module 扩展</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Module-注册"><span class="toc-text">Module 注册</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Component-扩展（version-lt-0-19-0）"><span class="toc-text">Component 扩展（version&lt; 0.19.0）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Component-注册"><span class="toc-text">Component 注册</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#registerComponent-type-class-appendTree"><span class="toc-text">registerComponent(type,class,appendTree)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#registerComponent-holder-appendTree，…names"><span class="toc-text">registerComponent(holder,appendTree，…names)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Adapter-扩展"><span class="toc-text">Adapter 扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#图片库Adapter"><span class="toc-text">图片库Adapter</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Adapter-注册"><span class="toc-text">Adapter 注册</span></a></li></ol>
+    </div>
+  </section>
+
+
+      
+    
+  
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
+    <footer id="footer" class="clearfix">
+  
+    <div class="footer">
+      <p>这是页脚文字，支持<strong>markdown</strong>语法。</p>
+
+    </div>
+    <br>
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="mailto:978189365@qq.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external"></a>
+        
+      
+        
+          <a href="https://github.com/hongtanhao/" class="social fab fa-github flat-btn" target="_blank" rel="external"></a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=63035382" class="social fas fa-music flat-btn" target="_blank" rel="external"></a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题，总访问量为 <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+  </div>
+</footer>
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+
+  
+    <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        const $reveal = $('.reveal');
+    		if ($reveal.length === 0) return;
+    		const sr = ScrollReveal({ distance: 0 });
+    		sr.reveal('.reveal');
+      });
+    </script>
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        Waves.attach('.flat-btn', ['waves-button']);
+        Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+        Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+        Waves.attach('.flat-box', ['waves-block']);
+        Waves.attach('.float-box', ['waves-block', 'waves-float']);
+        Waves.attach('.waves-image');
+        Waves.init();
+      });
+    </script>
+  
+  
+    <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+  
+  
+    <!-- fastclick -->
+    <script src="https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        FastClick.attach(document.body)
+      }, false)
+    </script>
+  
+  
+
+  
+  
+  
+  
+
+  
+    <script src="/js/app.js"></script>
+<script src="/js/search.js"></script>
+  
+
+
+
+
+
+
+    <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

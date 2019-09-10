@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>VUE 学习路线，让你不迷路，继《jishupang》之作业笔记(项目积累经验) | wang xiaofeng&#39;s blog</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+  
+  <meta name="theme-color" content="#FFFFFF">
+  <meta name="msapplication-TileColor" content="#1BC3FB">
+  <meta name="msapplication-config" content="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/browserconfig.xml">
+  
+
+  <!-- link -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico">
+  <link rel="icon" type="image/x-icon" sizes="32x32" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/favicon-32x32.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/apple-touch-icon.png">
+  <link rel="mask-icon" color="#1BC3FB" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/safari-pinned-tab.svg">
+  <link rel="manifest" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/site.webmanifest">
+  
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico">
+  
+
+  
+  <link rel="stylesheet" href="/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar" class="pure"></div>
+</div>
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header pure">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          wang xiaofeng's blog
+        
+      </a>
+			<div class='menu'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a id="https:hongtanhao.github.io"
+								 class="nav flat-box" href="https://hongtanhao.github.io/">
+									<i class='fas fa-home fa-fw'></i>&nbsp;主页
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="home"
+								 class="nav flat-box" href="/">
+									<i class='fas fa-rss fa-fw'></i>&nbsp;博客
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="archives"
+								 class="nav flat-box" href="/archives/">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="friends"
+								 class="nav flat-box" href="/friends/">
+									<i class='fas fa-users fa-fw'></i>&nbsp;朋友
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<span class="icon"><i class="fas fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+				<li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu">
+      <ul>
+          
+              
+                  <li>
+										<a id="https:hongtanhao.github.io" class="nav flat-box" href="https://hongtanhao.github.io/">
+											<i class='fas fa-home fa-fw'></i>&nbsp;主页
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="home" class="nav flat-box" href="/">
+											<i class='fas fa-rss fa-fw'></i>&nbsp;博客
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="archives" class="nav flat-box" href="/archives/">
+											<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="friends" class="nav flat-box" href="/friends/">
+											<i class='fas fa-users fa-fw'></i>&nbsp;朋友
+										</a>
+                  </li>
+              
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+  
+<section class='meta'>
+  
+  
+  <div class="meta" id="header-meta">
+    
+      
+          <h1 class="title">VUE 学习路线，让你不迷路，继《jishupang》之作业笔记(项目积累经验)</h1>
+      
+    
+
+    <div class='new-meta-box'>
+      
+        <div class='new-meta-item author'>
+          <a href="http://yoursite.com">
+            <i class="fas fa-user" aria-hidden="true"></i>
+            John Doe
+          </a>
+        </div>
+      
+      
+        <div class="new-meta-item date">
+          <a class='notlink'>
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            2019-09-09
+          </a>
+        </div>
+      
+      
+        
+      
+      
+        
+          <div class="new-meta-item browse busuanzi">
+            <a class='notlink'>
+              <i class="fas fa-eye" aria-hidden="true"></i>
+              <span id="busuanzi_value_page_pv">
+                <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+              </span>
+            </a>
+          </div>
+        
+      
+      
+    </div>
+    <hr>
+  </div>
+</section>
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <p>Vue基础学习步骤</p>
+<a id="more"></a>
+<h2 id="Vue基础学习步骤"><a href="#Vue基础学习步骤" class="headerlink" title="Vue基础学习步骤"></a>Vue基础学习步骤</h2><h3 id="第一季-vue2-0-内部指令"><a href="#第一季-vue2-0-内部指令" class="headerlink" title="第一季 vue2.0-内部指令"></a>第一季 vue2.0-内部指令</h3><p>安装vue库，目前有三种方式（下载包、cdn、使用npm）<br>编写我的一个HelloWorld代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">!</span> <span class="attr">DOCTYPE</span> <span class="attr">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">chaset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--引入vue 库--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">scr</span>=<span class="string">"../assets/js/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>HelloWorld<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">     &#123;&#123; msg &#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">        el: <span class="string">'#app'</span>,</span></span><br><span class="line">        data:&#123;</span><br><span class="line"><span class="actionscript">          msg: <span class="string">'hello vue'</span></span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-1-v-if-有条件的渲染DOM节点"><a href="#1-1-v-if-有条件的渲染DOM节点" class="headerlink" title="1.1 v-if 有条件的渲染DOM节点"></a>1.1 v-if 有条件的渲染DOM节点</h4><p>关键代码</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span> v-<span class="keyword">if</span>=<span class="string">"isLogin"</span>&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="1-2-v-show-调整css中的display-属性，DOM已经加载，只是css控制没有显示出来"><a href="#1-2-v-show-调整css中的display-属性，DOM已经加载，只是css控制没有显示出来" class="headerlink" title="1.2 v-show 调整css中的display 属性，DOM已经加载，只是css控制没有显示出来"></a>1.2 v-show 调整css中的display 属性，DOM已经加载，只是css控制没有显示出来</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span> v-show=<span class="string">"isLogin"</span>&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="1-3-v-if-和-v-show-的区别"><a href="#1-3-v-if-和-v-show-的区别" class="headerlink" title="1.3 v-if 和 v-show 的区别:"></a>1.3 v-if 和 v-show 的区别:</h4><ul>
+<li>v-if: 判断是否加载，可以减轻服务器压力，在需要时加载</li>
+<li>v-show: 调整css display 属性，可以是客户端操作更加流畅</li>
+</ul>
+<h4 id="1-4-v-for-解决模板循环问题"><a href="#1-4-v-for-解决模板循环问题" class="headerlink" title="1.4 v-for 解决模板循环问题"></a>1.4 v-for 解决模板循环问题</h4><p>v-for 指令是循环渲染一组data中的数据，v-for 指令需要以item in items 形式的特殊语法，items是源数据数组并且item是数组元素迭代的别名</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">li</span> v-<span class="keyword">for</span>=<span class="string">"itrm in items"</span>&gt;&#123;&#123;item&#125;&#125;&lt;/li&gt;</span><br><span class="line"><span class="comment">// js 写法</span></span><br><span class="line"><span class="selector-tag">var</span> app = new Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">      items: [<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">9</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这是一个最基础的循环，先在js里定义了一个items数组，然后在模板中v-for 循环出来，需要注意的是，你需要那个html标签循环，v-for就写在那个上面</p>
+<h4 id="还可以-排序"><a href="#还可以-排序" class="headerlink" title="还可以 排序"></a>还可以 排序</h4><p>给上面的数组进行排序</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 此时重新声明，是为了防止污染数据源</span></span><br><span class="line">computed: &#123;</span><br><span class="line">  sortItems:function()&#123;</span><br><span class="line">    return this.item.sort();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="那么，怎么对象循环输出并排序"><a href="#那么，怎么对象循环输出并排序" class="headerlink" title="那么，怎么对象循环输出并排序"></a>那么，怎么对象循环输出并排序</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 先定义一个数组</span></span><br><span class="line">students: [</span><br><span class="line">  &#123;name: <span class="string">'zhangsan'</span>, age:<span class="number">32</span>&#125;,</span><br><span class="line">  &#123;name: <span class="string">'lisi'</span>, age:<span class="number">34</span>&#125;,</span><br><span class="line">  &#123;name: <span class="string">'wangwu'</span>, age:<span class="number">38</span>&#125;,</span><br><span class="line">]</span><br><span class="line"><span class="comment">// 数组对象方法排序</span></span><br><span class="line">function sortBykey(array, key) &#123;</span><br><span class="line">  return array.sort(function(<span class="selector-tag">a</span>,b)&#123;</span><br><span class="line">    var x = a[key];</span><br><span class="line">    var y = b[key];</span><br><span class="line">    return (x &lt; y ? -1 :(x &gt; Y ? 1:0))</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 有了数组的排序方法，在computed 中进行调用排序</span></span><br><span class="line">sortStudent: function()&#123;</span><br><span class="line">  return sortByKey(this.students, 'age');</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="1-5-v-text-amp-v-html"><a href="#1-5-v-text-amp-v-html" class="headerlink" title="1.5 v-text &amp; v-html"></a>1.5 v-text &amp; v-html</h4><p>双大括号在网速比较慢的情况下会很丑陋，并且双大括号会把数据解释为纯文本</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;span&gt;&#123;&#123;message&#125;&#125;&lt;/span&gt; &lt;<span class="selector-tag">span</span> v-text=<span class="string">"msg"</span>&gt;&lt;/span&gt;</span><br><span class="line"><span class="comment">// 如果js中写有 html标签，用v-text 是输出不来的，这时候我们就需要用v-html指令</span></span><br><span class="line">&lt;<span class="selector-tag">span</span> v-html=<span class="string">"msgHtml"</span>&gt;&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+<p>注意: 用v-html 容易导致 xss攻击。所以只能在可信的内容上使用 v-html 。永远不要在用户提交和可操作的网页上使用</p>
+<h4 id="1-6-v-on-：绑定事件监听器"><a href="#1-6-v-on-：绑定事件监听器" class="headerlink" title="1.6 v-on ：绑定事件监听器"></a>1.6 v-on ：绑定事件监听器</h4><p>v-on 就是监听事件，可以用v-on监听DOM事件来触发一些JavaScript代码<br>v-on 的简单写法: 用 @ 代替<br>绑定事件写法：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">input</span> type=<span class="string">"text"</span> v-on=<span class="string">"keyup.enter='onEnter'"</span> v-model=<span class="string">"secondCount"</span>&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="1-7-v-model-绑定数据源"><a href="#1-7-v-model-绑定数据源" class="headerlink" title="1.7 v-model : 绑定数据源"></a>1.7 v-model : 绑定数据源</h4><p>v-model 就是把数据绑定在特定的表单元素上，可以很容易的实现双向数据绑定</p>
+<h5 id="修饰符："><a href="#修饰符：" class="headerlink" title="修饰符："></a>修饰符：</h5><ul>
+<li>.lazy: 取代input 监听 change事件</li>
+<li>.number: 输入字符串转为数字</li>
+<li>.trim: 输入去掉首位空格<h5 id="文本区域加入数据绑定"><a href="#文本区域加入数据绑定" class="headerlink" title="文本区域加入数据绑定"></a>文本区域加入数据绑定</h5></li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">textarea</span> cols=<span class="string">"30"</span> rows=<span class="string">"10"</span> v-model=<span class="string">"message"</span>&gt;&lt;/textarea&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="多选按钮绑定一个值"><a href="#多选按钮绑定一个值" class="headerlink" title="多选按钮绑定一个值"></a>多选按钮绑定一个值</h5><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">input</span> tyoe=<span class="string">"checkbox"</span>  v-model=<span class="string">"isTrue"</span> /&gt;</span><br><span class="line">&lt;<span class="selector-tag">label</span> <span class="keyword">for</span>=<span class="string">"isTrue"</span>&gt;&#123;&#123; isTrue &#125;&#125;&lt;/label&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="多选按钮绑定一个数组"><a href="#多选按钮绑定一个数组" class="headerlink" title="多选按钮绑定一个数组"></a>多选按钮绑定一个数组</h5><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;<span class="selector-tag">input</span> tyoe=<span class="string">"checkbox"</span>  value=<span class="string">"beibei"</span> v-model=<span class="string">"names"</span> /&gt;</span><br><span class="line">  &lt;<span class="selector-tag">label</span> <span class="keyword">for</span>=<span class="string">"isTrue"</span>&gt;beibei&lt;/label&gt;</span><br><span class="line">  &lt;<span class="selector-tag">input</span> tyoe=<span class="string">"checkbox"</span>  value=<span class="string">"jingjing"</span> v-model=<span class="string">"names"</span> /&gt;</span><br><span class="line">  &lt;<span class="selector-tag">label</span> <span class="keyword">for</span>=<span class="string">"isTrue"</span>&gt;jingjing&lt;/label&gt;</span><br><span class="line">  &lt;<span class="selector-tag">input</span> tyoe=<span class="string">"checkbox"</span>  value=<span class="string">"huanhuan"</span> v-model=<span class="string">"names"</span> /&gt;</span><br><span class="line">  &lt;<span class="selector-tag">label</span> <span class="keyword">for</span>=<span class="string">"isTrue"</span>&gt;huanhuan&lt;/label&gt;</span><br><span class="line">  &lt;p&gt; &#123;&#123;names&#125;&#125; &lt;/P&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="单选按钮绑定数据"><a href="#单选按钮绑定数据" class="headerlink" title="单选按钮绑定数据"></a>单选按钮绑定数据</h5><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;<span class="selector-tag">input</span> tyoe=<span class="string">"radio"</span>  value=<span class="string">"男"</span> v-model=<span class="string">"sex"</span> /&gt;</span><br><span class="line">  &lt;<span class="selector-tag">label</span> <span class="keyword">for</span>=<span class="string">"isTrue"</span>&gt;beibei&lt;/label&gt;</span><br><span class="line">  &lt;<span class="selector-tag">input</span> tyoe=<span class="string">"checkbox"</span>  value=<span class="string">"女"</span> v-model=<span class="string">"sex"</span> /&gt;</span><br><span class="line">  &lt;<span class="selector-tag">label</span> <span class="keyword">for</span>=<span class="string">"radio"</span>&gt;jingjing&lt;/label&gt;</span><br><span class="line">  &lt;p&gt; &#123;&#123;sex&#125;&#125; &lt;/P&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="1-8-v-bind-指令用给标签属性动态赋值"><a href="#1-8-v-bind-指令用给标签属性动态赋值" class="headerlink" title="1.8 v-bind : 指令用给标签属性动态赋值"></a>1.8 v-bind : 指令用给标签属性动态赋值</h4><p>v-bind 就是处理html 标签属性的，例如<div></div> 就是一个标签。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- competely syntax --&gt;</span><br><span class="line">&lt;<span class="selector-tag">a</span> v-bind:href=<span class="string">"url"</span>&gt;&lt;/a&gt;</span><br><span class="line">&lt;!-- breif syntax --&gt;</span><br><span class="line"><span class="selector-tag">a</span> :href=<span class="string">"url"</span>&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="绑定css样式"><a href="#绑定css样式" class="headerlink" title="绑定css样式"></a>绑定css样式</h5><p>在绑定css时，绑定的值必须在vue的data中进行声明<br>a.直接绑定css样式</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span> :class=<span class="string">"className"</span>&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>b.绑定classA并进行判断，在isOK为true 时显示样式，在isO为false 时不显示</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span> :class=<span class="string">"&#123;classA:isOK&#125;"</span>&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>c.绑定class中的数组</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;[classA, classB]&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>d.绑定class中使用三元表达式进行判断</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span> :class=<span class="string">"isOK ? classA : classB"</span>&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>e.绑定style</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span> :style=&#123;<span class="attribute">color</span>:red;fontSize:<span class="attribute">font</span>;&#125;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>f.用对象绑定style</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span> :style=<span class="string">"styleObject"</span>&gt;&lt;/div&gt;</span><br><span class="line"><span class="selector-tag">var</span> app = new Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>，</span><br><span class="line">    data: &#123;</span><br><span class="line">      styleObject: &#123;</span><br><span class="line">        fontSize: <span class="string">'24px;'</span>,</span><br><span class="line">        <span class="attribute">color</span>: <span class="string">'green'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="1-9-v-pre指令"><a href="#1-9-v-pre指令" class="headerlink" title="1.9 v-pre指令"></a>1.9 v-pre指令</h4><p>在模板中跳过vue的编译，直接输出原始值。就是在标签中加入v-pre就不会输出vue中的data值了</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span> v-pre&gt;&#123;&#123;mes&#125;&#125;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>这是并不输出我们message值，而是直接在网页中显示</p>
+<h4 id="1-10-v-cloak指令"><a href="#1-10-v-cloak指令" class="headerlink" title="1.10 v-cloak指令"></a>1.10 v-cloak指令</h4><p>在vue渲染指定的整个DOM后才显示，它必须和css样式一起使用</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[v-cloak]&#123;</span><br><span class="line">   <span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="selector-tag">div</span> v-cloak&gt;</span><br><span class="line">&#123;&#123;mesage&#125;&#125;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="1-11-v-once指令"><a href="#1-11-v-once指令" class="headerlink" title="1.11 v-once指令"></a>1.11 v-once指令</h4><p>在第一次DOM时进行渲染，渲染完成后市视为静态内容，跳出以后的渲染过程</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span> v-once&gt;第一次绑定的值：&#123;&#123;message&#125;&#125;&lt;/div&gt;</span><br><span class="line">&lt;<span class="selector-tag">div</span> type=<span class="string">"text"</span> v-model=<span class="string">"message"</span>&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="第二季-vue2-0-全局API"><a href="#第二季-vue2-0-全局API" class="headerlink" title="第二季 vue2.0-全局API"></a>第二季 vue2.0-全局API</h3><p>什么是全局API?<br>    全局API并不在构造器里，先声明全局变量或直接在Vue 上定义的一些新功能。<br> 更简单的说，在构造器外部用Vue提供给我们的API函数来定义一些新的功能</p>
+<h4 id="2-1-Vue-directive-自定义指令"><a href="#2-1-Vue-directive-自定义指令" class="headerlink" title="2.1 Vue.directive 自定义指令"></a>2.1 Vue.directive 自定义指令</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span> v-feng=<span class="string">"color"</span>&gt;</span><br><span class="line"> &#123;&#123;nm&#125;&#125;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"><span class="selector-tag">var</span> app = new Vue(&#123;</span><br><span class="line">        el: <span class="string">'#app'</span>,</span><br><span class="line">        data: &#123;</span><br><span class="line">          <span class="attribute">color</span>: <span class="string">'red'</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 自定义指令</span></span><br><span class="line">Vue.directive(<span class="string">'feng'</span>,function(el,binding,vnode)&#123;</span><br><span class="line">        el.style = 'color:' + binding.value;      </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="第三季-vue2-0-选项"><a href="#第三季-vue2-0-选项" class="headerlink" title="第三季 vue2.0-选项"></a>第三季 vue2.0-选项</h3><h3 id="第四季-vue2-0-实例和内置组件"><a href="#第四季-vue2-0-实例和内置组件" class="headerlink" title="第四季 vue2.0-实例和内置组件"></a>第四季 vue2.0-实例和内置组件</h3>
+      </div>
+        
+          <section class='meta' id="footer-meta">
+            <hr>
+            <div class='new-meta-box'>
+              
+                <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-03-07T16:21:55-09:00">
+                  <a class='notlink'>
+                    <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                    2019-03-07
+                  </a>
+                </div>
+              
+              
+                
+                <div class="new-meta-item meta-tags"><a class="tag" href="/tags/vue/"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;vue</a></div>
+              
+              
+            </div>
+          </section>
+        
+
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/09/09/window os 安装解压缩版的mysql教程/" rel="prev" title="window下安装mysql解压缩版之教程">
+                                  
+                                      window下安装mysql解压缩版之教程
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/mysql/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>mysql</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/09/09/js的编程风格/" rel="prev" title="javascript的编程风格">
+                                    
+                                        javascript的编程风格
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/javascript/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>javascript</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+
+
+
+<script>
+    window.subData = {
+        title: 'VUE 学习路线，让你不迷路，继《jishupang》之作业笔记(项目积累经验)',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+  
+  
+    
+      
+      
+        <section class='author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/avatar/avatar.png'/>
+      </div>
+    
+    
+      <div class='text'>
+        
+        
+        
+          <p><span id="jinrishici-sentence">wang xiaofeng's blog</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="mailto:978189365@qq.com" class="social flat-btn" target="_blank" rel="external"><i class="social fas fa-envelope" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://github.com/hongtanhao/" class="social flat-btn" target="_blank" rel="external"><i class="social fab fa-github" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=63035382" class="social flat-btn" target="_blank" rel="external"><i class="social fas fa-music" aria-hidden="true"></i></a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        <section class='plain'>
+  
+<header class='pure'>
+  <div><i class="fas fa-bullhorn fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;注意啦～</div>
+  
+    <a class="rightBtn" target="_blank"
+    rel="external nofollow noopener noreferrer"
+    href="https://xaoxuu.com/wiki/material-x/"
+    title="https://xaoxuu.com/wiki/material-x/">
+    <i class="fas fa-question-circle fa-fw"></i></a>
+  
+</header>
+
+  <div class='content pure'>
+    <p>本站使用 <a href="https://xaoxuu.com/wiki/material-x/">Material X</a> 作为主题，喜欢这个主题的朋友可以阅读文档进行安装哦，超喜欢的话还可以安利给身边的朋友哦～</p>
+
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        <section class='list'>
+  
+<header class='pure'>
+  <div><i class="fas fa-medal fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;精选项目</div>
+  
+    <a class="rightBtn" target="_blank"
+    rel="external nofollow noopener noreferrer"
+    href="https://xaoxuu.com/projects/"
+    title="https://xaoxuu.com/projects/">
+    <i class="fas fa-arrow-right fa-fw"></i></a>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="entry">
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/axkit/" href="https://xaoxuu.com/wiki/axkit/">
+          <div class='name'>
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;AXKit
+          </div>
+          
+            <div class='badge'>(iOS开源库)</div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/noticeboard/" href="https://xaoxuu.com/wiki/noticeboard/">
+          <div class='name'>
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;NoticeBoard
+          </div>
+          
+            <div class='badge'>(iOS开源库)</div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/heartmate/" href="https://xaoxuu.com/heartmate/">
+          <div class='name'>
+            
+              <i class="fas fa-heartbeat fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;HeartMate
+          </div>
+          
+            <div class='badge'>(iOS应用程序)</div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/">
+          <div class='name'>
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;Material X
+          </div>
+          
+            <div class='badge'>(Hexo博客主题)</div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        
+
+      
+    
+  
+    
+      
+      
+        
+  <section class='tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/MongoDB-node/" style="font-size: 14px; color: #999">MongoDB node</a> <a href="/tags/api/" style="font-size: 14px; color: #999">api</a> <a href="/tags/build-webApp/" style="font-size: 14px; color: #999">build_webApp</a> <a href="/tags/css/" style="font-size: 14px; color: #999">css</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/es6/" style="font-size: 14px; color: #999">es6</a> <a href="/tags/git/" style="font-size: 17.33px; color: #828282">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/java/" style="font-size: 17.33px; color: #828282">java</a> <a href="/tags/javascript/" style="font-size: 24px; color: #555">javascript</a> <a href="/tags/javascript-jquery/" style="font-size: 14px; color: #999">javascript, jquery</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/markdown/" style="font-size: 14px; color: #999">markdown</a> <a href="/tags/maven-gradle/" style="font-size: 14px; color: #999">maven gradle</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/php/" style="font-size: 14px; color: #999">php</a> <a href="/tags/react/" style="font-size: 17.33px; color: #828282">react</a> <a href="/tags/redis-db/" style="font-size: 14px; color: #999">redis, db</a> <a href="/tags/spring/" style="font-size: 17.33px; color: #828282">spring</a> <a href="/tags/springMVC/" style="font-size: 14px; color: #999">springMVC</a> <a href="/tags/ssl/" style="font-size: 14px; color: #999">ssl</a> <a href="/tags/ubuntu/" style="font-size: 14px; color: #999">ubuntu</a> <a href="/tags/vue/" style="font-size: 14px; color: #999">vue</a> <a href="/tags/weex/" style="font-size: 20.67px; color: #6c6c6c">weex</a> <a href="/tags/前端/" style="font-size: 14px; color: #999">前端</a> <a href="/tags/时间寄语/" style="font-size: 14px; color: #999">时间寄语</a>
+    </div>
+  </section>
+
+
+      
+    
+  
+    
+      
+      
+        
+
+
+  <section class='music'>
+    
+<header class='pure'>
+  <div><i class="fas fa-compact-disc fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;最近在听</div>
+  
+    <a class="rightBtn" target="_blank"
+    rel="external nofollow noopener noreferrer"
+    href="https://music.163.com/#/user/home?id=63035382"
+    title="https://music.163.com/#/user/home?id=63035382">
+    <i class="far fa-heart fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <div class="aplayer"
+    data-theme="#1BCDFC"
+    
+    
+    data-mode="circulation"
+    data-server="netease"
+    data-type="playlist"
+    data-id="746319661"
+    data-volume="0.7">
+  </div>
+  <script async src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script async src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+    </div>
+  </section>
+
+
+      
+    
+  
+    
+      
+      
+        
+  <section class='toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章目录</div>
+  
+    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue基础学习步骤"><span class="toc-text">Vue基础学习步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一季-vue2-0-内部指令"><span class="toc-text">第一季 vue2.0-内部指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-v-if-有条件的渲染DOM节点"><span class="toc-text">1.1 v-if 有条件的渲染DOM节点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-v-show-调整css中的display-属性，DOM已经加载，只是css控制没有显示出来"><span class="toc-text">1.2 v-show 调整css中的display 属性，DOM已经加载，只是css控制没有显示出来</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-v-if-和-v-show-的区别"><span class="toc-text">1.3 v-if 和 v-show 的区别:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-v-for-解决模板循环问题"><span class="toc-text">1.4 v-for 解决模板循环问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#还可以-排序"><span class="toc-text">还可以 排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#那么，怎么对象循环输出并排序"><span class="toc-text">那么，怎么对象循环输出并排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-v-text-amp-v-html"><span class="toc-text">1.5 v-text &amp; v-html</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-6-v-on-：绑定事件监听器"><span class="toc-text">1.6 v-on ：绑定事件监听器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-7-v-model-绑定数据源"><span class="toc-text">1.7 v-model : 绑定数据源</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#修饰符："><span class="toc-text">修饰符：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#文本区域加入数据绑定"><span class="toc-text">文本区域加入数据绑定</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#多选按钮绑定一个值"><span class="toc-text">多选按钮绑定一个值</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#多选按钮绑定一个数组"><span class="toc-text">多选按钮绑定一个数组</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#单选按钮绑定数据"><span class="toc-text">单选按钮绑定数据</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-8-v-bind-指令用给标签属性动态赋值"><span class="toc-text">1.8 v-bind : 指令用给标签属性动态赋值</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#绑定css样式"><span class="toc-text">绑定css样式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-9-v-pre指令"><span class="toc-text">1.9 v-pre指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-10-v-cloak指令"><span class="toc-text">1.10 v-cloak指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-11-v-once指令"><span class="toc-text">1.11 v-once指令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二季-vue2-0-全局API"><span class="toc-text">第二季 vue2.0-全局API</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Vue-directive-自定义指令"><span class="toc-text">2.1 Vue.directive 自定义指令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第三季-vue2-0-选项"><span class="toc-text">第三季 vue2.0-选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第四季-vue2-0-实例和内置组件"><span class="toc-text">第四季 vue2.0-实例和内置组件</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+      
+    
+  
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
+    <footer id="footer" class="clearfix">
+  
+    <div class="footer">
+      <p>这是页脚文字，支持<strong>markdown</strong>语法。</p>
+
+    </div>
+    <br>
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="mailto:978189365@qq.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external"></a>
+        
+      
+        
+          <a href="https://github.com/hongtanhao/" class="social fab fa-github flat-btn" target="_blank" rel="external"></a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=63035382" class="social fas fa-music flat-btn" target="_blank" rel="external"></a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题，总访问量为 <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+  </div>
+</footer>
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+
+  
+    <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        const $reveal = $('.reveal');
+    		if ($reveal.length === 0) return;
+    		const sr = ScrollReveal({ distance: 0 });
+    		sr.reveal('.reveal');
+      });
+    </script>
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        Waves.attach('.flat-btn', ['waves-button']);
+        Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+        Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+        Waves.attach('.flat-box', ['waves-block']);
+        Waves.attach('.float-box', ['waves-block', 'waves-float']);
+        Waves.attach('.waves-image');
+        Waves.init();
+      });
+    </script>
+  
+  
+    <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+  
+  
+    <!-- fastclick -->
+    <script src="https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        FastClick.attach(document.body)
+      }, false)
+    </script>
+  
+  
+
+  
+  
+  
+  
+
+  
+    <script src="/js/app.js"></script>
+<script src="/js/search.js"></script>
+  
+
+
+
+
+
+
+    <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

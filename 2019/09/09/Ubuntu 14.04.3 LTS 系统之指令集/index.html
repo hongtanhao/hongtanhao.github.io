@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>Ubuntu 系统下配置远程jdk、mysql服务 | wang xiaofeng&#39;s blog</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+  
+  <meta name="theme-color" content="#FFFFFF">
+  <meta name="msapplication-TileColor" content="#1BC3FB">
+  <meta name="msapplication-config" content="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/browserconfig.xml">
+  
+
+  <!-- link -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico">
+  <link rel="icon" type="image/x-icon" sizes="32x32" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/favicon-32x32.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/apple-touch-icon.png">
+  <link rel="mask-icon" color="#1BC3FB" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/safari-pinned-tab.svg">
+  <link rel="manifest" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/site.webmanifest">
+  
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico">
+  
+
+  
+  <link rel="stylesheet" href="/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar" class="pure"></div>
+</div>
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header pure">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          wang xiaofeng's blog
+        
+      </a>
+			<div class='menu'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a id="https:hongtanhao.github.io"
+								 class="nav flat-box" href="https://hongtanhao.github.io/">
+									<i class='fas fa-home fa-fw'></i>&nbsp;主页
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="home"
+								 class="nav flat-box" href="/">
+									<i class='fas fa-rss fa-fw'></i>&nbsp;博客
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="archives"
+								 class="nav flat-box" href="/archives/">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="friends"
+								 class="nav flat-box" href="/friends/">
+									<i class='fas fa-users fa-fw'></i>&nbsp;朋友
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<span class="icon"><i class="fas fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+				<li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu">
+      <ul>
+          
+              
+                  <li>
+										<a id="https:hongtanhao.github.io" class="nav flat-box" href="https://hongtanhao.github.io/">
+											<i class='fas fa-home fa-fw'></i>&nbsp;主页
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="home" class="nav flat-box" href="/">
+											<i class='fas fa-rss fa-fw'></i>&nbsp;博客
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="archives" class="nav flat-box" href="/archives/">
+											<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="friends" class="nav flat-box" href="/friends/">
+											<i class='fas fa-users fa-fw'></i>&nbsp;朋友
+										</a>
+                  </li>
+              
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+  
+<section class='meta'>
+  
+  
+  <div class="meta" id="header-meta">
+    
+      
+          <h1 class="title">Ubuntu 系统下配置远程jdk、mysql服务</h1>
+      
+    
+
+    <div class='new-meta-box'>
+      
+        <div class='new-meta-item author'>
+          <a href="http://yoursite.com">
+            <i class="fas fa-user" aria-hidden="true"></i>
+            John Doe
+          </a>
+        </div>
+      
+      
+        <div class="new-meta-item date">
+          <a class='notlink'>
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            2019-09-09
+          </a>
+        </div>
+      
+      
+        
+      
+      
+        
+          <div class="new-meta-item browse busuanzi">
+            <a class='notlink'>
+              <i class="fas fa-eye" aria-hidden="true"></i>
+              <span id="busuanzi_value_page_pv">
+                <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+              </span>
+            </a>
+          </div>
+        
+      
+      
+    </div>
+    <hr>
+  </div>
+</section>
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <p>Ubuntu 14.04.3 LTS 系统 &gt;&gt;&gt; 基本指令集合</p>
+<a id="more"></a>
+<h2 id="linux-指令集"><a href="#linux-指令集" class="headerlink" title="linux 指令集"></a>linux 指令集</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><span class="line">======================操作系统信息=====================</span><br><span class="line">uname -a                      <span class="comment"># 查看内核 操作系统 CPU</span></span><br><span class="line">cat /proc/version             <span class="comment"># 查看系统内核</span></span><br><span class="line">head -n 1 /etc/issue          <span class="comment"># 查看操作系统版本</span></span><br><span class="line">cat /proc/cpuinfo             <span class="comment"># cat /proc/cpuinfo</span></span><br><span class="line">cat /proc/meminfo             <span class="comment"># 查看存储信息</span></span><br><span class="line">free -m                       <span class="comment"># 查看内存使用量和交换区使用量 </span></span><br><span class="line">grep MemTotal /proc/meminfo   <span class="comment"># 查看内存总量 </span></span><br><span class="line">grep MemFree /proc/meminfo    <span class="comment"># 查看空闲内存量 </span></span><br><span class="line">uptime                        <span class="comment"># 查看系统运行时间、用户数、负载</span></span><br><span class="line">df                            <span class="comment"># 查看硬盘信息</span></span><br><span class="line">ps -ef                        <span class="comment"># 查看所有进程 </span></span><br><span class="line">top                           <span class="comment"># 实时显示进程状态</span></span><br><span class="line">lspci |grep VGA               <span class="comment"># 查看显卡</span></span><br><span class="line">ps -e                         <span class="comment"># 查看进程</span></span><br><span class="line">jps                           <span class="comment"># 查看用户启动的进程</span></span><br><span class="line">sudo <span class="built_in">kill</span> 7082                <span class="comment"># 杀死进程</span></span><br><span class="line">top                           <span class="comment"># 看进程的PID，例如查看eclipse程序所在的目录</span></span><br><span class="line"><span class="built_in">cd</span> /proc/3093                 <span class="comment"># 查看该进程的文件夹信息</span></span><br><span class="line">ls -l exe                     <span class="comment"># 查看程序所在的目录</span></span><br><span class="line">nginx -v                      <span class="comment"># 查看ubuntu系统自带的nginx服务器的版本号</span></span><br><span class="line">cwd符号链接的就是进程3093的运行目录；</span><br><span class="line">exe符号连接就是执行程序的绝对路径；</span><br><span class="line">cmdline就是程序运行时输入的命令行命令；本例为：。/cbs</span><br><span class="line">cpu记录了进程可能运行在其上的cpu；显示虚拟的cpu信息</span><br><span class="line">environ记录了进程运行时的环境变量</span><br><span class="line">fd目录下是进程打开或使用的文件的符号连接</span><br><span class="line">。。。</span><br><span class="line">--------------------- </span><br><span class="line">命令格式：命令 [-选项] [参数]</span><br><span class="line">例如：ls -la /etc</span><br><span class="line"></span><br><span class="line">======================文件处理命令=====================</span><br><span class="line">ls -a -l -d -h -i             <span class="comment"># 列出当前目录下的子目录及其文件</span></span><br><span class="line"><span class="built_in">pwd</span>                           <span class="comment"># 打印当前工作目录</span></span><br><span class="line">mkidr old                     <span class="comment"># 创建名为old的目录</span></span><br><span class="line">mkdir -p /home/wind/mei       <span class="comment"># 递归创建目录</span></span><br><span class="line">rmdir old                     <span class="comment"># 只能删除空目录</span></span><br><span class="line">rm -r old                     <span class="comment"># 删除old目录</span></span><br><span class="line">rm -rf old                    <span class="comment"># 强制删除非空目录</span></span><br><span class="line">cp test.java /home            <span class="comment"># 将test.java文件拷贝到/home目录下</span></span><br><span class="line">cp -r old /home               <span class="comment"># 将old目录复制到/home路径下</span></span><br><span class="line">mv old new                    <span class="comment"># 将old目录命名为new</span></span><br><span class="line">mv jdk1.8.0_171 /usr/lib/xxx  <span class="comment"># 将文件从当前目录移动到 /usr/lib/xxx目录下</span></span><br><span class="line">cat                           <span class="comment"># 由第一行开始显示文件内容</span></span><br><span class="line">tac                           <span class="comment"># 文件内容从最后一行开始显示</span></span><br><span class="line">head  -n 20   test.sh                <span class="comment"># 取出文件前面几行</span></span><br><span class="line">tail  -n 20   test.sh                  <span class="comment"># 取出文件后面几行</span></span><br><span class="line">more -f /enter                         <span class="comment"># 一页一页翻动</span></span><br><span class="line">less                          <span class="comment"># </span></span><br><span class="line">nl                            <span class="comment"># 显示行号</span></span><br><span class="line">ln                            <span class="comment"># 创建索引文件</span></span><br><span class="line">vi/vim    xxx.txt             <span class="comment"># 若xxx.txt存在则开启编辑模式  反之，则新建该文件并开启编辑模式</span></span><br><span class="line">docker run  -d hub.c.163.com/library/nginx</span><br><span class="line">winpty docker run -it 68 bash</span><br><span class="line"></span><br><span class="line">======================权限管理命令=====================</span><br><span class="line">sudo</span><br><span class="line">sudo su                                          <span class="comment"># 进入root权限</span></span><br><span class="line">chmod [&#123;ugoa&#125; &#123;+-=&#125; &#123;rwx&#125;]   [文件或目录]         <span class="comment"># 修改文件或目录的权限</span></span><br><span class="line">chmod [mode = 421] [文件或目录]</span><br><span class="line">      - R 递归修改</span><br><span class="line">注意：</span><br><span class="line">    文件： r 权限代表可以 cat/tac/more/less/head/tail</span><br><span class="line">          w 权限代表可以  vim</span><br><span class="line">          x 权限代表 可执行 文件类型一般为 script <span class="built_in">command</span></span><br><span class="line">    目录： r 权限代表可以 ls</span><br><span class="line">          w 权限代表可以  touch mkdir rmdir rm</span><br><span class="line">          x 权限代表 <span class="built_in">cd</span> </span><br><span class="line">chown [用户] [文件或目录]                          <span class="comment"># 改变文件或者目录的所有者</span></span><br><span class="line">chgrp [用户组] [文件或目录]                        <span class="comment"># 改变文件或者目录的所有者</span></span><br><span class="line">unmask -S                                         <span class="comment"># 显示、设置文件的缺省权限       </span></span><br><span class="line"></span><br><span class="line">======================文件搜索命令=====================</span><br><span class="line">find -name .bashrc            <span class="comment"># 查找文件在什么地方</span></span><br><span class="line">find /ect -name linux         <span class="comment"># 在etc目录下查找名称linux的文件</span></span><br><span class="line">======================帮助命令========================</span><br><span class="line">======================用户管理命令=====================</span><br><span class="line"><span class="comment"># 用户的管理</span></span><br><span class="line">  <span class="comment">## 增加用户</span></span><br><span class="line">  <span class="comment">## 创建了一个用户sam，其中-d和-m选项用来为登录名sam产生一个主目录/usr/sam</span></span><br><span class="line">  useradd –d /usr/sam -m sam</span><br><span class="line">  <span class="comment">## 删除用户 </span></span><br><span class="line">  <span class="comment">## 删除用户sam在系统文件中（主要是/etc/passwd, /etc/shadow, /etc/group等）的记录，同时删除用户的主目录 </span></span><br><span class="line">  userdel -r sam </span><br><span class="line">  <span class="comment">## 修改账号</span></span><br><span class="line">  <span class="comment">## 将用户sam的登录Shell修改为ksh，主目录改为/home/z，用户组改为developer               </span></span><br><span class="line">  usermod -s /bin/ksh -d /home/z –g developer sam </span><br><span class="line"><span class="comment"># 用户口令的管理</span></span><br><span class="line">passwd  <span class="comment"># 普通用此命令修改自己的口令</span></span><br><span class="line">passwd sam  <span class="comment"># 超级用户为sam用户修改口令</span></span><br><span class="line"><span class="comment"># 用户组的管理</span></span><br><span class="line">  <span class="comment">## 增加一个新的用户组</span></span><br><span class="line">  <span class="comment">## 向系统中增加了一个新组group2，同时指定新组的组标识号是101</span></span><br><span class="line">  groupadd -g 101 group2</span><br><span class="line">  <span class="comment">## 删除一个已经存在用户组</span></span><br><span class="line">  <span class="comment">## 删除用户组group2</span></span><br><span class="line">  groupdel group2</span><br><span class="line">  <span class="comment">## 修改用户组的属性</span></span><br><span class="line">  <span class="comment">## groupmod –g 10000 -n group3 group2</span></span><br><span class="line">  groupmod –g 10000 -n group3 group2</span><br><span class="line"><span class="comment"># 用户可以在他所属的多个用户组之间切换</span></span><br><span class="line">newgrp root <span class="comment"># 切换到根用户组</span></span><br><span class="line"><span class="comment"># 与用户账号有关的文件</span></span><br><span class="line"><span class="comment"># 每行的含义：（用户名:口令:用户标识号:组标识号:注释性描述:主目录:登录Shell）</span></span><br><span class="line">cat /etc/passwd</span><br><span class="line">======================磁盘命令========================</span><br><span class="line">df    <span class="comment"># 检查文件系统的磁盘空间占用情况</span></span><br><span class="line">du    <span class="comment"># u命令也是查看使用空间的，但是与df命令不同的是Linux du命令是对文件和目录磁盘使用的空间的查看</span></span><br><span class="line">fdisk <span class="comment"># fdisk 是 Linux 的磁盘分区表操作工具</span></span><br><span class="line">mkfs -t ext3 /dev/hdc6 <span class="comment"># mkfs -t ext3 /dev/hdc6</span></span><br><span class="line">fsck -C -f -t ext3 /dev/hdc6  <span class="comment"># 强制检测 /dev/hdc6 分区:</span></span><br><span class="line">mkdir /mnt/hdc6</span><br><span class="line">mount /dev/hdc6 /mnt/hdc6  <span class="comment"># mount /dev/hdc6 /mnt/hdc6</span></span><br><span class="line">umount /dev/hdc6  <span class="comment"># 卸载/dev/hdc6</span></span><br><span class="line">======================压缩解压命令=====================</span><br><span class="line">touch old                     <span class="comment"># 创建old文件，其他的过程都和目录的操作方法是一样的</span></span><br><span class="line">tar -zxvf jdk-8u171-linux-x64.tar.gz        <span class="comment"># 解压缩文件</span></span><br><span class="line">======================网络命令========================</span><br><span class="line">curl http://www.yahoo.com  <span class="comment"># www.yahoo.com 的html就稀里哗啦地显示在屏幕上了</span></span><br><span class="line"> rz，sz       <span class="comment"># 先安装 install lrzsz 是Linux/Unix同Windows进行ZModem文件传输的命令行工具。</span></span><br><span class="line">curl -o page.html http://www.yahoo.com  <span class="comment"># 你就可以看到屏幕上出现一个下载页面进度指示。等进展到100%，自然就OK咯</span></span><br><span class="line">======================关机重启命令=====================</span><br><span class="line">sync                          <span class="comment"># 将数据由内存同步到硬盘中。</span></span><br><span class="line">shutdown                      <span class="comment"># 关机指令</span></span><br><span class="line">shutdown –h 10                <span class="comment"># 计算机将在10分钟后关机，并且会显示在登陆用户的当前屏幕中。</span></span><br><span class="line">shutdown –h now               <span class="comment"># 立马关机</span></span><br><span class="line">shutdown –h 20:25             <span class="comment"># 系统会在今天20:25关机</span></span><br><span class="line">shutdown –h +10               <span class="comment"># 十分钟后关机</span></span><br><span class="line">shutdown –r now               <span class="comment"># 系统立马重启</span></span><br><span class="line">shutdown –r +10               <span class="comment"># 系统十分钟后重启</span></span><br><span class="line">reboot                        <span class="comment"># 就是重启，等同于 shutdown –r now</span></span><br><span class="line">halt                          <span class="comment"># 关闭系统，等同于shutdown –h now 和 poweroff</span></span><br><span class="line">halt -p                       <span class="comment"># 关闭机器</span></span><br><span class="line">halp --reboot                 <span class="comment"># 重启机器</span></span><br><span class="line">poweroff                      <span class="comment"># 关闭机器</span></span><br><span class="line">poweroff --halt               <span class="comment"># 停止机器</span></span><br><span class="line">poweroff --reboot             <span class="comment"># 重启机器</span></span><br><span class="line">reboot                        <span class="comment"># 重启机器</span></span><br><span class="line">reboot --halt                 <span class="comment"># 停止机器</span></span><br><span class="line">reboot -p                     <span class="comment"># 关闭机器</span></span><br></pre></td></tr></table></figure>
+      </div>
+        
+          <section class='meta' id="footer-meta">
+            <hr>
+            <div class='new-meta-box'>
+              
+                <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-07-21T23:10:47-08:00">
+                  <a class='notlink'>
+                    <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                    2019-07-21
+                  </a>
+                </div>
+              
+              
+                
+                <div class="new-meta-item meta-tags"><a class="tag" href="/tags/ubuntu/"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;ubuntu</a></div>
+              
+              
+            </div>
+          </section>
+        
+
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/09/09/windows下安装redis的教程和基本配置/" rel="prev" title="window下安装redis的教程和基本配置">
+                                  
+                                      window下安装redis的教程和基本配置
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/redis-db/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>redis, db</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/09/09/docker基本指令/" rel="prev" title="docker 基本指令">
+                                    
+                                        docker 基本指令
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/docker/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>docker</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+
+
+
+<script>
+    window.subData = {
+        title: 'Ubuntu 系统下配置远程jdk、mysql服务',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+  
+  
+    
+      
+      
+        <section class='author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/avatar/avatar.png'/>
+      </div>
+    
+    
+      <div class='text'>
+        
+        
+        
+          <p><span id="jinrishici-sentence">wang xiaofeng's blog</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="mailto:978189365@qq.com" class="social flat-btn" target="_blank" rel="external"><i class="social fas fa-envelope" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://github.com/hongtanhao/" class="social flat-btn" target="_blank" rel="external"><i class="social fab fa-github" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=63035382" class="social flat-btn" target="_blank" rel="external"><i class="social fas fa-music" aria-hidden="true"></i></a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        <section class='plain'>
+  
+<header class='pure'>
+  <div><i class="fas fa-bullhorn fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;注意啦～</div>
+  
+    <a class="rightBtn" target="_blank"
+    rel="external nofollow noopener noreferrer"
+    href="https://xaoxuu.com/wiki/material-x/"
+    title="https://xaoxuu.com/wiki/material-x/">
+    <i class="fas fa-question-circle fa-fw"></i></a>
+  
+</header>
+
+  <div class='content pure'>
+    <p>本站使用 <a href="https://xaoxuu.com/wiki/material-x/">Material X</a> 作为主题，喜欢这个主题的朋友可以阅读文档进行安装哦，超喜欢的话还可以安利给身边的朋友哦～</p>
+
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        <section class='list'>
+  
+<header class='pure'>
+  <div><i class="fas fa-medal fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;精选项目</div>
+  
+    <a class="rightBtn" target="_blank"
+    rel="external nofollow noopener noreferrer"
+    href="https://xaoxuu.com/projects/"
+    title="https://xaoxuu.com/projects/">
+    <i class="fas fa-arrow-right fa-fw"></i></a>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="entry">
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/axkit/" href="https://xaoxuu.com/wiki/axkit/">
+          <div class='name'>
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;AXKit
+          </div>
+          
+            <div class='badge'>(iOS开源库)</div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/noticeboard/" href="https://xaoxuu.com/wiki/noticeboard/">
+          <div class='name'>
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;NoticeBoard
+          </div>
+          
+            <div class='badge'>(iOS开源库)</div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/heartmate/" href="https://xaoxuu.com/heartmate/">
+          <div class='name'>
+            
+              <i class="fas fa-heartbeat fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;HeartMate
+          </div>
+          
+            <div class='badge'>(iOS应用程序)</div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/">
+          <div class='name'>
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;Material X
+          </div>
+          
+            <div class='badge'>(Hexo博客主题)</div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        
+
+      
+    
+  
+    
+      
+      
+        
+  <section class='tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/MongoDB-node/" style="font-size: 14px; color: #999">MongoDB node</a> <a href="/tags/api/" style="font-size: 14px; color: #999">api</a> <a href="/tags/build-webApp/" style="font-size: 14px; color: #999">build_webApp</a> <a href="/tags/css/" style="font-size: 14px; color: #999">css</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/es6/" style="font-size: 14px; color: #999">es6</a> <a href="/tags/git/" style="font-size: 17.33px; color: #828282">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/java/" style="font-size: 17.33px; color: #828282">java</a> <a href="/tags/javascript/" style="font-size: 24px; color: #555">javascript</a> <a href="/tags/javascript-jquery/" style="font-size: 14px; color: #999">javascript, jquery</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/markdown/" style="font-size: 14px; color: #999">markdown</a> <a href="/tags/maven-gradle/" style="font-size: 14px; color: #999">maven gradle</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/php/" style="font-size: 14px; color: #999">php</a> <a href="/tags/react/" style="font-size: 17.33px; color: #828282">react</a> <a href="/tags/redis-db/" style="font-size: 14px; color: #999">redis, db</a> <a href="/tags/spring/" style="font-size: 17.33px; color: #828282">spring</a> <a href="/tags/springMVC/" style="font-size: 14px; color: #999">springMVC</a> <a href="/tags/ssl/" style="font-size: 14px; color: #999">ssl</a> <a href="/tags/ubuntu/" style="font-size: 14px; color: #999">ubuntu</a> <a href="/tags/vue/" style="font-size: 14px; color: #999">vue</a> <a href="/tags/weex/" style="font-size: 20.67px; color: #6c6c6c">weex</a> <a href="/tags/前端/" style="font-size: 14px; color: #999">前端</a> <a href="/tags/时间寄语/" style="font-size: 14px; color: #999">时间寄语</a>
+    </div>
+  </section>
+
+
+      
+    
+  
+    
+      
+      
+        
+
+
+  <section class='music'>
+    
+<header class='pure'>
+  <div><i class="fas fa-compact-disc fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;最近在听</div>
+  
+    <a class="rightBtn" target="_blank"
+    rel="external nofollow noopener noreferrer"
+    href="https://music.163.com/#/user/home?id=63035382"
+    title="https://music.163.com/#/user/home?id=63035382">
+    <i class="far fa-heart fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <div class="aplayer"
+    data-theme="#1BCDFC"
+    
+    
+    data-mode="circulation"
+    data-server="netease"
+    data-type="playlist"
+    data-id="746319661"
+    data-volume="0.7">
+  </div>
+  <script async src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script async src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+    </div>
+  </section>
+
+
+      
+    
+  
+    
+      
+      
+        
+  <section class='toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章目录</div>
+  
+    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#linux-指令集"><span class="toc-text">linux 指令集</span></a></li></ol>
+    </div>
+  </section>
+
+
+      
+    
+  
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
+    <footer id="footer" class="clearfix">
+  
+    <div class="footer">
+      <p>这是页脚文字，支持<strong>markdown</strong>语法。</p>
+
+    </div>
+    <br>
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="mailto:978189365@qq.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external"></a>
+        
+      
+        
+          <a href="https://github.com/hongtanhao/" class="social fab fa-github flat-btn" target="_blank" rel="external"></a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=63035382" class="social fas fa-music flat-btn" target="_blank" rel="external"></a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题，总访问量为 <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+  </div>
+</footer>
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+
+  
+    <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        const $reveal = $('.reveal');
+    		if ($reveal.length === 0) return;
+    		const sr = ScrollReveal({ distance: 0 });
+    		sr.reveal('.reveal');
+      });
+    </script>
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        Waves.attach('.flat-btn', ['waves-button']);
+        Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+        Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+        Waves.attach('.flat-box', ['waves-block']);
+        Waves.attach('.float-box', ['waves-block', 'waves-float']);
+        Waves.attach('.waves-image');
+        Waves.init();
+      });
+    </script>
+  
+  
+    <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+  
+  
+    <!-- fastclick -->
+    <script src="https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        FastClick.attach(document.body)
+      }, false)
+    </script>
+  
+  
+
+  
+  
+  
+  
+
+  
+    <script src="/js/app.js"></script>
+<script src="/js/search.js"></script>
+  
+
+
+
+
+
+
+    <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

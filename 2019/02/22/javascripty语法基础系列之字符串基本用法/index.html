@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>javascript语法基础系列之字符串基本用法 | wang xiaofeng&#39;s blog</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+  
+  <meta name='theme-color' content='#FFFFFF'>
+  <meta name='msapplication-TileColor' content='#1BC3FB'>
+  <meta name='msapplication-config' content='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/browserconfig.xml'>
+  
+
+  <!-- link -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+  
+  <link rel='shortcut icon' type='image/x-icon' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico'>
+  <link rel='icon' type='image/x-icon' sizes='32x32' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/favicon-32x32.png'>
+  <link rel='apple-touch-icon' type='image/png' sizes='180x180' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/apple-touch-icon.png'>
+  <link rel='mask-icon' color='#1BC3FB' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/safari-pinned-tab.svg'>
+  <link rel='manifest' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/site.webmanifest'>
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico">
+  
+
+  
+  <link rel="stylesheet" href="/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar" class="pure"></div>
+</div>
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header pure">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          wang xiaofeng's blog
+        
+      </a>
+			<div class='menu'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a id="https:hongtanhao.github.io"
+								 class="nav flat-box" href="https://hongtanhao.github.io/">
+									<i class='fas fa-home fa-fw'></i>&nbsp;主页
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="home"
+								 class="nav flat-box" href="/">
+									<i class='fas fa-rss fa-fw'></i>&nbsp;博客
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="archives"
+								 class="nav flat-box" href="/archives/">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="friends"
+								 class="nav flat-box" href="/friends/">
+									<i class='fas fa-users fa-fw'></i>&nbsp;朋友
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<span class="icon"><i class="fas fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+				<li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu">
+      <ul>
+          
+              
+                  <li>
+										<a id="https:hongtanhao.github.io" class="nav flat-box" href="https://hongtanhao.github.io/">
+											<i class='fas fa-home fa-fw'></i>&nbsp;主页
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="home" class="nav flat-box" href="/">
+											<i class='fas fa-rss fa-fw'></i>&nbsp;博客
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="archives" class="nav flat-box" href="/archives/">
+											<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="friends" class="nav flat-box" href="/friends/">
+											<i class='fas fa-users fa-fw'></i>&nbsp;朋友
+										</a>
+                  </li>
+              
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+  
+<section class='meta'>
+  
+  
+  <div class="meta" id="header-meta">
+    
+      
+          <h1 class="title">javascript语法基础系列之字符串基本用法</h1>
+      
+    
+
+    <div class='new-meta-box'>
+      
+        <div class='new-meta-item author'>
+          <a href="http://yoursite.com">
+            <i class="fas fa-user" aria-hidden="true"></i>
+            John Doe
+          </a>
+        </div>
+      
+      
+        <div class="new-meta-item date">
+          <a class='notlink'>
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            2019-02-22
+          </a>
+        </div>
+      
+      
+        
+      
+      
+        
+          <div class="new-meta-item browse busuanzi">
+            <a class='notlink'>
+              <i class="fas fa-eye" aria-hidden="true"></i>
+              <span id="busuanzi_value_page_pv">
+                <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+              </span>
+            </a>
+          </div>
+        
+      
+      
+    </div>
+    <hr>
+  </div>
+</section>
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <p>javascript语法基础系列之字符串基本用法</p>
+<a id="more"></a>
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>  有两种形式的字符串: 基本类型、对象类型（临时对象）<br>  注意：字符串所有的方法看上去是返回一个修改后的字符串，实际上返回的是一个新的字符串值</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字符串 基本类型 String</span></span><br><span class="line">var str1 = 'Hello World';</span><br><span class="line">console.log(typeof str1);</span><br><span class="line"><span class="comment">// 字符串 对象类型 Object</span></span><br><span class="line">var str2 = new String('Hello World');</span><br><span class="line">console.log(typeof str2);</span><br></pre></td></tr></table></figure>
+<p>对象类型的字符串封装了一些属性及方法，而基本类型则没有<br>可以直接用基本类型字符串调用字符串对象封装的属性及方法，无须手动转换</p>
+<h3 id="字符串的长度"><a href="#字符串的长度" class="headerlink" title="字符串的长度"></a>字符串的长度</h3><p>字符串中的length是只读属性，不可更改<br>按各国标注字符来计算长度</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 按各国标注字符串来计算长度</span></span><br><span class="line">var str = "实现伟大的中国梦";</span><br><span class="line">console.log(str.length);</span><br><span class="line"><span class="comment">// 获取对应下标处的字符</span></span><br><span class="line">console.log(str[3]);  // 大</span><br></pre></td></tr></table></figure>
+<h3 id="字符串的常用方法"><a href="#字符串的常用方法" class="headerlink" title="字符串的常用方法"></a>字符串的常用方法</h3><h4 id="1-charAt-index"><a href="#1-charAt-index" class="headerlink" title="1.charAt(index)"></a>1.charAt(index)</h4><p>   功能：获取对应下标处的字符<br>   参数：下标<br>   返回值：获取到的字符，没有字符则返回空字符串</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var str = "what color do yu lile";</span><br><span class="line">console.log(str.charAt(3));         // t</span><br><span class="line">console.log(str.charAt(30));        // 空字符串(“”)</span><br><span class="line">console.log(typeof str.charAt(30)); // string</span><br></pre></td></tr></table></figure>
+<h4 id="2-charCodeAt-index"><a href="#2-charCodeAt-index" class="headerlink" title="2.charCodeAt(index)"></a>2.charCodeAt(index)</h4><p>   功能：获取对应下标处的字符编码<br>   参数：下标<br>   返回值：获取到的字符编码(0-65535),没有对应 的下标则返回NaN</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var str = "what color do yu lile";</span><br><span class="line">console.log(str.charAt(3));         // 116</span><br><span class="line">console.log(str.charAt(30));        // NaN</span><br><span class="line">console.log(typeof str.charAt(30)); // number</span><br></pre></td></tr></table></figure>
+<h4 id="3-String-fromCharCode-ASCII码"><a href="#3-String-fromCharCode-ASCII码" class="headerlink" title="3.String.fromCharCode(ASCII码)"></a>3.String.fromCharCode(ASCII码)</h4><p>   功能：获取ASCII码对应的字符</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 参数：ASCII</span></span><br><span class="line"><span class="comment">// 返回值：对应的字符</span></span><br><span class="line">var charStr = String.fromCharCode(117);</span><br><span class="line">console.log(charStr);  // u</span><br></pre></td></tr></table></figure>
+<h4 id="4-toLowerCase-toUpperCase"><a href="#4-toLowerCase-toUpperCase" class="headerlink" title="4.toLowerCase() toUpperCase()"></a>4.toLowerCase() toUpperCase()</h4><p>  功能:     字符串的大小写转换<br>  返回值: 转换后的字符串<br>  注意：不会改变原字符串</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var str = 'hello';</span><br><span class="line"><span class="comment">// 全部转换为大写</span></span><br><span class="line">console.log(str.toUpperCase()); // HELLO</span><br><span class="line"><span class="comment">// 不会更改原有字符串</span></span><br><span class="line">console.log(str);               // hello</span><br><span class="line"><span class="comment">// 全部转换为小写</span></span><br><span class="line">console.log(str.toLowerCase()); // hello</span><br><span class="line"><span class="comment">// 不会更改原有字符串</span></span><br><span class="line">console.log(str);               // hello</span><br></pre></td></tr></table></figure>
+<h4 id="5-判断相等"><a href="#5-判断相等" class="headerlink" title="5.==, === 判断相等"></a>5.==, === 判断相等</h4><p>   == 只比较值相等，不对类型进行比比较<br>      比较之前会先进行类型统一<br>    === 要求值和类型均相等</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log(1 == "1");   // true</span><br><span class="line">console.log(1 == true);  // true</span><br><span class="line">console.log(1 === "1");  // false</span><br><span class="line">console.log(1 === "1");  // false</span><br></pre></td></tr></table></figure>
+<h4 id="6-localeCompare"><a href="#6-localeCompare" class="headerlink" title="6. localeCompare()"></a>6. localeCompare()</h4><p>   功能：字符串比较大小<br>   规则：两个字符串从下标为0的字符开始比较<br>   如果谁的ASCII码值大，那么谁大,如果相等继续比较后面的字符，当两个字符不想等时停止比较，此时谁的ASCII码值大谁就大<br>   返回值：<br>       1– 前面字符串大于后面的字符串<br>       -1–  前面的字符串小于后面的字符串<br>       0 – 前面的字符串等于后面的字符串<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">vat str1 = 'abcd';</span><br><span class="line">var str2 = 'abdd';</span><br><span class="line">var retVal = str1.localCompare(str2);</span><br><span class="line"><span class="keyword">if</span> (retVal &gt; <span class="number">0</span>)&#123;</span><br><span class="line">  console.log(str1 + '&gt;' + str2);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (retVal &lt; <span class="number">0</span>)&#123;</span><br><span class="line">  console.log(str1 + '&lt;' + str2);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  console.log(str1 + '==' + str2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="7-indexof-searchValuem-fromindex"><a href="#7-indexof-searchValuem-fromindex" class="headerlink" title="7.indexof(searchValuem, fromindex)"></a>7.indexof(searchValuem, fromindex)</h4><p>  功能：从左至右查找第一次出现的字符串<br>  参数：要查找的字符串<br>  返回值：子串第一次出现的下标，如果没有子字符串，则返回-1</p>
+<h4 id="8-lastIndexOf-searchValue-fromindex"><a href="#8-lastIndexOf-searchValue-fromindex" class="headerlink" title="8. lastIndexOf(searchValue, fromindex)"></a>8. lastIndexOf(searchValue, fromindex)</h4><p>  功能：从右至左查找第一次出现的字符串<br>  参数：<br>     searchValue：要查找的字符串<br>     fromindex：可选参数，表示从指定下标处开始往后查找<br>  返回值: 子串第一次出现的下标，如果没有子字符串，则返回-1 </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">va str = "Tom is a good man, Tom is a nice man";</span><br><span class="line"><span class="comment">// 从左至右查找第一次出现'is'字符串的下标</span></span><br><span class="line">console.log(str.indexof('is'));  // 4</span><br><span class="line"><span class="comment">// 从右至左查找第一次出现'is'字符串的下标</span></span><br><span class="line">console.log(str.lastIndexof('is'));  // 23</span><br></pre></td></tr></table></figure>
+<h4 id="9-replace-oldStr-newStr"><a href="#9-replace-oldStr-newStr" class="headerlink" title="9.replace(oldStr, newStr)"></a>9.replace(oldStr, newStr)</h4><p>   默认只能替换第一次出现的oldStr<br>   通过正则表达式可以实现全部替换</p>
+<h4 id="10-substring-start-stop"><a href="#10-substring-start-stop" class="headerlink" title="10.substring(start,stop)"></a>10.substring(start,stop)</h4><p>  定义：substring()方法用于提取字符串中介于两个指定下标之间的字符<br>  参数<br>     start：必须。一个非负的整数，要提取的子串的第一个字符在原字符中的位置<br>     end：可选。一个非负的整数，要提取的子串的最后一个字符在原字符中的位置+1<br>  如果省略该参数，那么返回的子串会一直截取到原字符串的末尾<br>  返回值：一个新的字符串，该字符串值包含 stringObject 的一个子字符串，其内容是从 start 处到 stop-1 处的所有字符，其长度为 stop 减 start。<br>  注意：<br>     如果start与stop相等，那么该方法返回的就是一个空串（即长度为0的字符串）<br>  如果start比stop大，那么该方在提取字符串之前会先交换两个参数</p>
+<h4 id="11-substr-start-length"><a href="#11-substr-start-length" class="headerlink" title="11.substr(start,length)"></a>11.substr(start,length)</h4><p>   定义：substr() 方法可在字符串中抽取从 start 下标开始的指定数目的字符。<br>   参数：<br>      start：必需。要抽取的字串的起始下标，必须是数值，如果是负数，那么该参数声明从字符串的尾部开始的位置算起，也就是说，-1 指字符串中最后一个字符，-2指倒数第二个字符，依次类推<br>      length：可选。字符串中的字符数，必须是数值，如果省略了该参数，那么返回从原字符串开始位置到结尾的字符串。<br>  返回值： 一个新的字符串，包含从 原字符串的 start（包括 start 所指的字符） 处开始的 length 个字符。如果没有指定 length，那么返回的字符串包含从 start 到原字符串的结尾的字符。  </p>
+<h5 id="注意：substring-amp-sunstr-均不会改变原有的字符串"><a href="#注意：substring-amp-sunstr-均不会改变原有的字符串" class="headerlink" title="注意：substring() &amp; sunstr() 均不会改变原有的字符串"></a>注意：substring() &amp; sunstr() 均不会改变原有的字符串</h5><h4 id="stringObject-split-separator-howmany"><a href="#stringObject-split-separator-howmany" class="headerlink" title="stringObject.split(separator, howmany);"></a>stringObject.split(separator, howmany);</h4><p>  定义：split() 方法用于把一个字符串分割成字符串数组<br>  参数：<br>    separator 必须。字符串或正则表达式，从该参数指定的位置分割stringObject。<br>    howmany 可选。该参数可指定返回数组的最大长度。如果设置了该参数,整个字符串都会被分割，不考虑它的长度。<br>  返回值：一个字符串数组<br>  注意：如果吧把空字符串(‘’)用作separator，那么<br>  身体stringObject 中的每个字符之间都会被分割</p>
+<h4 id="12-concat"><a href="#12-concat" class="headerlink" title="12.concat()"></a>12.concat()</h4><p>   用于将一个多个字符串拼接起来</p>
+<h4 id="13-trim"><a href="#13-trim" class="headerlink" title="13.trim()"></a>13.trim()</h4><p>   这个方法会创建一个字符串的副本，删除前缀及后缀的所有空格，然后返回结果</p>
+<h4 id="14-模式匹配"><a href="#14-模式匹配" class="headerlink" title="14.模式匹配"></a>14.模式匹配</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var text = "testing:1,2,3"; // 实力文本</span><br><span class="line">var pattern = /\d+/g; // 匹配所有的的包含一个或多个的实例</span><br><span class="line">pattern.test(text); // true : 匹配成功</span><br><span class="line">text.search(pattern); // 9 首次匹配成功的位置</span><br><span class="line">text.match(pattern); // ['1', '2', '3'] 所有匹配组成的数组</span><br><span class="line">text.replace(patten, "#"); // "testint:# # #"</span><br><span class="line">text.split(/D+/); // ["", "1", "2", "3"] : 用非数字字符截取字符串</span><br></pre></td></tr></table></figure>
+<h2 id="math-对象"><a href="#math-对象" class="headerlink" title="math 对象"></a>math 对象</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 四舍五入</span></span><br><span class="line">console.log(Math.round(4.5));  // 5</span><br><span class="line"><span class="comment">// 向上取整</span></span><br><span class="line">console.log(Math.ceil(31.));   // 4</span><br><span class="line"><span class="comment">// 向下取整</span></span><br><span class="line">console.log(Math.floor(3.9));  // 3</span><br><span class="line"><span class="comment">// 取最大值</span></span><br><span class="line">console.log(Math.max(4,4,6,76,89,31)); // 89</span><br><span class="line"><span class="comment">// 取最小值</span></span><br><span class="line">console.log(Math.min(3,4,7,99,0)); // 0</span><br><span class="line"><span class="comment">// 取绝对值</span></span><br><span class="line">console.log(Math.abs(-10));  // 10</span><br><span class="line"><span class="comment">// x的y 次方</span></span><br><span class="line">console.log(Math.pow(2,3));  // 8</span><br><span class="line"><span class="comment">// 开平方</span></span><br><span class="line">console.log(Math.sqrt(25));  // 5</span><br><span class="line"><span class="comment">// 生成一个0-1之间的随机数</span></span><br><span class="line">console.log(Math.random());  // 0-1之间的随机数</span><br></pre></td></tr></table></figure>
+
+      </div>
+        
+          <section class='meta' id="footer-meta">
+            <hr>
+            <div class='new-meta-box'>
+              
+                <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-03-08T09:19:43+08:00">
+                  <a class='notlink'>
+                    <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                    2019-03-08
+                  </a>
+                </div>
+              
+              
+                
+                <div class="new-meta-item meta-tags"><a class="tag" href="/tags/javascript/"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;javascript</a></div>
+              
+              
+            </div>
+          </section>
+        
+
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/02/22/javascript语法基础系列之Object/" rel="prev" title="javascript 语法基础系列之Object">
+                                  
+                                      javascript 语法基础系列之Object
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/javascript/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>javascript</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/02/22/javascripty语法基础系列之基本语句/" rel="prev" title="javascript语法基础系列之基本语句">
+                                    
+                                        javascript语法基础系列之基本语句
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/javascript/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>javascript</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+
+
+
+<script>
+    window.subData = {
+        title: 'javascript语法基础系列之字符串基本用法',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+  
+  
+    
+      
+      
+        <section class='author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/avatar/avatar.png'/>
+      </div>
+    
+    
+      <div class='text'>
+        
+        
+        
+          <p><span id="jinrishici-sentence">wang xiaofeng's blog</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="mailto:978189365@qq.com" class="social flat-btn" target="_blank" rel="external"><i class="social fas fa-envelope" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://github.com/hongtanhao/" class="social flat-btn" target="_blank" rel="external"><i class="social fab fa-github" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=63035382" class="social flat-btn" target="_blank" rel="external"><i class="social fas fa-music" aria-hidden="true"></i></a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        <section class='plain'>
+  
+<header class='pure'>
+  <div><i class="fas fa-bullhorn fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;注意啦～</div>
+  
+    <a class="rightBtn" target="_blank"
+    rel="external nofollow noopener noreferrer"
+    href="https://xaoxuu.com/wiki/material-x/"
+    title="https://xaoxuu.com/wiki/material-x/">
+    <i class="fas fa-question-circle fa-fw"></i></a>
+  
+</header>
+
+  <div class='content pure'>
+    <p>本站使用 <a href="https://xaoxuu.com/wiki/material-x/">Material X</a> 作为主题，喜欢这个主题的朋友可以阅读文档进行安装哦，超喜欢的话还可以安利给身边的朋友哦～</p>
+
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        <section class='list'>
+  
+<header class='pure'>
+  <div><i class="fas fa-medal fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;精选项目</div>
+  
+    <a class="rightBtn" target="_blank"
+    rel="external nofollow noopener noreferrer"
+    href="https://xaoxuu.com/projects/"
+    title="https://xaoxuu.com/projects/">
+    <i class="fas fa-arrow-right fa-fw"></i></a>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="entry">
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/axkit/" href="https://xaoxuu.com/wiki/axkit/">
+          <div class='name'>
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;AXKit
+          </div>
+          
+            <div class='badge'>(iOS开源库)</div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/noticeboard/" href="https://xaoxuu.com/wiki/noticeboard/">
+          <div class='name'>
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;NoticeBoard
+          </div>
+          
+            <div class='badge'>(iOS开源库)</div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/heartmate/" href="https://xaoxuu.com/heartmate/">
+          <div class='name'>
+            
+              <i class="fas fa-heartbeat fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;HeartMate
+          </div>
+          
+            <div class='badge'>(iOS应用程序)</div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/">
+          <div class='name'>
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;Material X
+          </div>
+          
+            <div class='badge'>(Hexo博客主题)</div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        
+
+      
+    
+  
+    
+      
+      
+        
+  <section class='tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/MongoDB-node/" style="font-size: 14px; color: #999">MongoDB node</a> <a href="/tags/api/" style="font-size: 14px; color: #999">api</a> <a href="/tags/build-webApp/" style="font-size: 14px; color: #999">build_webApp</a> <a href="/tags/css/" style="font-size: 14px; color: #999">css</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/es6/" style="font-size: 14px; color: #999">es6</a> <a href="/tags/git/" style="font-size: 17.33px; color: #828282">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/java/" style="font-size: 17.33px; color: #828282">java</a> <a href="/tags/javascript/" style="font-size: 24px; color: #555">javascript</a> <a href="/tags/javascript-jquery/" style="font-size: 14px; color: #999">javascript, jquery</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/markdown/" style="font-size: 14px; color: #999">markdown</a> <a href="/tags/maven-gradle/" style="font-size: 14px; color: #999">maven gradle</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/php/" style="font-size: 14px; color: #999">php</a> <a href="/tags/react/" style="font-size: 17.33px; color: #828282">react</a> <a href="/tags/redis-db/" style="font-size: 14px; color: #999">redis, db</a> <a href="/tags/spring/" style="font-size: 17.33px; color: #828282">spring</a> <a href="/tags/springMVC/" style="font-size: 14px; color: #999">springMVC</a> <a href="/tags/ssl/" style="font-size: 14px; color: #999">ssl</a> <a href="/tags/ubuntu/" style="font-size: 14px; color: #999">ubuntu</a> <a href="/tags/vue/" style="font-size: 14px; color: #999">vue</a> <a href="/tags/weex/" style="font-size: 20.67px; color: #6c6c6c">weex</a> <a href="/tags/前端/" style="font-size: 14px; color: #999">前端</a> <a href="/tags/时间寄语/" style="font-size: 14px; color: #999">时间寄语</a>
+    </div>
+  </section>
+
+
+      
+    
+  
+    
+      
+      
+        
+
+
+  <section class='music'>
+    
+<header class='pure'>
+  <div><i class="fas fa-compact-disc fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;最近在听</div>
+  
+    <a class="rightBtn" target="_blank"
+    rel="external nofollow noopener noreferrer"
+    href="https://music.163.com/#/user/home?id=63035382"
+    title="https://music.163.com/#/user/home?id=63035382">
+    <i class="far fa-heart fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <div class="aplayer"
+    data-theme="#1BCDFC"
+    
+    
+    data-mode="circulation"
+    data-server="netease"
+    data-type="playlist"
+    data-id="746319661"
+    data-volume="0.7">
+  </div>
+  <script async src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script async src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+    </div>
+  </section>
+
+
+      
+    
+  
+    
+      
+      
+        
+  <section class='toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章目录</div>
+  
+    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串"><span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串的长度"><span class="toc-text">字符串的长度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串的常用方法"><span class="toc-text">字符串的常用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-charAt-index"><span class="toc-text">1.charAt(index)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-charCodeAt-index"><span class="toc-text">2.charCodeAt(index)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-String-fromCharCode-ASCII码"><span class="toc-text">3.String.fromCharCode(ASCII码)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-toLowerCase-toUpperCase"><span class="toc-text">4.toLowerCase() toUpperCase()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-判断相等"><span class="toc-text">5.==, === 判断相等</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-localeCompare"><span class="toc-text">6. localeCompare()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-indexof-searchValuem-fromindex"><span class="toc-text">7.indexof(searchValuem, fromindex)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-lastIndexOf-searchValue-fromindex"><span class="toc-text">8. lastIndexOf(searchValue, fromindex)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-replace-oldStr-newStr"><span class="toc-text">9.replace(oldStr, newStr)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-substring-start-stop"><span class="toc-text">10.substring(start,stop)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-substr-start-length"><span class="toc-text">11.substr(start,length)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#注意：substring-amp-sunstr-均不会改变原有的字符串"><span class="toc-text">注意：substring() &amp; sunstr() 均不会改变原有的字符串</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#stringObject-split-separator-howmany"><span class="toc-text">stringObject.split(separator, howmany);</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-concat"><span class="toc-text">12.concat()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-trim"><span class="toc-text">13.trim()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14-模式匹配"><span class="toc-text">14.模式匹配</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#math-对象"><span class="toc-text">math 对象</span></a>
+    </div>
+  </section>
+
+
+      
+    
+  
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
+    <footer id="footer" class="clearfix">
+  
+    <div class="footer">
+      <p>这是页脚文字，支持<strong>markdown</strong>语法。</p>
+
+    </div>
+    <br>
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="mailto:978189365@qq.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external"></a>
+        
+      
+        
+          <a href="https://github.com/hongtanhao/" class="social fab fa-github flat-btn" target="_blank" rel="external"></a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=63035382" class="social fas fa-music flat-btn" target="_blank" rel="external"></a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题，总访问量为 <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+  </div>
+</footer>
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+
+  
+    <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        const $reveal = $('.reveal');
+    		if ($reveal.length === 0) return;
+    		const sr = ScrollReveal({ distance: 0 });
+    		sr.reveal('.reveal');
+      });
+    </script>
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        Waves.attach('.flat-btn', ['waves-button']);
+        Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+        Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+        Waves.attach('.flat-box', ['waves-block']);
+        Waves.attach('.float-box', ['waves-block', 'waves-float']);
+        Waves.attach('.waves-image');
+        Waves.init();
+      });
+    </script>
+  
+  
+    <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+  
+  
+    <!-- fastclick -->
+    <script src="https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        FastClick.attach(document.body)
+      }, false)
+    </script>
+  
+  
+
+  
+  
+  
+  
+
+  
+    <script src="/js/app.js"></script>
+<script src="/js/search.js"></script>
+  
+
+
+
+
+
+
+    <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

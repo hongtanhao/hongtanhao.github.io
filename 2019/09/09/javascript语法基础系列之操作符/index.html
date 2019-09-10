@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>javascript语法基础系列之操作符 | wang xiaofeng&#39;s blog</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+  
+  <meta name="theme-color" content="#FFFFFF">
+  <meta name="msapplication-TileColor" content="#1BC3FB">
+  <meta name="msapplication-config" content="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/browserconfig.xml">
+  
+
+  <!-- link -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico">
+  <link rel="icon" type="image/x-icon" sizes="32x32" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/favicon-32x32.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/apple-touch-icon.png">
+  <link rel="mask-icon" color="#1BC3FB" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/safari-pinned-tab.svg">
+  <link rel="manifest" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/site.webmanifest">
+  
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico">
+  
+
+  
+  <link rel="stylesheet" href="/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar" class="pure"></div>
+</div>
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header pure">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          wang xiaofeng's blog
+        
+      </a>
+			<div class='menu'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a id="https:hongtanhao.github.io"
+								 class="nav flat-box" href="https://hongtanhao.github.io/">
+									<i class='fas fa-home fa-fw'></i>&nbsp;主页
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="home"
+								 class="nav flat-box" href="/">
+									<i class='fas fa-rss fa-fw'></i>&nbsp;博客
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="archives"
+								 class="nav flat-box" href="/archives/">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="friends"
+								 class="nav flat-box" href="/friends/">
+									<i class='fas fa-users fa-fw'></i>&nbsp;朋友
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<span class="icon"><i class="fas fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+				<li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu">
+      <ul>
+          
+              
+                  <li>
+										<a id="https:hongtanhao.github.io" class="nav flat-box" href="https://hongtanhao.github.io/">
+											<i class='fas fa-home fa-fw'></i>&nbsp;主页
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="home" class="nav flat-box" href="/">
+											<i class='fas fa-rss fa-fw'></i>&nbsp;博客
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="archives" class="nav flat-box" href="/archives/">
+											<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="friends" class="nav flat-box" href="/friends/">
+											<i class='fas fa-users fa-fw'></i>&nbsp;朋友
+										</a>
+                  </li>
+              
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+  
+<section class='meta'>
+  
+  
+  <div class="meta" id="header-meta">
+    
+      
+          <h1 class="title">javascript语法基础系列之操作符</h1>
+      
+    
+
+    <div class='new-meta-box'>
+      
+        <div class='new-meta-item author'>
+          <a href="http://yoursite.com">
+            <i class="fas fa-user" aria-hidden="true"></i>
+            John Doe
+          </a>
+        </div>
+      
+      
+        <div class="new-meta-item date">
+          <a class='notlink'>
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            2019-09-09
+          </a>
+        </div>
+      
+      
+        
+      
+      
+        
+          <div class="new-meta-item browse busuanzi">
+            <a class='notlink'>
+              <i class="fas fa-eye" aria-hidden="true"></i>
+              <span id="busuanzi_value_page_pv">
+                <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+              </span>
+            </a>
+          </div>
+        
+      
+      
+    </div>
+    <hr>
+  </div>
+</section>
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <p>javascript语法基础系列之操作符</p>
+<a id="more"></a>
+<h2 id="一、其他基本类型转换为Number类型"><a href="#一、其他基本类型转换为Number类型" class="headerlink" title="一、其他基本类型转换为Number类型"></a>一、其他基本类型转换为Number类型</h2><h3 id="1-null转化成Number"><a href="#1-null转化成Number" class="headerlink" title="1.null转化成Number"></a>1.null转化成Number</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var ret = Number(null);</span><br><span class="line">console.log(ret);        // 0</span><br><span class="line">console.log(typeOf ret); //number</span><br></pre></td></tr></table></figure>
+<h3 id="2-undefined-转化成Number"><a href="#2-undefined-转化成Number" class="headerlink" title="2.undefined 转化成Number"></a>2.undefined 转化成Number</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(Number(undefined)); // NaN</span><br></pre></td></tr></table></figure>
+<h3 id="3-boolean转成Number"><a href="#3-boolean转成Number" class="headerlink" title="3.boolean转成Number"></a>3.boolean转成Number</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(Number(true));</span><br><span class="line">console.log(Number(false));</span><br></pre></td></tr></table></figure>
+<h3 id="4-String转成Number"><a href="#4-String转成Number" class="headerlink" title="4.String转成Number"></a>4.String转成Number</h3><p>  Number()<br>    1.如果字符串中存在除了数字和小数点以外的其他字符，则转换失败，值为NaN<br>    2.加减号在头表示正负号<br>    3.开头有空白字符可以过滤</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// string -&gt; number(Number())</span></span><br><span class="line">console.log(Number('123'));  // 123</span><br><span class="line">console.log(Number('+123')); // 123</span><br><span class="line">console.log(Number('-123')); // -123</span><br><span class="line">console.log(Number(' 123')); // 123</span><br><span class="line">console.log(Number('12.3')); // 12.3</span><br><span class="line">console.log(Number(' '));    // 0</span><br><span class="line"></span><br><span class="line">console.log(Number('12+3')); // NaN</span><br><span class="line">console.log(Number('12-3')); // NaN</span><br><span class="line">console.log(Number('a123')); // NaN</span><br><span class="line">console.log(Number('12 3')); // NaN</span><br><span class="line">console.log(Number('12..')); // NaN</span><br></pre></td></tr></table></figure>
+<p>  parseInt()<br>    1.将接收到的数据（一般都是字符串）转化成整数<br>    2.转换规则：从第一个非空白字符（空格、换行、tab）开始转换，直到遇到一个非数字字符为止。<br>    3.如果转化失败，结果为NaN<br>    4.从第一个非空字符开始，如果第一个字符不是数字或者正负号，parseInt()就会返回NaN，因此，parseInt()转换空字符结果为NaN，但是Number返回0</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//string -&gt;number(parseInt())</span></span><br><span class="line">console.log(parseInt('123'));  // 123</span><br><span class="line">console.log(parseInt('+123')); // 123</span><br><span class="line">console.log(parseInt('-123')); // -123</span><br><span class="line">console.log(parseInt(' 123')); // 123</span><br><span class="line">console.log(parseInt('12.3')); // 12</span><br><span class="line">console.log(parseInt(' '));    // NaN</span><br><span class="line"></span><br><span class="line">console.log(parseInt('12+3')); // 12</span><br><span class="line">console.log(parseInt('12-3')); // 12</span><br><span class="line">console.log(parseInt('a123')); // NaN</span><br><span class="line">console.log(parseInt('12 3')); // 12</span><br><span class="line">console.log(parseInt('12..')); // 12</span><br></pre></td></tr></table></figure>
+<p>  parseFloat()<br>    1.将接收到的数据（一般都是字符串）转成浮点数<br>    2.遇到的第一个小数点有效，第二个小数点就无效了</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// string -&gt; number(parseFloat())</span></span><br><span class="line">console.log(parseFloat('12.3'));      // 12.3</span><br><span class="line">console.log(parseFloat('12..3'));     // 12</span><br><span class="line">console.log(parseFloat('   12.3'));   // 12.3</span><br><span class="line">console.log(parseFloat('12.3+123'));  // 12.3</span><br><span class="line">console.log(parseFloat(' '));         // NaN</span><br></pre></td></tr></table></figure>
+<h2 id="二、其他基本类型转为String类型"><a href="#二、其他基本类型转为String类型" class="headerlink" title="二、其他基本类型转为String类型"></a>二、其他基本类型转为String类型</h2><h3 id="1-null转化成String"><a href="#1-null转化成String" class="headerlink" title="1.null转化成String"></a>1.null转化成String</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// null -&gt; string</span></span><br><span class="line">console.log('hello' +null);  //hellonull</span><br></pre></td></tr></table></figure>
+<h3 id="2-undefined转化成String"><a href="#2-undefined转化成String" class="headerlink" title="2.undefined转化成String"></a>2.undefined转化成String</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var str = undefined + '';</span><br><span class="line">console.log(str);       // undefined</span><br><span class="line">console.log(typeof str) <span class="comment">// string</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-boolean转化成String"><a href="#3-boolean转化成String" class="headerlink" title="3.boolean转化成String"></a>3.boolean转化成String</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// boolean -&gt; string</span></span><br><span class="line">console.log(true.toString());        // 'true'</span><br><span class="line">console.log(typeof true.toString()); // string</span><br></pre></td></tr></table></figure>
+<h3 id="3-number转化成String"><a href="#3-number转化成String" class="headerlink" title="3.number转化成String"></a>3.number转化成String</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// number -&gt; string</span></span><br><span class="line">var num = 10;</span><br><span class="line">console.log('' + 1);          // 1</span><br><span class="line">console.log(num.toString());  // 10</span><br></pre></td></tr></table></figure>
+<h2 id="三-其他基本类型转换为Boolean类型"><a href="#三-其他基本类型转换为Boolean类型" class="headerlink" title="三.其他基本类型转换为Boolean类型"></a>三.其他基本类型转换为Boolean类型</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 绝大多数转成布尔值，结果都为true</span></span><br><span class="line">  以下这六种情况转为boolean结果为false</span><br><span class="line">  console.log(Boolean(0));          // false</span><br><span class="line">  console.log(Boolean(''));         // false</span><br><span class="line">  console.log(Boolean(fasle));      // false</span><br><span class="line">  console.log(Boolean(NaN));        // false</span><br><span class="line">  console.log(Boolean(undefined));  // false</span><br><span class="line">  console.log(Boolean(null));       // false</span><br></pre></td></tr></table></figure>
+<h2 id="四、prompt-“-“"><a href="#四、prompt-“-“" class="headerlink" title="四、prompt(“ “)"></a>四、prompt(“ “)</h2><p>  prompt()接收外部的数据，默认是字符串类型<br>  有时需要将其转化成整数<br>  var age = parseInt(prompt(“请输入年龄”));</p>
+<h2 id="五、算数运算符和算数运算表达式"><a href="#五、算数运算符和算数运算表达式" class="headerlink" title="五、算数运算符和算数运算表达式"></a>五、算数运算符和算数运算表达式</h2><p>  1.表达式：由变量、常量和运算符组成的式子<br>  2.如何阅读表达式<br>    功能：进行相关的运算<br>    值：相关运算之后得到的值<br>  3.算数运算符<br>    +-*/、%(取余数)</p>
+<h3 id="（乘）"><a href="#（乘）" class="headerlink" title="*（乘）"></a>*（乘）</h3><p>a.如果操作数都是数值，则执行常规的乘法运算，如果结果超过JS数值范围，则返回Infinity或者-Infinity<br>b.NaN参与乘法运算，则结果返回NaN<br>c.Infinity<em>0，返回NaN<br>d.Infinity与非0操作数运算时，结果返回Infinity或者-Infinity。取决于有符号操作数的符号。<br>e.Infinity </em> Infinity，结果是Infinity<br>f.如果有一个操作数不是数值，那么在参与运算前会先对操作数执行Number()将其转化为数值，再应用上面的规则<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// * 乘法</span></span><br><span class="line">console.log(2*3);                 // 6</span><br><span class="line">console.log(NaN*3);               // NaN</span><br><span class="line">console.log(Inifnity*0);          // NaN</span><br><span class="line">console.log(Infinity*2);          // Infinity</span><br><span class="line">console.log(Infinity*(-2));       // -Infinity</span><br><span class="line">console.log(Infinity*Infinity);   // Infinity</span><br><span class="line">console.log(Infinity*(-Infinity));// -Infinity</span><br><span class="line">console.log("2"*3);               // 6</span><br></pre></td></tr></table></figure></p>
+<h3 id="（除）"><a href="#（除）" class="headerlink" title="/（除）"></a>/（除）</h3><p>a.如果操作数都是数值，则执行常规的除法运算，如果结果超过JS数值范围，则返回Infienter code here<code>nenter code hereity或者-Infinity
+b.NaN参与除法运算，则结果返回NaN
+c.I</code>enter code here<code>nfinity / Infinity，结果为NaN
+d.0 / 0， 结果为NaN
+e.如果是非0的有限数被0除，则结果是Infinity或者-Infinity，取决于有符号操作数的符号</code>enter code here`<br>    f.如果是Infinity被任何非0 整数值除，则结果是Infinity或者-Infinity<br>    g.如果有一个操作数不是数值，那么在参与运算前会先对操作数执行Number()将其转化为数值，再应用上面的规则<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /除法</span></span><br><span class="line">console.log(5/3);   // 1.6666666</span><br><span class="line">console.log(NaN/3); // NaN</span><br><span class="line">console.log(Infinity/Infinity); // NaN</span><br><span class="line">console.log(0/0);  // NaN</span><br><span class="line">console.log(2/0);  // Infinity</span><br><span class="line">console.log((-2)/0);//-Infinity</span><br><span class="line">console.log(Infinity/2); //Infinity</span><br><span class="line">consol`enter code here`e.log(Infinity/(-2)); //-Infinity</span><br><span class="line">console.log('5'/3);   //1.66666</span><br></pre></td></tr></table></figure></p>
+<h3 id="（取余）"><a href="#（取余）" class="headerlink" title="% （取余）"></a>% （取余）</h3><p>a.如果<code>enter code here</code>操作数都是数值，则执行常规的取余运算<br>b.如果被除数是无穷大值，而除数是有限大值，结果为NaN<br>c.如果被除数是有限大值，除数是0，结果为NaN<br>d.被除数是0，结果为0<br>e.如果有一个操作数不是数值，那么在参与运算前会先对操作数执行Number()将其转化为数值，再应用上面的规则<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// % 取余</span></span><br><span class="line">console.log(5%3); // 2</span><br><span class="line">console.log(Infinity % 3); //NaN</span><br><span class="line">console.log(3%0); // NaN</span><br><span class="line">console.log(0 % 2); // 0</span><br><span class="line">console`enter code here`.log('7'%3); //1</span><br></pre></td></tr></table></figure></p>
+<h3 id="（加）"><a href="#（加）" class="headerlink" title="+（加）"></a>+（加）</h3><p>a.如果操作数都是数值，则执行常规的加法运算<br>b.如果有一个操作数是NaN，则返回NaN<br>c.Infinity + Infinity = Infinity<br>d.(-Infinity) + (-Infinity) = -Infinity<br>e.Infinity + (-Infinity) = NaN<br>f.两个都是字符串，则拼接字符串<br>g.一个数值，一个字符串，则现将数值转为String类型，然后拼接字符串<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// + 加法</span></span><br><span class="line">console.log(5+3); // 8</span><br><span class="line">console.log(NaN + 3); //NaN</span><br><span class="line">console.log(Infinity + Infinity); // Infinity</span><br><span class="line">console.log((-Infinity) + (-Infinity)); // -Infinity</span><br><span class="line">console.log(Infinity + (-Infinity)); //NaN</span><br><span class="line">console.log('hello ' + 'world'); // hello world</span><br><span class="line">console.log('hello ' + 2017); // hello 2017</span><br></pre></td></tr></table></figure></p>
+<h3 id="减"><a href="#减" class="headerlink" title="-减"></a>-减</h3><p>a.如果操作数都是数值，则执行常规的减法运算<br>b.如果有一个操作数是NaN，则返回NaN<br>c.Infinity - Infinity = NaN<br>d.(-Infinity) - (-Infinity) = NaN<br>e.Infinity - (-Infinity) = Infinity<br>f.-Infinity - Infinity = -Infinity</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// - 减法</span></span><br><span class="line">  console.log(5 - 2); // 3</span><br><span class="line">  console.log(NaN -3); // NaN</span><br><span class="line">  console.log(Infinity - Infinity); // NaN</span><br><span class="line">  console.log(-Infinity - (-Infinity)); // NaN</span><br><span class="line">  console.log(Infinity - (-Infinity)); // Infinity</span><br><span class="line">  console.log(-Infinity - Infinity); // Infinity</span><br></pre></td></tr></table></figure>
+<p>  4.算术运算表达式<br>    变量1  算数运算符  变量2<br>  5.功能：进行相关的数学运算，不能改变变量的值<br>  6.值：相关数学运算之后的结果</p>
+<h2 id="六、自增自减运算符"><a href="#六、自增自减运算符" class="headerlink" title="六、自增自减运算符"></a>六、自增自减运算符</h2><h3 id="1-自增"><a href="#1-自增" class="headerlink" title="1.自增"></a>1.自增</h3><p>   自增运算符 ++<br>   自增运算表达式<br>       变量 ++ 后++，先取值再加1，表达式的值是变量+1之前的值<br>       ++ 变量，先++，先加1再取值，表达式的值是变量+1之后的值<br>   功能：两种都是实现变量的值自动加1</p>
+<h3 id="2-自减"><a href="#2-自减" class="headerlink" title="2.自减"></a>2.自减</h3><p>   自减运算符 –<br>   自减运算表达式<br>       变量– 后–，先取值再减1，表达式的值是变量减1之前的值<br>       –变量 先–，先减1再取值，表达式的值是变量减1之后的值<br>   功能：两种都是实现变量的值自动减1 </p>
+<h2 id="七、赋值运算符和赋值运算表达式"><a href="#七、赋值运算符和赋值运算表达式" class="headerlink" title="七、赋值运算符和赋值运算表达式"></a>七、赋值运算符和赋值运算表达式</h2><p>赋值运算符  =<br>赋值运算表达式  变量 = 表达式<br>功能：实现对变量的赋值操作<br>值<br>     复合运算符<br>        +=    a+=1 === a=a+1<br>        -=    a-=1 === a=a-1<br>        <em>=    a</em>=1 === a=a*1<br>        /=    a/=1 === a=a/1<br>        %=    a%=1 === a=a%1<br>     赋值运算结束之后，变量的值</p>
+<h2 id="八、关系运算符和关系运算表达式"><a href="#八、关系运算符和关系运算表达式" class="headerlink" title="八、关系运算符和关系运算表达式"></a>八、关系运算符和关系运算表达式</h2><p>  关系运算符<br>     &gt;、&gt;=、&lt;=、<br>     == 只比较数值，不比较类型。比较之前会进行类型统一<br>     === 数值和类型都要相等才可<br>  关系运算表达式： 表达式1  关系运算符  表达式2<br>  功能： 计算表达式1和表达式2的关系值<br>  值： 如果关系成立，值为真，否则值为假<br>  注意: 关系运算符不能连用。例如 1 &lt;= num &lt;= 5 会存在语法错误</p>
+<h2 id="九、逻辑运算符"><a href="#九、逻辑运算符" class="headerlink" title="九、逻辑运算符"></a>九、逻辑运算符</h2><p>   逻辑与（&amp;&amp;）有一个条件为假，则结果为假<br>   逻辑或（||）有一个条件为真，则结果为真<br>   逻辑非（!）取非运算</p>
+<h2 id="十、三目运算和三目运算符"><a href="#十、三目运算和三目运算符" class="headerlink" title="十、三目运算和三目运算符"></a>十、三目运算和三目运算符</h2><p>   三目运算符<br>   三目运算表达式：  表达式 ? 表达式1 : 表达式2<br>   功能：计算”表达式”的值，如果”表达式”的值为真，则计算表达式1的<br>   值，否则计算表达式2的值<br>   值：如果”表达式”的值为真，则取表达式1的计算值作为结果，否则取表<br>   达式2的计算值作为结果</p>
+
+      </div>
+        
+          <section class='meta' id="footer-meta">
+            <hr>
+            <div class='new-meta-box'>
+              
+                <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-03-07T16:20:25-09:00">
+                  <a class='notlink'>
+                    <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                    2019-03-07
+                  </a>
+                </div>
+              
+              
+                
+                <div class="new-meta-item meta-tags"><a class="tag" href="/tags/javascript/"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;javascript</a></div>
+              
+              
+            </div>
+          </section>
+        
+
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/09/09/js的编程风格/" rel="prev" title="javascript的编程风格">
+                                  
+                                      javascript的编程风格
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/javascript/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>javascript</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/09/09/javascript语法基础系列之Object/" rel="prev" title="javascript 语法基础系列之Object">
+                                    
+                                        javascript 语法基础系列之Object
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/javascript/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>javascript</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+
+
+
+<script>
+    window.subData = {
+        title: 'javascript语法基础系列之操作符',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+  
+  
+    
+      
+      
+        <section class='author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/avatar/avatar.png'/>
+      </div>
+    
+    
+      <div class='text'>
+        
+        
+        
+          <p><span id="jinrishici-sentence">wang xiaofeng's blog</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="mailto:978189365@qq.com" class="social flat-btn" target="_blank" rel="external"><i class="social fas fa-envelope" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://github.com/hongtanhao/" class="social flat-btn" target="_blank" rel="external"><i class="social fab fa-github" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=63035382" class="social flat-btn" target="_blank" rel="external"><i class="social fas fa-music" aria-hidden="true"></i></a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        <section class='plain'>
+  
+<header class='pure'>
+  <div><i class="fas fa-bullhorn fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;注意啦～</div>
+  
+    <a class="rightBtn" target="_blank"
+    rel="external nofollow noopener noreferrer"
+    href="https://xaoxuu.com/wiki/material-x/"
+    title="https://xaoxuu.com/wiki/material-x/">
+    <i class="fas fa-question-circle fa-fw"></i></a>
+  
+</header>
+
+  <div class='content pure'>
+    <p>本站使用 <a href="https://xaoxuu.com/wiki/material-x/">Material X</a> 作为主题，喜欢这个主题的朋友可以阅读文档进行安装哦，超喜欢的话还可以安利给身边的朋友哦～</p>
+
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        <section class='list'>
+  
+<header class='pure'>
+  <div><i class="fas fa-medal fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;精选项目</div>
+  
+    <a class="rightBtn" target="_blank"
+    rel="external nofollow noopener noreferrer"
+    href="https://xaoxuu.com/projects/"
+    title="https://xaoxuu.com/projects/">
+    <i class="fas fa-arrow-right fa-fw"></i></a>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="entry">
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/axkit/" href="https://xaoxuu.com/wiki/axkit/">
+          <div class='name'>
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;AXKit
+          </div>
+          
+            <div class='badge'>(iOS开源库)</div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/noticeboard/" href="https://xaoxuu.com/wiki/noticeboard/">
+          <div class='name'>
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;NoticeBoard
+          </div>
+          
+            <div class='badge'>(iOS开源库)</div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/heartmate/" href="https://xaoxuu.com/heartmate/">
+          <div class='name'>
+            
+              <i class="fas fa-heartbeat fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;HeartMate
+          </div>
+          
+            <div class='badge'>(iOS应用程序)</div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/">
+          <div class='name'>
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;Material X
+          </div>
+          
+            <div class='badge'>(Hexo博客主题)</div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        
+
+      
+    
+  
+    
+      
+      
+        
+  <section class='tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/MongoDB-node/" style="font-size: 14px; color: #999">MongoDB node</a> <a href="/tags/api/" style="font-size: 14px; color: #999">api</a> <a href="/tags/build-webApp/" style="font-size: 14px; color: #999">build_webApp</a> <a href="/tags/css/" style="font-size: 14px; color: #999">css</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/es6/" style="font-size: 14px; color: #999">es6</a> <a href="/tags/git/" style="font-size: 17.33px; color: #828282">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/java/" style="font-size: 17.33px; color: #828282">java</a> <a href="/tags/javascript/" style="font-size: 24px; color: #555">javascript</a> <a href="/tags/javascript-jquery/" style="font-size: 14px; color: #999">javascript, jquery</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/markdown/" style="font-size: 14px; color: #999">markdown</a> <a href="/tags/maven-gradle/" style="font-size: 14px; color: #999">maven gradle</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/php/" style="font-size: 14px; color: #999">php</a> <a href="/tags/react/" style="font-size: 17.33px; color: #828282">react</a> <a href="/tags/redis-db/" style="font-size: 14px; color: #999">redis, db</a> <a href="/tags/spring/" style="font-size: 17.33px; color: #828282">spring</a> <a href="/tags/springMVC/" style="font-size: 14px; color: #999">springMVC</a> <a href="/tags/ssl/" style="font-size: 14px; color: #999">ssl</a> <a href="/tags/ubuntu/" style="font-size: 14px; color: #999">ubuntu</a> <a href="/tags/vue/" style="font-size: 14px; color: #999">vue</a> <a href="/tags/weex/" style="font-size: 20.67px; color: #6c6c6c">weex</a> <a href="/tags/前端/" style="font-size: 14px; color: #999">前端</a> <a href="/tags/时间寄语/" style="font-size: 14px; color: #999">时间寄语</a>
+    </div>
+  </section>
+
+
+      
+    
+  
+    
+      
+      
+        
+
+
+  <section class='music'>
+    
+<header class='pure'>
+  <div><i class="fas fa-compact-disc fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;最近在听</div>
+  
+    <a class="rightBtn" target="_blank"
+    rel="external nofollow noopener noreferrer"
+    href="https://music.163.com/#/user/home?id=63035382"
+    title="https://music.163.com/#/user/home?id=63035382">
+    <i class="far fa-heart fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <div class="aplayer"
+    data-theme="#1BCDFC"
+    
+    
+    data-mode="circulation"
+    data-server="netease"
+    data-type="playlist"
+    data-id="746319661"
+    data-volume="0.7">
+  </div>
+  <script async src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script async src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+    </div>
+  </section>
+
+
+      
+    
+  
+    
+      
+      
+        
+  <section class='toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章目录</div>
+  
+    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、其他基本类型转换为Number类型"><span class="toc-text">一、其他基本类型转换为Number类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-null转化成Number"><span class="toc-text">1.null转化成Number</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-undefined-转化成Number"><span class="toc-text">2.undefined 转化成Number</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-boolean转成Number"><span class="toc-text">3.boolean转成Number</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-String转成Number"><span class="toc-text">4.String转成Number</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、其他基本类型转为String类型"><span class="toc-text">二、其他基本类型转为String类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-null转化成String"><span class="toc-text">1.null转化成String</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-undefined转化成String"><span class="toc-text">2.undefined转化成String</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-boolean转化成String"><span class="toc-text">3.boolean转化成String</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-number转化成String"><span class="toc-text">3.number转化成String</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-其他基本类型转换为Boolean类型"><span class="toc-text">三.其他基本类型转换为Boolean类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、prompt-“-“"><span class="toc-text">四、prompt(“ “)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、算数运算符和算数运算表达式"><span class="toc-text">五、算数运算符和算数运算表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#（乘）"><span class="toc-text">*（乘）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#（除）"><span class="toc-text">/（除）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#（取余）"><span class="toc-text">% （取余）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#（加）"><span class="toc-text">+（加）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#减"><span class="toc-text">-减</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、自增自减运算符"><span class="toc-text">六、自增自减运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-自增"><span class="toc-text">1.自增</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-自减"><span class="toc-text">2.自减</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、赋值运算符和赋值运算表达式"><span class="toc-text">七、赋值运算符和赋值运算表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、关系运算符和关系运算表达式"><span class="toc-text">八、关系运算符和关系运算表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九、逻辑运算符"><span class="toc-text">九、逻辑运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十、三目运算和三目运算符"><span class="toc-text">十、三目运算和三目运算符</span></a></li></ol>
+    </div>
+  </section>
+
+
+      
+    
+  
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
+    <footer id="footer" class="clearfix">
+  
+    <div class="footer">
+      <p>这是页脚文字，支持<strong>markdown</strong>语法。</p>
+
+    </div>
+    <br>
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="mailto:978189365@qq.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external"></a>
+        
+      
+        
+          <a href="https://github.com/hongtanhao/" class="social fab fa-github flat-btn" target="_blank" rel="external"></a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=63035382" class="social fas fa-music flat-btn" target="_blank" rel="external"></a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题，总访问量为 <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+  </div>
+</footer>
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+
+  
+    <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        const $reveal = $('.reveal');
+    		if ($reveal.length === 0) return;
+    		const sr = ScrollReveal({ distance: 0 });
+    		sr.reveal('.reveal');
+      });
+    </script>
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        Waves.attach('.flat-btn', ['waves-button']);
+        Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+        Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+        Waves.attach('.flat-box', ['waves-block']);
+        Waves.attach('.float-box', ['waves-block', 'waves-float']);
+        Waves.attach('.waves-image');
+        Waves.init();
+      });
+    </script>
+  
+  
+    <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+  
+  
+    <!-- fastclick -->
+    <script src="https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        FastClick.attach(document.body)
+      }, false)
+    </script>
+  
+  
+
+  
+  
+  
+  
+
+  
+    <script src="/js/app.js"></script>
+<script src="/js/search.js"></script>
+  
+
+
+
+
+
+
+    <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
