@@ -230,13 +230,15 @@
 <h2 id="6-实现new关键字"><a href="#6-实现new关键字" class="headerlink" title="6.实现new关键字"></a>6.实现new关键字</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myNew</span>(<span class="params">fn, ...args</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> instance = <span class="built_in">Object</span>.create(fn.prototype);</span><br><span class="line">    <span class="keyword">let</span> res = fn.apply(instance, args);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> res === <span class="string">'object'</span> ? res : instance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="7-实现instanceof的作用"><a href="#7-实现instanceof的作用" class="headerlink" title="7.实现instanceof的作用"></a>7.实现instanceof的作用</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myInstanceof</span>(<span class="params">left, right</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> proto = Oject.getPrototypeOf(left);</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (proto === <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (proto === right.prototype) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        proto = Oject.getProtypeOf(proto);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="8-实现单例模式"><a href="#8-实现单例模式" class="headerlink" title="8.实现单例模式"></a>8.实现单例模式</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">proxy</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> instance;</span><br><span class="line">    <span class="keyword">let</span> handler = &#123;</span><br><span class="line">        <span class="keyword">constructor</span>(target, args) &#123;</span><br><span class="line">            <span class="keyword">if</span>(!instance) &#123;</span><br><span class="line">                instance = <span class="built_in">Reflect</span>.contructor(fun, args);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> instance;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Proxy</span>(func, handler);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>`</code></p>
+
       </div>
         
           <section class='meta' id="footer-meta">
             <hr>
             <div class='new-meta-box'>
               
-                <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-09-09T18:25:01-08:00">
+                <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-09-09T18:53:59-08:00">
                   <a class='notlink'>
                     <i class="fas fa-pencil-alt" aria-hidden="true"></i>
                     2019-09-09
@@ -254,6 +256,25 @@
 
         
             <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/09/09/js数组扁平化（flat）方法总结/" rel="prev" title="js数组flat方法">
+                                  
+                                      js数组flat方法
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/jsApi/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>jsApi</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
                 
                 
                     <section class="next">
@@ -468,7 +489,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/MongoDB-node/" style="font-size: 14px; color: #999">MongoDB node</a> <a href="/tags/api/" style="font-size: 14px; color: #999">api</a> <a href="/tags/build-webApp/" style="font-size: 14px; color: #999">build_webApp</a> <a href="/tags/css/" style="font-size: 14px; color: #999">css</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/es6/" style="font-size: 14px; color: #999">es6</a> <a href="/tags/git/" style="font-size: 17.33px; color: #828282">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/java/" style="font-size: 17.33px; color: #828282">java</a> <a href="/tags/javascript/" style="font-size: 24px; color: #555">javascript</a> <a href="/tags/javascript-jquery/" style="font-size: 14px; color: #999">javascript, jquery</a> <a href="/tags/jsApi/" style="font-size: 14px; color: #999">jsApi</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/markdown/" style="font-size: 14px; color: #999">markdown</a> <a href="/tags/maven-gradle/" style="font-size: 14px; color: #999">maven gradle</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/php/" style="font-size: 14px; color: #999">php</a> <a href="/tags/react/" style="font-size: 17.33px; color: #828282">react</a> <a href="/tags/redis-db/" style="font-size: 14px; color: #999">redis, db</a> <a href="/tags/spring/" style="font-size: 17.33px; color: #828282">spring</a> <a href="/tags/springMVC/" style="font-size: 14px; color: #999">springMVC</a> <a href="/tags/ssl/" style="font-size: 14px; color: #999">ssl</a> <a href="/tags/ubuntu/" style="font-size: 14px; color: #999">ubuntu</a> <a href="/tags/vue/" style="font-size: 14px; color: #999">vue</a> <a href="/tags/weex/" style="font-size: 20.67px; color: #6c6c6c">weex</a> <a href="/tags/前端/" style="font-size: 14px; color: #999">前端</a> <a href="/tags/时间寄语/" style="font-size: 14px; color: #999">时间寄语</a>
+      <a href="/tags/MongoDB-node/" style="font-size: 14px; color: #999">MongoDB node</a> <a href="/tags/api/" style="font-size: 14px; color: #999">api</a> <a href="/tags/build-webApp/" style="font-size: 14px; color: #999">build_webApp</a> <a href="/tags/css/" style="font-size: 14px; color: #999">css</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/es6/" style="font-size: 14px; color: #999">es6</a> <a href="/tags/git/" style="font-size: 19px; color: #777">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/java/" style="font-size: 19px; color: #777">java</a> <a href="/tags/javascript/" style="font-size: 24px; color: #555">javascript</a> <a href="/tags/javascript-jquery/" style="font-size: 14px; color: #999">javascript, jquery</a> <a href="/tags/jsApi/" style="font-size: 16.5px; color: #888">jsApi</a> <a href="/tags/js算法/" style="font-size: 14px; color: #999">js算法</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/markdown/" style="font-size: 14px; color: #999">markdown</a> <a href="/tags/maven-gradle/" style="font-size: 14px; color: #999">maven gradle</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/php/" style="font-size: 14px; color: #999">php</a> <a href="/tags/react/" style="font-size: 19px; color: #777">react</a> <a href="/tags/redis-db/" style="font-size: 14px; color: #999">redis, db</a> <a href="/tags/spring/" style="font-size: 19px; color: #777">spring</a> <a href="/tags/springMVC/" style="font-size: 14px; color: #999">springMVC</a> <a href="/tags/ssl/" style="font-size: 14px; color: #999">ssl</a> <a href="/tags/ubuntu/" style="font-size: 14px; color: #999">ubuntu</a> <a href="/tags/vue/" style="font-size: 14px; color: #999">vue</a> <a href="/tags/weex/" style="font-size: 21.5px; color: #666">weex</a> <a href="/tags/前端/" style="font-size: 14px; color: #999">前端</a> <a href="/tags/时间寄语/" style="font-size: 14px; color: #999">时间寄语</a>
     </div>
   </section>
 
