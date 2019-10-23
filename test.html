@@ -240,7 +240,7 @@
       color: #bbbbbb;
     }
 
-    .input-tod-item>input {
+    .input-todo-item>input {
       width: 300px;
       height: 35px;
       border: 1px solid #bbb;
@@ -248,11 +248,11 @@
       padding: 0 1rem;
     }
 
-    .input-tod-item>input:focus {
+    .input-todo-item>input:focus {
       border-radius: 4px;
     }
 
-    .input-tod-item>button {
+    .input-todo-item>button {
       line-height: 35px;
       color: #ffffff;
       background-color: red;
@@ -264,7 +264,7 @@
       cursor: pointer;
     }
 
-    .input-tod-item>button:hover {
+    .input-todo-item>button:hover {
       opacity: 1;
     }
 
@@ -302,7 +302,7 @@
       <script>
         // 定义 <input-item/>组件 html 片段
         const inputTpl =
-          `<div class="input-tod-item">
+          `<div class="input-todo-item">
             <input v-focus type="text" v-model="inputValue"/>
             <button 
               ref="addbtn" 
