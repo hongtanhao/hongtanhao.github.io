@@ -176,7 +176,7 @@
   <div class="meta" id="header-meta">
     
       
-          <h1 class="title">2019-10-22</h1>
+          <h1 class="title">2019-10-24</h1>
       
     
 
@@ -193,7 +193,7 @@
         <div class="new-meta-item date">
           <a class='notlink'>
             <i class="fas fa-clock" aria-hidden="true"></i>
-            2019-10-22
+            2019-10-24
           </a>
         </div>
       
@@ -229,7 +229,7 @@
   <style>
     .todo-list {
       margin: 100px auto;
-      width: 500px;
+      width: 600px;
       text-align: center;
       font-family: '微软雅黑';
     }
@@ -264,9 +264,22 @@
       cursor: pointer;
     }
 
-    .input-todo-item>button:hover {
+
+    .input-todo-item>button:hover, .router-link:hover {
       opacity: 1;
     }
+
+    .router-link {
+      display: inline-block;
+      color: #ffffff;
+      background-color: green;
+      opacity: .6;
+      border-radius: 4px;
+      padding: .5rem 1rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+   
 
     .disableBtn {
       background-color: #bbb !important;
@@ -276,12 +289,11 @@
     .samll-widget {
       display: inline-block;
       height: 20px;
-      width: 30px;
+      padding: 0.2rem .5rem;
       line-height: 20px;
       text-align: center;
       color: #ffffff;
       transition: all 1s;
-      /* border: 1px solid #eee; */
       border-radius: 2px;
       margin-left: 1rem;
       opacity: .5;
@@ -292,6 +304,14 @@
       opacity: 1;
     }
 
+    .fade-enter-active, .fade-leave-active {
+      transition: opacity .5s;
+    }
+
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+      opacity: 0;
+    }
+
   </style>
 </head>
 
@@ -299,12 +319,13 @@
   <div id="mount-point">
     <div>
       <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
       <script>
         // 定义 <input-item/>组件 html 片段
         const inputTpl =
           `<div class="input-todo-item">
             <input v-focus type="text" v-model="inputValue"/>
-            <button 
+            <button
               ref="addbtn" 
               @click="addClick" 
               :disabled="disableAddBtn"
@@ -323,10 +344,17 @@
                 :style="{textDecorationLine: item.isCompleted ? 'line-through' : 'none'}">
                 
                 <small-widget type="delete" index="index" @onClickWidget="deleteItem(index)">
-                  <template v-slot:widget>x</template>
+                  <template v-slot:widget>delete</template>
                 </small-widget>
                 <small-widget type="finished" index="index">
-                  <template v-slot:widget>o</template>
+                  <template v-slot:widget>
+                    <router-link style="color: #fff" :to="{name: 'edit', params: {}}">edit</router-link>
+                  </template>
+                </small-widget>
+                <small-widget type="link" index="index">
+                  <template v-slot:widget>
+                    <router-link style="color: #fff" :to="{path: '/detail/' + item.id, params: {}}">view</router-link>
+                  </template>
                 </small-widget>
               </li>
             </ul>
@@ -358,6 +386,8 @@
                 return 'red'
               } else if (this.type === 'remind') {
                 return 'yellow'
+              } else if (this.type === 'link') {
+                return 'blue'
               } else {
                 return 'green'
               }
@@ -398,7 +428,50 @@
          * params:  {string} id, {Function | Object} [definition]
          */
         // 使用构造器创建组件 
+        // [display-item]
         Vue.component('display-item', DisplayItem)
+        // 使用jsx创建组件
+        // [display-item-detail]
+        Vue.component('display-item-detail', {
+          template: `<div>
+                      <div></div>
+                      <router-view></router-view>
+                    </div>`,
+          computed: {
+            params () {
+              return this.$route.params
+            } 
+          },
+          mounted () {
+            console.log('params', this.params)
+          },
+          watch: {
+            '$route' (to, from) {
+              // ...
+            }
+          },
+          // 组件内的守卫
+          beforeRouteUpdate (to, from, next) {
+            // react to route changes...
+            // don't forget to call next()
+            this.name = to.params.name
+            next()
+          },
+          beforeRouteEnter (to, from, next) {
+            // 在导航完成前获取数据
+            // getPost(to.params.id, (err, post) => {
+            //   next(vm => vm.setData(err, post))
+            // })
+          },
+          beforeRouteLeave (to, from, next) {
+            const answer = window.confirm('Do you really leave?')
+            if (answer) {
+              next()
+            } else {
+              false
+            }
+          }
+        })
         // 使用模板选项创建组件
         Vue.component('input-item', {
           template: inputTpl,
@@ -413,50 +486,19 @@
               return !this.inputValue
             }
           },
-          // watch 监听的属性只有当其发生变化后才触发，因此首次不会触发的
-          // watch: {
-          //   disableAddBtn (newV, oldV) {
-          //     if (newV) {
-          //       this.$refs['addbtn'].style.backgroundColor = "#bbb"
-          //     } else {
-          //       this.$refs['addbtn'].style.backgroundColor = "red"
-          //     }
-          //   }
-          // },
           methods: {
             addClick() {
               console.log(this.disableAddBtn)
               if (this.disableAddBtn) return
               this.$emit('onAddItem', this.inputValue) // 实例方法/事件
+            },
+            toViewDetails () {
+
             }
           }
         })
         // 使用render函数创建组件
         Vue.component('todo-list', {
-          render: function (createElement) {
-            return createElement('div', {'class': {'todo-list': true}}, [
-              createElement('input-item', {
-                on: {
-                  onAddItem: this.$parent.addItemToList
-                },
-              }, this.$slots.default),
-              createElement('display-item', {
-                props: {
-                  disList: this.$parent.$data.todoLists
-                },
-                on: {
-                  onDeleteItem: this.$parent.deleteItemFromList
-                },
-              }, this.$slots.default),
-            ])
-          }
-        })
-        const TodoList = new Vue({
-          props: {
-            data: {
-              type: Object
-            }
-          },
           data() {
             return {
               todoLists: [
@@ -469,10 +511,123 @@
           methods: {
             deleteItemFromList (index) {
               this.todoLists.splice(index, 1)
+            },
+            addItemToList (value) {
+              this.todoLists.push({
+                isCompleted: false,
+                text: value
+              })
             }
           },
           render: function (createElement) {
-            return createElement('todo-list')
+            return createElement('div', {'class': {'todo-list': true}}, [
+              createElement('input-item', {
+                on: {
+                  onAddItem: this.addItemToList
+                },
+              }, this.$slots.default),
+              createElement('display-item', {
+                props: {
+                  disList: this.todoLists
+                },
+                on: {
+                  onDeleteItem: this.deleteItemFromList
+                },
+              }, this.$slots.default),
+            ])
+          }
+        })
+        const routes = [
+          {path: '/', component: Vue.component('todo-list')},
+          {
+            path: '/detail/:id',
+            name: 'detail',
+            component: {template: '<display-item-detail/>'},
+            children: [
+              {
+                path:'',
+                component: {template: `<div>
+                                        <h2></h2>
+                                        <ol>
+                                          <li v-for="(item, index) in flows"></li>
+                                        </ol>
+                                      </div>`,
+                           data () {
+                             return {
+                               title: '', 
+                               flows: [
+                                 '导航被触发',
+                                 '在失活的组件里调用离开守卫',
+                                 '调用全局的beforeEach守卫',
+                                 '在重复的组件中调用beforRouteUpdate守卫',
+                                 '在路由配置里调用beforeEnter',
+                                 '解析异步路由组件',
+                                 '在被激活的组件里调用beforeRouteEnter',
+                                 '调用全局的beforeResolve守卫',
+                                 '导航被确认',
+                                 '调用全局的afterEach钩子',
+                                 '触发dom更新',
+                                 '用创建好的实例调用beforeRouteEnter守卫中传给next的回调函数'
+                               ]
+                             }
+                           }}
+              }
+            ]
+          },
+          {
+            path: '/edit',
+            name: 'edit',
+            component: {template: `<div>
+                                    <router-view name="header"></router-view>
+                                    <router-view name="main"></router-view>
+                                    <router-view name="footer"></router-view>
+                                  </div>`},
+            children: [
+              {
+                path: '',
+                components: {
+                  header: {template: '<div>header</div>'},
+                  main: {template: '<div>main</div>'},
+                  footer: {template: '<div>footer</div>'}
+                }
+              }
+            ],
+            // 路由独享守卫
+            beforeEnter: (to, from, next) => {
+
+            }
+          },
+          {path: '*', component: {template: '<div>你的页面丢失了</div>'}},
+        ]
+        const router = new VueRouter({
+          routes,
+          // 滚动行为
+          scrollBehavior (to, from, savedPosition) {
+            // 滚动到到顶部
+            return {
+              x: 0,
+              y: 0
+            }
+            // 滚动到锚点
+            // if (to.hash) {
+            //   return {
+            //     seletor: to.hash
+            //   }
+            // }
+          }
+        })
+        // 注册一个全局前置守卫
+        router.beforeEach((to, from, next) => {
+          console.log(to)
+          next()
+        })
+        router.push('/')
+        const TodoList = new Vue({
+          router,
+          render: function (createElement) {
+            return createElement('transition', {props: {name: 'fade', mode: 'out-in'}}, [
+              createElement('router-view')
+            ])
           }
         })
         /** global API
@@ -528,9 +683,9 @@
         * 功能： 向响应式对象中添加一个属性
         * params:  一个包含组件选项的对象。
         */
-        Vue.set(TodoList, 'key', {
-          text: '这个周末去song'
-        })
+        // Vue.set(TodoList, 'key', {
+        //   text: '这个周末去song'
+        // })
         // 此处列举vue实例属性
         console.log(TodoList.$data) // rw 代理data对象
         // => {__ob__: Observer}
@@ -572,18 +727,19 @@
         // => 包含了父作用域中不作为 prop 被识别 (且获取) 的特性绑定 (class 和 style 除外)
         console.log(TodoList.$isServer)
         // => 当前 Vue 实例是否运行于服务器
-        let list = TodoList.$data.todoLists
-        list = list.map(item => {
-          TodoList.$set(item, 'isCompleted', true)
-          return item
-        })
-        TodoList.addItemToList = value => {
-          list.push({
-            isCompleted: false,
-            text: value
-          })
-          TodoList.$data.todoLists = list
-        }
+        console.log('[TodoList]', TodoList)
+        let list = TodoList.$children.todoLists
+        // list = list.map(item => {
+        //   TodoList.$set(item, 'isCompleted', true)
+        //   return item
+        // })
+        // TodoList.$children.addItemToList = value => {
+        //   list.push({
+        //     isCompleted: false,
+        //     text: value
+        //   })
+        //   TodoList.$children.$data.todoLists = list
+        // }
         /** instance API (实例方法)
         * @vm.$mount(id, [definition])
         * 功能： 挂载一个未挂载的实例
@@ -788,7 +944,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/MongoDB-node/" style="font-size: 14px; color: #999">MongoDB node</a> <a href="/tags/api/" style="font-size: 14px; color: #999">api</a> <a href="/tags/build-webApp/" style="font-size: 14px; color: #999">build_webApp</a> <a href="/tags/css/" style="font-size: 14px; color: #999">css</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/es6/" style="font-size: 14px; color: #999">es6</a> <a href="/tags/git/" style="font-size: 18px; color: #7e7e7e">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/java/" style="font-size: 18px; color: #7e7e7e">java</a> <a href="/tags/javascript/" style="font-size: 24px; color: #555">javascript</a> <a href="/tags/javascript-jquery/" style="font-size: 14px; color: #999">javascript, jquery</a> <a href="/tags/jsApi/" style="font-size: 16px; color: #8b8b8b">jsApi</a> <a href="/tags/js算法/" style="font-size: 14px; color: #999">js算法</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/markdown/" style="font-size: 14px; color: #999">markdown</a> <a href="/tags/maven-gradle/" style="font-size: 14px; color: #999">maven gradle</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/php/" style="font-size: 14px; color: #999">php</a> <a href="/tags/react/" style="font-size: 18px; color: #7e7e7e">react</a> <a href="/tags/redis-db/" style="font-size: 14px; color: #999">redis, db</a> <a href="/tags/spring/" style="font-size: 18px; color: #7e7e7e">spring</a> <a href="/tags/springMVC/" style="font-size: 14px; color: #999">springMVC</a> <a href="/tags/ssl/" style="font-size: 14px; color: #999">ssl</a> <a href="/tags/ubuntu/" style="font-size: 14px; color: #999">ubuntu</a> <a href="/tags/vue/" style="font-size: 20px; color: #707070">vue</a> <a href="/tags/weex/" style="font-size: 22px; color: #636363">weex</a> <a href="/tags/前端/" style="font-size: 14px; color: #999">前端</a> <a href="/tags/时间寄语/" style="font-size: 14px; color: #999">时间寄语</a>
+      <a href="/tags/MongoDB-node/" style="font-size: 14px; color: #999">MongoDB node</a> <a href="/tags/api/" style="font-size: 14px; color: #999">api</a> <a href="/tags/build-webApp/" style="font-size: 14px; color: #999">build_webApp</a> <a href="/tags/css/" style="font-size: 14px; color: #999">css</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/es6/" style="font-size: 14px; color: #999">es6</a> <a href="/tags/git/" style="font-size: 19px; color: #777">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/java/" style="font-size: 19px; color: #777">java</a> <a href="/tags/javascript/" style="font-size: 24px; color: #555">javascript</a> <a href="/tags/javascript-jquery/" style="font-size: 14px; color: #999">javascript, jquery</a> <a href="/tags/jsApi/" style="font-size: 16.5px; color: #888">jsApi</a> <a href="/tags/js算法/" style="font-size: 14px; color: #999">js算法</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/markdown/" style="font-size: 14px; color: #999">markdown</a> <a href="/tags/maven-gradle/" style="font-size: 14px; color: #999">maven gradle</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/php/" style="font-size: 14px; color: #999">php</a> <a href="/tags/react/" style="font-size: 19px; color: #777">react</a> <a href="/tags/redis-db/" style="font-size: 14px; color: #999">redis, db</a> <a href="/tags/spring/" style="font-size: 19px; color: #777">spring</a> <a href="/tags/springMVC/" style="font-size: 14px; color: #999">springMVC</a> <a href="/tags/ssl/" style="font-size: 14px; color: #999">ssl</a> <a href="/tags/ubuntu/" style="font-size: 14px; color: #999">ubuntu</a> <a href="/tags/vue/" style="font-size: 21.5px; color: #666">vue</a> <a href="/tags/weex/" style="font-size: 21.5px; color: #666">weex</a> <a href="/tags/前端/" style="font-size: 14px; color: #999">前端</a> <a href="/tags/时间寄语/" style="font-size: 14px; color: #999">时间寄语</a>
     </div>
   </section>
 
