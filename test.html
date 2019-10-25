@@ -176,7 +176,7 @@
   <div class="meta" id="header-meta">
     
       
-          <h1 class="title">2019-10-24</h1>
+          <h1 class="title">2019-10-25</h1>
       
     
 
@@ -193,7 +193,7 @@
         <div class="new-meta-item date">
           <a class='notlink'>
             <i class="fas fa-clock" aria-hidden="true"></i>
-            2019-10-24
+            2019-10-25
           </a>
         </div>
       
@@ -238,6 +238,7 @@
       text-align: left;
       padding-left: 1rem;
       color: #bbbbbb;
+      line-height: 2rem;
     }
 
     .input-todo-item>input {
@@ -289,7 +290,7 @@
     .samll-widget {
       display: inline-block;
       height: 20px;
-      padding: 0.2rem .5rem;
+      padding: 2px .5rem;
       line-height: 20px;
       text-align: center;
       color: #ffffff;
@@ -320,6 +321,8 @@
     <div>
       <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
       <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+      <script src="https://unpkg.com/vuex@2.0.0"></script>
+      <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
       <script>
         // 定义 <input-item/>组件 html 片段
         const inputTpl =
@@ -498,26 +501,52 @@
           }
         })
         // 使用render函数创建组件
+        const ADD_ITEM_TO_LISTS = 'ADD_ITEM_TO_LISTS'
+        const DELETE_ITEM_FROM_LISTS = 'DELETE_ITEM_FROM_LISTS'
         Vue.component('todo-list', {
-          data() {
-            return {
-              todoLists: [
-                {
-                  text: '这个周末去song'
-                }
-              ]
-            }
+          computed: {
+            todoLists () {
+              return this.$store.state.todo.todoLists
+            },
+            completedItemCount () {
+              return this.$store.state.getters.completedItemCount
+            },
+            // ...mapState('todo', {
+            //   count: state =>state.count
+            // })
+            // ...mapGetters('todo', [
+            //   'completedItemCount',
+            //   // ...
+            // ])
           },
           methods: {
-            deleteItemFromList (index) {
-              this.todoLists.splice(index, 1)
-            },
+            // ...mapActions('todo'，[
+            //   'increment', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
+
+            //   // `mapActions` 也支持载荷：
+            //   'incrementBy' // 将 `this.incrementBy(amount)` 映射为 `this.$store.dispatch('incrementBy', amount)`
+            // ]),
             addItemToList (value) {
-              this.todoLists.push({
+              let temO = {
                 isCompleted: false,
                 text: value
+              }
+              // this.todoLists.push(temO)
+              // 触发 mutaions 更新 state
+              this.$store.commit(ADD_ITEM_TO_LISTS, temO)
+              // 以对象形式分发
+              this.$store.dispatch({
+                type: 'ADD_ITEM_TO_LISTS_ASYNC',
+                value: temO
               })
-            }
+            },
+            deleteItemFromList (index) {
+              // this.todoLists.splice(index, 1)
+              this.$store.commit({
+                type: DELETE_ITEM_FROM_LISTS,
+                value: index
+              })
+            },
           },
           render: function (createElement) {
             return createElement('div', {'class': {'todo-list': true}}, [
@@ -599,6 +628,7 @@
           },
           {path: '*', component: {template: '<div>你的页面丢失了</div>'}},
         ]
+        // use vue-router
         const router = new VueRouter({
           routes,
           // 滚动行为
@@ -621,9 +651,59 @@
           console.log(to)
           next()
         })
-        router.push('/')
+        // use vuex 
+        const todo = {
+          namespaced: true,
+          state: {
+            todoLists: [
+              {
+                text: '这个周末去song'
+              }
+            ]
+          },
+          getters: {
+            completedItemCount () {
+              return state.todoLists.filter(item => item.isCompleted).length
+            }
+          },
+          // 通过 `mutations` 来更新 `state`
+          mutations: {
+            [ADD_ITEM_TO_LISTS] (state, payload) {
+              state.todoLists.push(payload)
+            },
+            [DELETE_ITEM_FROM_LISTS] (state, index) {
+              state.todoLists.splice(payload.value, 1)
+            }
+          },
+          actions: {
+            [ADD_ITEM_TO_LISTS] (context) {
+              context.commit(ADD_ITEM_TO_LISTS)
+            }, 
+            [`ADD_ITEM_TO_LISTS_ASYNC`] ({commit}, data) {
+              let {value} = data
+              setTimeout(() => {
+                commit({
+                  type: ADD_ITEM_TO_LISTS,
+                  ...value
+                })
+              }, 2000)
+            }, 
+          }
+        }
+        const store = new Vuex.Store({
+          // 具有命名空间
+          modules: {
+            todo
+          },
+          // 全局共享
+          state: {},
+          getters: {},
+          mutations: {},
+          actions: {}
+        })
         const TodoList = new Vue({
           router,
+          store,
           render: function (createElement) {
             return createElement('transition', {props: {name: 'fade', mode: 'out-in'}}, [
               createElement('router-view')
@@ -944,7 +1024,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/MongoDB-node/" style="font-size: 14px; color: #999">MongoDB node</a> <a href="/tags/api/" style="font-size: 14px; color: #999">api</a> <a href="/tags/build-webApp/" style="font-size: 14px; color: #999">build_webApp</a> <a href="/tags/css/" style="font-size: 14px; color: #999">css</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/es6/" style="font-size: 14px; color: #999">es6</a> <a href="/tags/git/" style="font-size: 19px; color: #777">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/java/" style="font-size: 19px; color: #777">java</a> <a href="/tags/javascript/" style="font-size: 24px; color: #555">javascript</a> <a href="/tags/javascript-jquery/" style="font-size: 14px; color: #999">javascript, jquery</a> <a href="/tags/jsApi/" style="font-size: 16.5px; color: #888">jsApi</a> <a href="/tags/js算法/" style="font-size: 14px; color: #999">js算法</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/markdown/" style="font-size: 14px; color: #999">markdown</a> <a href="/tags/maven-gradle/" style="font-size: 14px; color: #999">maven gradle</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/php/" style="font-size: 14px; color: #999">php</a> <a href="/tags/react/" style="font-size: 19px; color: #777">react</a> <a href="/tags/redis-db/" style="font-size: 14px; color: #999">redis, db</a> <a href="/tags/spring/" style="font-size: 19px; color: #777">spring</a> <a href="/tags/springMVC/" style="font-size: 14px; color: #999">springMVC</a> <a href="/tags/ssl/" style="font-size: 14px; color: #999">ssl</a> <a href="/tags/ubuntu/" style="font-size: 14px; color: #999">ubuntu</a> <a href="/tags/vue/" style="font-size: 21.5px; color: #666">vue</a> <a href="/tags/weex/" style="font-size: 21.5px; color: #666">weex</a> <a href="/tags/前端/" style="font-size: 14px; color: #999">前端</a> <a href="/tags/时间寄语/" style="font-size: 14px; color: #999">时间寄语</a>
+      <a href="/tags/MongoDB-node/" style="font-size: 14px; color: #999">MongoDB node</a> <a href="/tags/api/" style="font-size: 14px; color: #999">api</a> <a href="/tags/build-webApp/" style="font-size: 14px; color: #999">build_webApp</a> <a href="/tags/css/" style="font-size: 14px; color: #999">css</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/es6/" style="font-size: 14px; color: #999">es6</a> <a href="/tags/git/" style="font-size: 18px; color: #7e7e7e">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/http/" style="font-size: 14px; color: #999">http</a> <a href="/tags/java/" style="font-size: 18px; color: #7e7e7e">java</a> <a href="/tags/javascript/" style="font-size: 24px; color: #555">javascript</a> <a href="/tags/javascript-jquery/" style="font-size: 14px; color: #999">javascript, jquery</a> <a href="/tags/jsApi/" style="font-size: 16px; color: #8b8b8b">jsApi</a> <a href="/tags/js算法/" style="font-size: 14px; color: #999">js算法</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/markdown/" style="font-size: 14px; color: #999">markdown</a> <a href="/tags/maven-gradle/" style="font-size: 14px; color: #999">maven gradle</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/php/" style="font-size: 14px; color: #999">php</a> <a href="/tags/react/" style="font-size: 18px; color: #7e7e7e">react</a> <a href="/tags/redis-db/" style="font-size: 14px; color: #999">redis, db</a> <a href="/tags/spring/" style="font-size: 18px; color: #7e7e7e">spring</a> <a href="/tags/springMVC/" style="font-size: 14px; color: #999">springMVC</a> <a href="/tags/ssl/" style="font-size: 14px; color: #999">ssl</a> <a href="/tags/ubuntu/" style="font-size: 14px; color: #999">ubuntu</a> <a href="/tags/vue/" style="font-size: 22px; color: #636363">vue</a> <a href="/tags/weex/" style="font-size: 20px; color: #707070">weex</a> <a href="/tags/前端/" style="font-size: 14px; color: #999">前端</a> <a href="/tags/时间寄语/" style="font-size: 14px; color: #999">时间寄语</a>
     </div>
   </section>
 
